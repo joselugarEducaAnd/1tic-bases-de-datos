@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Brief del proyecto – Bases de Datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./rubrica_proyecto.html" rel="next">
+<link href="./chuleta_sql.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4ba85d4b4427d31d840a79ec76a35f2e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background: #453f93;
+      }
+</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chuleta_sql.html">Material del proyecto</a></li><li class="breadcrumb-item"><a href="./brief_proyecto.html"><span class="chapter-title">Brief del proyecto</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-right"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chuleta_sql.html">Material del proyecto</a></li><li class="breadcrumb-item"><a href="./brief_proyecto.html"><span class="chapter-title">Brief del proyecto</span></a></li></ol></nav>
+      <h1 class="title"><span class="chapter-title">Brief del proyecto</span></h1>
+            <p class="subtitle lead">Los 6 temas del catálogo y los datos sugeridos</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-right">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logoMajuelo.jpeg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./logoMajuelo.jpeg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Bases de Datos</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bases de Datos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Las 7 sesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s1_concepto_y_primera_tabla.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S1 · Concepto de BD relacional y tu primera tabla</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s2_relaciones_e_integridad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S2 · Relaciones 1:N e integridad referencial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s3_formularios_consultas_informes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S3 · Formularios, consultas gráficas e informes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s4_sql_select.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S4 · SQL para preguntar a la base de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s5_sql_join_y_modificacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S5 · SQL para combinar y modificar datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s6_minicontrol_y_proyecto.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S6 · Mini-control SQL + arranque del proyecto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s7_cierre_y_entrega.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S7 · Cierre del proyecto y entrega</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Material del proyecto</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chuleta_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chuleta SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./brief_proyecto.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Brief del proyecto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrica_proyecto.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rúbrica del proyecto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
+
+
+
+
+
+<section id="cómo-elegir-tema" class="level1">
+<h1>Cómo elegir tema</h1>
+<p>Tu proyecto consiste en <strong>diseñar y construir una base de datos relacional</strong> sobre uno de los <strong>6 temas</strong> que aparecen abajo. El catálogo es <strong>cerrado</strong>: no se aceptan temas fuera de la lista. La razón es práctica: el profesor ha pensado las 6 estructuras y puede atender dudas con eficiencia; un tema improvisado multiplicaría el coste de tutoría individual.</p>
+<p>Para cada tema tienes:</p>
+<ul>
+<li>Una descripción del <strong>dominio</strong> (qué representa).</li>
+<li>Las <strong>3 tablas obligatorias</strong>, con sus campos sugeridos.</li>
+<li>Una <strong>4.ª tabla opcional</strong> que sube nota.</li>
+<li>Un <strong>mini-conjunto de datos sugerido</strong> (5 registros por tabla con tildes reales y FKs coherentes). Te servirá como punto de partida en S1, S2 y S3. En S6 lo amplías a 15 registros por tabla.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>El mini-conjunto sugerido es un patrón, no una imposición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Puedes inventarte otros datos siempre que respetes:</p>
+<ul>
+<li><strong>Tildes y mayúsculas reales</strong> en los datos literales (<code>Lucía</code>, no <code>Lucia</code>).</li>
+<li><strong>IDs correlativos</strong> del 1 al 5 en las dos tablas padre.</li>
+<li><strong>FKs válidas</strong> en la tabla hija: cada <code>id_padre</code> que aparezca en una fila de la hija tiene que existir en la tabla padre correspondiente.</li>
+<li><strong>Emails con dominio del IES</strong>: <code>nombre.apellido@iesmajuelo.com</code>.</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+<section id="tema-1-plataforma-de-streaming" class="level1">
+<h1>Tema 1 — Plataforma de streaming</h1>
+<p><strong>Dominio.</strong> Una plataforma como Netflix gestiona series y los usuarios que las ven. Cada visualización registra qué usuario empezó qué serie, cuándo y si la completó. La BD permite responder: <em>¿qué series son las más vistas?</em>, <em>¿qué porcentaje de visualizaciones se completan?</em>, <em>¿qué usuarios son más activos?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Series</code> <em>(padre 1)</em></td>
+<td><code>id_serie</code> PK · <code>titulo</code> · <code>anio</code> · <code>plataforma</code> · <code>valoracion</code></td>
+</tr>
+<tr class="even">
+<td><code>Usuarios</code> <em>(padre 2)</em></td>
+<td><code>id_usuario</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>edad</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Visualizaciones</code> <em>(hija)</em></td>
+<td><code>id_visualizacion</code> PK · <code>id_serie</code> FK → Series · <code>id_usuario</code> FK → Usuarios · <code>fecha</code> · <code>completada</code> (0/1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Generos</code>.</strong> Campos: <code>id_genero</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada serie tendría un <code>id_genero</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Series:
+  (1, 'Stranger Things',         2016, 'Netflix', 4.5)
+  (2, 'La Casa de Papel',        2017, 'Netflix', 4.7)
+  (3, 'The Crown',               2016, 'Netflix', 4.3)
+  (4, 'Élite',                   2018, 'Netflix', 4.0)
+  (5, 'Sherlock',                2010, 'HBO',     4.8)
+
+Usuarios:
+  (1, 'Lucía',  'Gómez Ruiz',     17, 'lucia.gomez@iesmajuelo.com')
+  (2, 'Mario',  'Pérez Sánchez',  16, 'mario.perez@iesmajuelo.com')
+  (3, 'Sofía',  'Ramírez Cruz',   18, 'sofia.ramirez@iesmajuelo.com')
+  (4, 'Adrián', 'Moreno Díaz',    17, 'adrian.moreno@iesmajuelo.com')
+  (5, 'Paula',  'Navarro Suárez', 16, 'paula.navarro@iesmajuelo.com')
+
+Visualizaciones (id_serie ∈ {1..5}, id_usuario ∈ {1..5}):
+  (1, 1, 1, '2026-04-15', 1)
+  (2, 2, 3, '2026-04-20', 1)
+  (3, 4, 2, '2026-05-01', 0)
+  (4, 1, 4, '2026-05-03', 1)
+  (5, 5, 5, '2026-05-08', 0)</code></pre>
+<hr>
+</section>
+<section id="tema-2-tienda-de-tecnología" class="level1">
+<h1>Tema 2 — Tienda de tecnología</h1>
+<p><strong>Dominio.</strong> Una tienda de informática y electrónica vende productos a clientes. Cada pedido registra qué cliente compró qué producto, cuándo y en qué cantidad. La BD permite responder: <em>¿qué productos se venden más?</em>, <em>¿qué clientes han comprado más de un producto?</em>, <em>¿qué facturación generó cada marca el mes pasado?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Productos</code> <em>(padre 1)</em></td>
+<td><code>id_producto</code> PK · <code>nombre</code> · <code>marca</code> · <code>precio</code> · <code>stock</code></td>
+</tr>
+<tr class="even">
+<td><code>Clientes</code> <em>(padre 2)</em></td>
+<td><code>id_cliente</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Pedidos</code> <em>(hija)</em></td>
+<td><code>id_pedido</code> PK · <code>id_producto</code> FK → Productos · <code>id_cliente</code> FK → Clientes · <code>fecha</code> · <code>cantidad</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Categorias</code>.</strong> Campos: <code>id_categoria</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada producto tendría una <code>id_categoria</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Productos:
+  (1, 'iPad Air 11"',                 'Apple',    599.00, 12)
+  (2, 'Galaxy Tab S9',                'Samsung',  729.00,  8)
+  (3, 'MacBook Air M3',               'Apple',   1199.00,  5)
+  (4, 'Logitech MX Master 3S',        'Logitech',  99.00, 25)
+  (5, 'Auriculares Sony WH-1000XM5',  'Sony',     359.00, 15)
+
+Clientes:
+  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')
+  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')
+  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')
+  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')
+  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')
+
+Pedidos (id_producto ∈ {1..5}, id_cliente ∈ {1..5}):
+  (1, 1, 1, '2026-04-10', 1)
+  (2, 4, 2, '2026-04-12', 2)
+  (3, 3, 3, '2026-04-18', 1)
+  (4, 5, 4, '2026-05-02', 1)
+  (5, 2, 5, '2026-05-06', 1)</code></pre>
+<hr>
+</section>
+<section id="tema-3-clínica-veterinaria" class="level1">
+<h1>Tema 3 — Clínica veterinaria</h1>
+<p><strong>Dominio.</strong> Una clínica veterinaria atiende mascotas que pertenecen a sus dueños. Cada visita registra qué mascota acudió, traída por qué dueño, cuándo y por qué motivo. La BD permite responder: <em>¿qué mascotas vienen más a menudo?</em>, <em>¿qué dueños han traído a sus animales este mes?</em>, <em>¿qué motivos de consulta son más frecuentes?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Mascotas</code> <em>(padre 1)</em></td>
+<td><code>id_mascota</code> PK · <code>nombre</code> · <code>especie</code> · <code>raza</code> · <code>edad</code></td>
+</tr>
+<tr class="even">
+<td><code>Duenos</code> <em>(padre 2)</em></td>
+<td><code>id_dueno</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Visitas</code> <em>(hija)</em></td>
+<td><code>id_visita</code> PK · <code>id_mascota</code> FK → Mascotas · <code>id_dueno</code> FK → Duenos · <code>fecha</code> · <code>motivo</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Especies</code>.</strong> Campos: <code>id_especie</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada mascota tendría una <code>id_especie</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Mascotas:
+  (1, 'Toby',  'Perro',   'Labrador',         4)
+  (2, 'Luna',  'Gato',    'Siamés',           2)
+  (3, 'Coco',  'Perro',   'Bulldog Francés',  6)
+  (4, 'Mía',   'Gato',    'Común europeo',    3)
+  (5, 'Rocky', 'Conejo',  'Belier',           1)
+
+Duenos:
+  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')
+  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')
+  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')
+  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')
+  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')
+
+Visitas (id_mascota ∈ {1..5}, id_dueno ∈ {1..5}):
+  (1, 1, 1, '2026-04-08', 'Vacuna anual')
+  (2, 2, 2, '2026-04-15', 'Revisión rutinaria')
+  (3, 3, 3, '2026-04-22', 'Otitis')
+  (4, 5, 4, '2026-05-04', 'Corte de uñas')
+  (5, 1, 1, '2026-05-09', 'Desparasitación')</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>¿Por qué <code>Duenos</code> sin tilde?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>Duenos</code> es el <strong>nombre técnico</strong> de la tabla, no un dato. Los nombres de tabla suelen escribirse sin tildes ni eñes para evitar problemas con motores o herramientas que no soportan UTF-8 fuera de cadenas. Los <strong>datos</strong> dentro de la tabla, en cambio, sí llevan tildes reales: el nombre del dueño es <code>'Lucía'</code>, no <code>'Lucia'</code>.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="tema-4-liga-deportiva" class="level1">
+<h1>Tema 4 — Liga deportiva</h1>
+<p><strong>Dominio.</strong> Una liga (de fútbol o baloncesto) gestiona equipos, jugadores y los partidos que se disputan entre ellos. Cada partido tiene un equipo local y un jugador destacado (MVP). La BD permite responder: <em>¿qué equipo ha sido local más veces?</em>, <em>¿qué jugadores han sido MVP en más de un partido?</em>, <em>¿qué partidos se jugaron en el último mes?</em>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Decisión de modelado simplificada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En la realidad un jugador pertenece a un equipo. Para que las 3 tablas encajen en el patrón “padre 1 + padre 2 + hija con dos FKs” que estamos practicando en la unidad, simplificamos: <strong><code>Jugadores</code> y <code>Equipos</code> son entidades independientes</strong>, y se relacionan a través de <code>Partidos</code> (el equipo local del partido y el jugador destacado del partido). Es un modelo pedagógico, no la BD que usaría una liga real.</p>
+</div>
+</div>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Equipos</code> <em>(padre 1)</em></td>
+<td><code>id_equipo</code> PK · <code>nombre</code> · <code>ciudad</code> · <code>estadio</code> · <code>anio_fundacion</code></td>
+</tr>
+<tr class="even">
+<td><code>Jugadores</code> <em>(padre 2)</em></td>
+<td><code>id_jugador</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>posicion</code> · <code>edad</code></td>
+</tr>
+<tr class="odd">
+<td><code>Partidos</code> <em>(hija)</em></td>
+<td><code>id_partido</code> PK · <code>id_equipo</code> FK → Equipos <em>(equipo local)</em> · <code>id_jugador</code> FK → Jugadores <em>(MVP del partido)</em> · <code>fecha</code> · <code>marcador</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Estadios</code>.</strong> Campos: <code>id_estadio</code> PK · <code>nombre</code> · <code>ciudad</code> · <code>aforo</code>. Cada equipo tendría un <code>id_estadio</code> (FK) en lugar del campo <code>estadio</code> de texto.</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Equipos:
+  (1, 'Real Betis',         'Sevilla',   'Benito Villamarín',     1907)
+  (2, 'Sevilla FC',         'Sevilla',   'Sánchez-Pizjuán',       1890)
+  (3, 'Atlético de Madrid', 'Madrid',    'Cívitas Metropolitano', 1903)
+  (4, 'Real Madrid',        'Madrid',    'Santiago Bernabéu',     1902)
+  (5, 'FC Barcelona',       'Barcelona', 'Spotify Camp Nou',      1899)
+
+Jugadores:
+  (1, 'Isco',     'Alarcón',          'Centrocampista', 33)
+  (2, 'Vinícius', 'Júnior',           'Delantero',      25)
+  (3, 'Lamine',   'Yamal',            'Extremo',        18)
+  (4, 'Antoine',  'Griezmann',        'Delantero',      34)
+  (5, 'Youssef',  'En-Nesyri',        'Delantero',      28)
+
+Partidos (id_equipo ∈ {1..5}, id_jugador ∈ {1..5}):
+  (1, 1, 1, '2026-04-12', '2-1')
+  (2, 2, 5, '2026-04-19', '3-0')
+  (3, 4, 2, '2026-04-26', '4-2')
+  (4, 5, 3, '2026-05-03', '2-2')
+  (5, 3, 4, '2026-05-10', '1-0')</code></pre>
+<hr>
+</section>
+<section id="tema-5-estudio-de-tatuajes-o-peluquería" class="level1">
+<h1>Tema 5 — Estudio de tatuajes o peluquería</h1>
+<p><strong>Dominio.</strong> Un estudio de tatuajes (o una peluquería) atiende clientes que se hacen trabajos realizados por sus empleados. Cada trabajo registra qué cliente lo encargó, qué empleado lo hizo, cuándo y cuánto costó. La BD permite responder: <em>¿qué empleado ha hecho más trabajos?</em>, <em>¿qué clientes son habituales?</em>, <em>¿cuál fue la facturación de cada empleado?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Clientes</code> <em>(padre 1)</em></td>
+<td><code>id_cliente</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="even">
+<td><code>Empleados</code> <em>(padre 2)</em></td>
+<td><code>id_empleado</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>especialidad</code> · <code>anio_inicio</code></td>
+</tr>
+<tr class="odd">
+<td><code>Trabajos</code> <em>(hija)</em></td>
+<td><code>id_trabajo</code> PK · <code>id_cliente</code> FK → Clientes · <code>id_empleado</code> FK → Empleados · <code>fecha</code> · <code>descripcion</code> · <code>precio</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Servicios</code>.</strong> Campos: <code>id_servicio</code> PK · <code>nombre</code> · <code>precio_base</code>. Cada trabajo tendría un <code>id_servicio</code> (FK) y <code>precio</code> se calcularía como ajuste sobre <code>precio_base</code>.</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Clientes:
+  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')
+  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')
+  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')
+  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')
+  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')
+
+Empleados:
+  (1, 'Carmen',  'Rodríguez Vera', 'Realismo',         2018)
+  (2, 'Javier',  'Martín Ortiz',   'Tradicional',      2015)
+  (3, 'Marta',   'López García',   'Geométrico',       2021)
+  (4, 'Andrés',  'Ruiz Jiménez',   'Color',            2019)
+  (5, 'Beatriz', 'Sánchez Mora',   'Microblading',     2022)
+
+Trabajos (id_cliente ∈ {1..5}, id_empleado ∈ {1..5}):
+  (1, 1, 1, '2026-04-05', 'Brazo realismo (4 h)',         220.00)
+  (2, 2, 3, '2026-04-12', 'Geométrico antebrazo',         140.00)
+  (3, 3, 2, '2026-04-20', 'Old school tobillo',            85.00)
+  (4, 4, 4, '2026-05-02', 'Acuarela espalda',             310.00)
+  (5, 5, 5, '2026-05-08', 'Microblading cejas',           180.00)</code></pre>
+<hr>
+</section>
+<section id="tema-6-gimnasio" class="level1">
+<h1>Tema 6 — Gimnasio</h1>
+<p><strong>Dominio.</strong> Un gimnasio gestiona socios que se apuntan a clases dirigidas (yoga, spinning, body pump…). Cada asistencia registra qué socio fue a qué clase, en qué fecha y si finalmente acudió. La BD permite responder: <em>¿qué clases tienen más asistencia?</em>, <em>¿qué socios faltan más a menudo?</em>, <em>¿cuántas clases dio el monitor de spinning este mes?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Socios</code> <em>(padre 1)</em></td>
+<td><code>id_socio</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>fecha_alta</code> · <code>plan</code></td>
+</tr>
+<tr class="even">
+<td><code>Clases</code> <em>(padre 2)</em></td>
+<td><code>id_clase</code> PK · <code>nombre</code> · <code>dia_semana</code> · <code>hora</code> · <code>aforo</code></td>
+</tr>
+<tr class="odd">
+<td><code>Asistencias</code> <em>(hija)</em></td>
+<td><code>id_asistencia</code> PK · <code>id_socio</code> FK → Socios · <code>id_clase</code> FK → Clases · <code>fecha</code> · <code>asistio</code> (0/1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Monitores</code>.</strong> Campos: <code>id_monitor</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>especialidad</code>. Cada clase tendría un <code>id_monitor</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Socios:
+  (1, 'Lucía',  'Gómez Ruiz',     '2026-01-10', 'Premium')
+  (2, 'Mario',  'Pérez Sánchez',  '2025-09-15', 'Básico')
+  (3, 'Sofía',  'Ramírez Cruz',   '2025-10-20', 'Premium')
+  (4, 'Adrián', 'Moreno Díaz',    '2026-02-03', 'Estudiante')
+  (5, 'Paula',  'Navarro Suárez', '2025-11-05', 'Básico')
+
+Clases:
+  (1, 'Yoga',         'Lunes',     '18:00', 20)
+  (2, 'Spinning',     'Martes',    '19:30', 25)
+  (3, 'Body Pump',    'Miércoles', '20:00', 30)
+  (4, 'Pilates',      'Jueves',    '17:30', 18)
+  (5, 'Zumba',        'Viernes',   '19:00', 35)
+
+Asistencias (id_socio ∈ {1..5}, id_clase ∈ {1..5}):
+  (1, 1, 1, '2026-04-07', 1)
+  (2, 2, 2, '2026-04-08', 1)
+  (3, 3, 4, '2026-04-09', 0)
+  (4, 4, 3, '2026-04-15', 1)
+  (5, 5, 5, '2026-04-17', 1)</code></pre>
+<hr>
+</section>
+<section id="cómo-se-evalúa-tu-bd" class="level1">
+<h1>Cómo se evalúa tu BD</h1>
+<p>Una vez elegido el tema, recuerda que el proyecto se evalúa con <strong>5 criterios</strong> (CE3.4): diseño de tablas, relaciones e integridad, datos poblados, consultas SQL y memoria. Los pesos exactos y los descriptores los tienes en la <a href="./rubrica_proyecto.html">Rúbrica del proyecto</a>.</p>
+<p>La entrega final se hace en <strong>S7</strong>: el <code>.odb</code> con 3 consultas SQL guardadas, <code>retos_sql.sql</code> con las consultas reales y la <strong>memoria</strong> del proyecto (en formatos <code>.odt</code> y <code>.pdf</code>). Los detalles de la entrega y la plantilla de la memoria están en <a href="./s7_cierre_y_entrega.html">S7 · Cierre del proyecto y entrega</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./chuleta_sql.html" class="pagination-link" aria-label="Chuleta SQL">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Chuleta SQL</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./rubrica_proyecto.html" class="pagination-link" aria-label="Rúbrica del proyecto">
+        <span class="nav-page-text"><span class="chapter-title">Rúbrica del proyecto</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

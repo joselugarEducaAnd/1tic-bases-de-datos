@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>S7 · Cierre del proyecto y entrega – Bases de Datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chuleta_sql.html" rel="next">
+<link href="./s6_minicontrol_y_proyecto.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4ba85d4b4427d31d840a79ec76a35f2e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background: #453f93;
+      }
+</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./s1_concepto_y_primera_tabla.html">Las 7 sesiones</a></li><li class="breadcrumb-item"><a href="./s7_cierre_y_entrega.html"><span class="chapter-title">S7 · Cierre del proyecto y entrega</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-right"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./s1_concepto_y_primera_tabla.html">Las 7 sesiones</a></li><li class="breadcrumb-item"><a href="./s7_cierre_y_entrega.html"><span class="chapter-title">S7 · Cierre del proyecto y entrega</span></a></li></ol></nav>
+      <h1 class="title"><span class="chapter-title">S7 · Cierre del proyecto y entrega</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-right">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./logoMajuelo.jpeg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./logoMajuelo.jpeg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Bases de Datos</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bases de Datos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Las 7 sesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s1_concepto_y_primera_tabla.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S1 · Concepto de BD relacional y tu primera tabla</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s2_relaciones_e_integridad.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S2 · Relaciones 1:N e integridad referencial</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s3_formularios_consultas_informes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S3 · Formularios, consultas gráficas e informes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s4_sql_select.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S4 · SQL para preguntar a la base de datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s5_sql_join_y_modificacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S5 · SQL para combinar y modificar datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s6_minicontrol_y_proyecto.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">S6 · Mini-control SQL + arranque del proyecto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./s7_cierre_y_entrega.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">S7 · Cierre del proyecto y entrega</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Material del proyecto</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chuleta_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chuleta SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./brief_proyecto.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Brief del proyecto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rubrica_proyecto.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Rúbrica del proyecto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
+
+
+
+
+
+<section id="lo-que-vas-a-hacer-hoy" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-vas-a-hacer-hoy">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Convertir las <strong>3 ideas</strong> que dejaste anotadas en <code>retos_sql.sql</code> en <strong>3 consultas SQL reales</strong> sobre tu propia base de datos, guardadas en el panel <em>Consultas</em> de tu <code>.odb</code>.</li>
+<li>Rellenar la <strong>memoria del proyecto</strong> sobre una plantilla <code>.odt</code> de LibreOffice Writer, con tu esquema E-R, tus 3 tablas, tus 3 consultas y una breve reflexión.</li>
+<li>Hacer la <strong>autoevaluación</strong> dentro de la propia memoria.</li>
+<li><strong>Subir</strong> los archivos finales a Moodle y, por primera y única vez en toda la unidad, <strong>pulsar “Entregar tarea”</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Antes de empezar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hoy es el día de cierre. Lee esto antes de tocar el teclado:</p>
+<ul>
+<li><strong>Trae a clase tus 3 ideas claras</strong>: las que anotaste al final de S6 en <code>retos_sql.sql</code> con el formato <code>-- Idea S7 N</code>. Si no te acuerdas, repásalas en cuanto descargues el archivo.</li>
+<li>Vas a usar <strong>dos programas a la vez</strong>: LibreOffice <strong>Base</strong> (para las 3 consultas y el <code>.odb</code>) y LibreOffice <strong>Writer</strong> (para la memoria).</li>
+<li>Fecha límite: la que el profesor indique en Moodle. Si no te da tiempo a terminar la memoria en clase, la terminas en casa antes de esa fecha.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="descarga-tus-archivos-de-moodle" class="level2">
+<h2 class="anchored" data-anchor-id="descarga-tus-archivos-de-moodle">1. Descarga tus archivos de Moodle</h2>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong> de Moodle tienes ahora mismo tres archivos del trabajo de las sesiones anteriores. Descárgalos los tres a la carpeta <strong>Descargas</strong>:</p>
+<ol type="1">
+<li><strong><code>&lt;tu_tema&gt;.odb</code></strong> (sin sufijo): tu base de datos al completo, con 15 registros por tabla y los cambios SQL de S5 ya aplicados. Es la que vas a usar hoy.</li>
+<li><strong><code>retos_sql.sql</code></strong>: con tus 20 retos resueltos y, al final, las 3 ideas comentadas que anotaste en S6 (<code>-- Idea S7 1: …</code> y siguientes).</li>
+<li><strong><code>&lt;tu_tema&gt;-s4.odb</code></strong>: la foto pre-SQL. Hoy <strong>no la tocas</strong>; sigue ahí como referencia.</li>
+</ol>
+<p>Ábrelos para tenerlos listos:</p>
+<ul>
+<li>Doble clic sobre <strong><code>&lt;tu_tema&gt;.odb</code></strong> → se abre en LibreOffice Base.</li>
+<li>Doble clic sobre <strong><code>retos_sql.sql</code></strong> → se abre en Pluma (si no, clic derecho → <em>Abrir con… → Pluma</em>).</li>
+</ul>
+</section>
+<section id="convierte-tus-3-ideas-en-sql-real" class="level2">
+<h2 class="anchored" data-anchor-id="convierte-tus-3-ideas-en-sql-real">2. Convierte tus 3 ideas en SQL real</h2>
+<p>Las 3 ideas que anotaste en S6 eran preguntas en castellano del estilo <em>“¿qué clientes han hecho más de un pedido?”</em>. Hoy las traduces a <strong>SQL</strong> y las guardas como <strong>consultas dentro del propio <code>.odb</code></strong>, igual que las consultas gráficas que creaste en S3, pero ahora escritas en SQL.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Recordatorio rápido: en Base se escribe SQL distinto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>LibreOffice Base usa el motor <strong>HSQLDB</strong>, no SQLite. La diferencia que más te va a afectar hoy:</p>
+<ul>
+<li><strong>Identificadores entre comillas dobles</strong>: nombres de tabla y de columna. Ejemplo: <code>"Series"</code>, <code>"titulo"</code>. Si te las dejas, HSQLDB convierte el nombre a mayúsculas internamente y no lo encuentra.</li>
+<li><strong>Cadenas de texto entre comillas simples</strong>, igual que en SQLite: <code>'Fantasía'</code>, <code>'Lucía'</code>.</li>
+</ul>
+<p>Por lo demás, todo lo que aprendiste en S4 y S5 funciona igual: <code>SELECT</code>, <code>WHERE</code>, <code>ORDER BY</code>, <code>LIKE</code>, <code>BETWEEN</code>, <code>IS NULL</code>, <code>JOIN</code>. Lo que estás haciendo es lo mismo de siempre, solo que con comillas dobles en los identificadores.</p>
+<p>Tienes el resumen completo en el bloque “Llevar SQL a Base” de la <a href="./chuleta_sql.html">Chuleta SQL</a>.</p>
+</div>
+</div>
+<section id="dónde-se-crean-las-consultas-guardadas" class="level3">
+<h3 class="anchored" data-anchor-id="dónde-se-crean-las-consultas-guardadas">2.1 Dónde se crean las consultas guardadas</h3>
+<p>Con <code>&lt;tu_tema&gt;.odb</code> abierto en LibreOffice Base, fíjate en la barra lateral izquierda: lista cuatro categorías en este orden vertical: <strong>Tablas, Consultas, Formularios, Informes</strong>. Hoy trabajas en <strong>Consultas</strong>.</p>
+<ol type="1">
+<li>Haz clic en <strong>Consultas</strong> (segunda categoría).</li>
+<li>En el panel central pulsa <strong>Crear consulta en vista SQL…</strong>.</li>
+<li>Se abre una ventana con un editor SQL grande. Es muy parecido a SQLime, pero corre dentro de Base y consulta <strong>tu</strong> BD.</li>
+</ol>
+</section>
+<section id="para-cada-una-de-tus-3-ideas" class="level3">
+<h3 class="anchored" data-anchor-id="para-cada-una-de-tus-3-ideas">2.2 Para cada una de tus 3 ideas</h3>
+<p>Para la <strong>Idea 1</strong>, vuelve a Pluma y mira qué escribiste como <code>-- Idea S7 1</code>. Tradúcela a SQL siguiendo este flujo:</p>
+<ol type="1">
+<li><strong>Escribe la consulta SQL</strong> en el editor de la ventana <em>Crear consulta en vista SQL…</em>. Recuerda las comillas dobles en los identificadores.</li>
+<li><strong>Ejecútala</strong>: en la barra superior de la ventana hay un icono <em>Ejecutar consulta SQL</em> (también funciona la tecla <code>F5</code>). Si la consulta es correcta, <strong>arriba</strong> aparece la tabla con el resultado. Si falla, abajo verás el mensaje de error.</li>
+<li><strong>Si falla</strong>: corrige y vuelve a ejecutar. Errores típicos: comillas dobles olvidadas, nombre de columna mal escrito, <code>JOIN</code> sin <code>ON</code>. Mira la sección <a href="#si-te-atascas">Si te atascas</a> si te bloqueas.</li>
+<li><strong>Cuando funcione</strong>, <strong>guarda la consulta</strong>: pulsa <em>Archivo → Guardar</em> (o <code>Ctrl+S</code>). Base te pregunta el nombre. Llámala <strong><code>Consulta_1</code></strong> (o algo más descriptivo, como <code>libros_más_prestados</code>). Cierra la ventana de la consulta con la X.</li>
+<li>De vuelta a la ventana principal de Base, en el panel central de <strong>Consultas</strong> debe aparecer ahora <strong><code>Consulta_1</code></strong> en la lista. Doble clic sobre ella te muestra el resultado tantas veces como quieras.</li>
+</ol>
+<p>Repite los pasos 1–5 con la <strong>Idea 2</strong> (llámala <code>Consulta_2</code>) y con la <strong>Idea 3</strong> (llámala <code>Consulta_3</code>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Qué piden las 3 consultas como mínimo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Que <strong>se ejecuten sin error</strong> (no aparece mensaje rojo abajo).</li>
+<li>Que <strong>devuelvan resultado coherente</strong> con tu pregunta original (no necesariamente muchas filas: a veces 0 filas es la respuesta correcta, si nadie cumple la condición que preguntaste).</li>
+<li>Al menos una de las tres tiene que <strong>cruzar dos tablas con <code>JOIN</code></strong>, para que se note que aprovechas la estructura relacional. Las otras dos pueden ser <code>SELECT</code> con <code>WHERE</code>, <code>LIKE</code> o <code>ORDER BY</code>.</li>
+</ul>
+<p>Si tus 3 ideas eran las tres de tabla única, modifica una de ellas para que pase a usar <code>JOIN</code>. Por ejemplo: en lugar de <em>“¿qué pedidos son del cliente con id_cliente = 3?”</em>, formúlala como <em>“¿qué pedidos ha hecho la clienta Lucía García?”</em> — eso ya exige cruzar <code>Pedidos</code> con <code>Clientes</code>.</p>
+</div>
+</div>
+</section>
+<section id="pega-las-consultas-en-retos_sql.sql" class="level3">
+<h3 class="anchored" data-anchor-id="pega-las-consultas-en-retos_sql.sql">2.3 Pega las consultas en <code>retos_sql.sql</code></h3>
+<p>Las consultas guardadas viven en el <code>.odb</code> y son la evidencia oficial. Pero también las queremos en <code>retos_sql.sql</code> como texto plano, para que sean fáciles de leer en la corrección.</p>
+<p>En <strong>Pluma</strong>, abre <code>retos_sql.sql</code>. Al final del archivo verás las 3 ideas comentadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Idea S7 1: ¿qué clientes han hecho más de un pedido?</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- Idea S7 2: ¿cuál es el equipo con más partidos como local?</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- Idea S7 3: ¿qué socios se inscribieron antes de 2025?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Sustituye</strong> cada idea por la consulta SQL real, manteniendo el comentario justo encima. Queda así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Consulta S7 1: ¿qué clientes han hecho más de un pedido?</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">"C"</span>.<span class="ot">"nombre"</span>, <span class="ot">"C"</span>.<span class="ot">"apellidos"</span>, <span class="fu">COUNT</span>(<span class="ot">"P"</span>.<span class="ot">"id_pedido"</span>) <span class="kw">AS</span> <span class="ot">"n_pedidos"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="ot">"Clientes"</span> <span class="kw">AS</span> <span class="ot">"C"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> <span class="ot">"Pedidos"</span> <span class="kw">AS</span> <span class="ot">"P"</span> <span class="kw">ON</span> <span class="ot">"C"</span>.<span class="ot">"id_cliente"</span> <span class="op">=</span> <span class="ot">"P"</span>.<span class="ot">"id_cliente"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="ot">"C"</span>.<span class="ot">"id_cliente"</span>, <span class="ot">"C"</span>.<span class="ot">"nombre"</span>, <span class="ot">"C"</span>.<span class="ot">"apellidos"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">HAVING</span> <span class="fu">COUNT</span>(<span class="ot">"P"</span>.<span class="ot">"id_pedido"</span>) <span class="op">&gt;</span> <span class="dv">1</span>;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- Consulta S7 2: …</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- Consulta S7 3: …</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si tu consulta no usa <code>GROUP BY</code> ni <code>HAVING</code> (cosas que no hemos visto en clase), no pasa nada: lo importante es que aparezca la SQL real, con las comillas dobles HSQLDB tal cual la pegaste en Base.</p>
+<p>Guarda el archivo con <code>Ctrl+S</code>.</p>
+</section>
+</section>
+<section id="descarga-la-plantilla-de-la-memoria" class="level2">
+<h2 class="anchored" data-anchor-id="descarga-la-plantilla-de-la-memoria">3. Descarga la plantilla de la memoria</h2>
+<p><a href="recursos/plantilla_memoria.odt"><strong>Descarga aquí <code>plantilla_memoria.odt</code></strong></a>. Se guarda en <em>Descargas</em>. Doble clic la abre en LibreOffice Writer.</p>
+<p>Lo primero, antes de escribir nada: <strong>Archivo → Guardar como…</strong> → ponle el nombre <strong><code>memoria.odt</code></strong> y guárdalo en <em>Descargas</em>. Así la plantilla queda intacta por si necesitas volver a empezar.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Comprobación rápida
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En la barra de título de Writer ahora pone <strong><code>memoria.odt</code></strong>, no <code>plantilla_memoria.odt</code>. Si sigue poniendo <code>plantilla_memoria</code>, repite el <em>Guardar como</em>.</p>
+</div>
+</div>
+</section>
+<section id="rellena-la-memoria-sección-a-sección" class="level2">
+<h2 class="anchored" data-anchor-id="rellena-la-memoria-sección-a-sección">4. Rellena la memoria sección a sección</h2>
+<p>La plantilla ya tiene la estructura hecha. Tu trabajo es ir reemplazando los huecos marcados (<code>[…]</code>) por tu información real. Estas son las secciones, de arriba abajo:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sección</th>
+<th>Qué pones</th>
+<th>Cuánto te lleva</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Portada</strong></td>
+<td>Tema elegido, tu nombre y apellidos, grupo (1.º TIC o 1.º BTOPA), fecha.</td>
+<td>1 min</td>
+</tr>
+<tr class="even">
+<td><strong>Descripción del dominio</strong></td>
+<td>4–6 líneas explicando qué representa tu BD: qué entidades hay, qué relación tienen entre sí, para qué serviría.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Esquema E-R</strong></td>
+<td>Captura del diseñador de relaciones de Base. Ábrelo con <em>Herramientas → Relaciones</em>, organiza las 3 cajas y haz captura con la tecla <strong>Impr Pant</strong> o con <em>Captura de pantalla</em> del menú de aplicaciones. Pega la imagen en el hueco de la plantilla.</td>
+<td>5 min</td>
+</tr>
+<tr class="even">
+<td><strong>Las 3 tablas</strong></td>
+<td>Una tabla por cada una de tus 3 tablas, listando sus campos: nombre, tipo, si es PK o FK, si admite NULL. La plantilla ya lleva una cabecera de ejemplo: solo tienes que rellenar las filas.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Las 3 consultas SQL</strong></td>
+<td>Para cada consulta: enunciado en castellano, código SQL (copia-pega de <code>retos_sql.sql</code>), captura del resultado en Base, y 2 líneas explicando qué te dice ese resultado.</td>
+<td>8 min</td>
+</tr>
+<tr class="even">
+<td><strong>Autoevaluación</strong></td>
+<td>Marca con <strong>X</strong> la casilla que mejor describa tu trabajo en cada uno de los 5 criterios + 4–6 líneas de reflexión final.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Qué he aprendido</strong></td>
+<td>3–5 líneas en formato libre. Lo más sincero que puedas: qué se te dio bien, qué se te resistió, qué cambiarías si volvieras a empezar.</td>
+<td>3 min</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Cómo capturar bien una pantalla
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>En los equipos del IES, la tecla <strong>Impr Pant</strong> copia la pantalla al portapapeles. Pegas en Writer con <code>Ctrl+V</code>.</li>
+<li>Si solo quieres una zona, en <em>Aplicaciones → Accesorios → Captura de pantalla</em> puedes seleccionar un rectángulo. Guárdalo como PNG en <em>Descargas</em> y arrástralo a Writer.</li>
+<li>En la imagen pegada en Writer, clic derecho → <em>Tamaño y posición</em> te deja redimensionarla. Que se vea legible (ni minúscula ni que ocupe una página entera).</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="autoevaluación" class="level2">
+<h2 class="anchored" data-anchor-id="autoevaluación">5. Autoevaluación</h2>
+<p>La sección de autoevaluación ya está dentro de la memoria, justo antes de la reflexión. Funciona en dos partes.</p>
+<section id="casillas-de-la-rúbrica-simplificada" class="level3">
+<h3 class="anchored" data-anchor-id="casillas-de-la-rúbrica-simplificada">Casillas de la rúbrica simplificada</h3>
+<p>Para cada uno de los 5 criterios, marca con <strong>X</strong> la casilla que mejor describa tu trabajo. Sé honesto: la autoevaluación no afecta a la nota final (la pone el profesor), pero sí ayuda a que aprendas a juzgar tu propio trabajo con criterio.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th style="text-align: center;">4 — Excelente</th>
+<th style="text-align: center;">3 — Logrado</th>
+<th style="text-align: center;">2 — En desarrollo</th>
+<th style="text-align: center;">1 — Iniciado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diseño de tablas</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="even">
+<td>Relaciones e integridad</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="odd">
+<td>Datos poblados</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="even">
+<td>Consultas SQL</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="odd">
+<td>Memoria</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+</tbody>
+</table>
+<p>Para conocer al detalle qué pide cada nivel, mira la <a href="./rubrica_proyecto.html">Rúbrica del proyecto</a>.</p>
+</section>
+<section id="reflexión-final" class="level3">
+<h3 class="anchored" data-anchor-id="reflexión-final">Reflexión final</h3>
+<p>4–6 líneas en las que respondas a estas tres preguntas:</p>
+<ol type="1">
+<li>¿Qué parte del trabajo me ha salido mejor y por qué?</li>
+<li>¿En qué parte he tenido que pedir ayuda o repetir varias veces? ¿Qué hice para resolverlo?</li>
+<li>Si volviera a hacer este proyecto, ¿qué cambiaría?</li>
+</ol>
+</section>
+</section>
+<section id="exporta-la-memoria-a-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="exporta-la-memoria-a-pdf">6. Exporta la memoria a PDF</h2>
+<p>Cuando tengas la memoria completa y guardada como <code>memoria.odt</code>, vamos a <strong>exportar también una versión en PDF</strong>. Te servirá para dejar el formato congelado y para practicar la exportación, una habilidad útil más allá de esta unidad.</p>
+<ol type="1">
+<li>En Writer, con <code>memoria.odt</code> abierto: <strong>Archivo → Exportar como → Exportar como PDF…</strong>.</li>
+<li>En el cuadro que sale, deja las opciones por defecto y pulsa <em>Exportar</em>.</li>
+<li>Dale el nombre <strong><code>memoria.pdf</code></strong> y guarda en <em>Descargas</em>, junto al <code>memoria.odt</code>.</li>
+<li>Comprueba que se ha creado: en <em>Descargas</em> deben aparecer ahora <code>memoria.odt</code> Y <code>memoria.pdf</code>. Ábrelo con doble clic para verificar que se ve igual que en Writer.</li>
+</ol>
+</section>
+<section id="entrega-definitiva-en-moodle" class="level2">
+<h2 class="anchored" data-anchor-id="entrega-definitiva-en-moodle">7. Entrega definitiva en Moodle</h2>
+<p>Llegó el momento. Vas a sustituir los archivos antiguos en Moodle por los finales y, después, pulsar <strong>“Entregar tarea”</strong>.</p>
+<section id="sube-los-archivos-finales" class="level3">
+<h3 class="anchored" data-anchor-id="sube-los-archivos-finales">7.1 Sube los archivos finales</h3>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong>, en tu entrega:</p>
+<ol type="1">
+<li><strong>Borra</strong> el <code>&lt;tu_tema&gt;.odb</code> antiguo (el que estaba subido al final de S6) y <strong>sube</strong> el <code>&lt;tu_tema&gt;.odb</code> actualizado de hoy, con las 3 consultas guardadas en el panel <em>Consultas</em>.</li>
+<li><strong>Borra</strong> el <code>retos_sql.sql</code> antiguo y <strong>sube</strong> el actualizado, con las 3 consultas SQL reales (no solo las ideas comentadas).</li>
+<li><strong>Sube</strong> <code>memoria.odt</code> y <code>memoria.pdf</code> (archivos nuevos).</li>
+<li><strong>NO toques</strong> <code>&lt;tu_tema&gt;-s4.odb</code>. Tiene que quedarse ahí como referencia del estado pre-SQL.</li>
+</ol>
+<p>Al final deben aparecer <strong>5 archivos</strong> en tu entrega:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Archivo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;tu_tema&gt;.odb</code></td>
+<td>BD final, con 15 registros por tabla, INSERT/UPDATE/DELETE de S5 aplicados y 3 consultas guardadas en panel <em>Consultas</em></td>
+</tr>
+<tr class="even">
+<td><code>&lt;tu_tema&gt;-s4.odb</code></td>
+<td>Foto pre-SQL (intacta desde S4)</td>
+</tr>
+<tr class="odd">
+<td><code>retos_sql.sql</code></td>
+<td>20 retos sobre <code>biblioteca</code> + 3 consultas SQL reales sobre tu BD</td>
+</tr>
+<tr class="even">
+<td><code>memoria.odt</code></td>
+<td>Memoria editable</td>
+</tr>
+<tr class="odd">
+<td><code>memoria.pdf</code></td>
+<td>Memoria con formato congelado</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pulsa-entregar-tarea" class="level3">
+<h3 class="anchored" data-anchor-id="pulsa-entregar-tarea">7.2 Pulsa “Entregar tarea”</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Esto es la entrega DEFINITIVA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hasta hoy, tu entrega estaba en estado <strong>borrador</strong>: podías subir, borrar, volver a subir tantas veces como quisieras. Cuando pulses <strong>“Entregar tarea”</strong>, el estado pasa a <strong>Enviado</strong> y ya no podrás modificar los archivos sin pedir al profesor que reabra tu intento.</p>
+<p>Antes de pulsar, <strong>revisa una última vez</strong> que están los 5 archivos que toca y que abres <code>memoria.pdf</code> y se ve bien.</p>
+</div>
+</div>
+<ol type="1">
+<li>En tu entrega, pulsa el botón <strong>“Entregar tarea”</strong>.</li>
+<li>Moodle te pedirá confirmación con un mensaje del tipo <em>“Una vez que envíe esta entrega, ya no podrá realizar más cambios”</em>. Pulsa <strong>Continuar</strong>.</li>
+<li>El estado de tu entrega cambia a <strong>Enviado</strong>. Comprúebalo: en la página de la tarea debe aparecer ahora <em>“Estado de la entrega: Enviado para calificar”</em> en lugar de <em>“Borrador (no entregado)”</em>.</li>
+</ol>
+<p>Si por accidente pulsaste <em>Entregar</em> antes de subir un archivo, avisa al profesor: puede reabrir tu intento para que termines.</p>
+</section>
+</section>
+<section id="producto-final-de-s7" class="level2">
+<h2 class="anchored" data-anchor-id="producto-final-de-s7">Producto final de S7</h2>
+<p>Cuando termines la sesión debes tener:</p>
+<ul>
+<li>Tu <strong><code>&lt;tu_tema&gt;.odb</code> final</strong> con 3 consultas guardadas en el panel <em>Consultas</em>.</li>
+<li>Tu <strong><code>retos_sql.sql</code></strong> con 20 retos + 3 consultas SQL reales.</li>
+<li>Tu <strong><code>memoria.odt</code></strong> y tu <strong><code>memoria.pdf</code></strong> completos.</li>
+<li>En Moodle, los 5 archivos subidos y la entrega en estado <strong>Enviado</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Antes de irte
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Comprueba el estado</strong>: en Moodle, en la tarea, debe aparecer <strong>“Enviado para calificar”</strong>, no <strong>“Borrador”</strong>. Si pone borrador, no has pulsado <em>Entregar tarea</em> o el navegador no llegó a confirmar la acción.</li>
+<li><strong>Si te falta tiempo</strong>: si no terminas la memoria en clase, NO pulses <em>Entregar tarea</em> todavía. Sube lo que tengas en estado borrador, termina la memoria en casa antes de la fecha límite, y entonces sí pulsas <em>Entregar</em>.</li>
+<li><strong>Una vez entregado, no se puede deshacer</strong> salvo que el profesor reabra tu intento. Pídelo solo si es necesario.</li>
+</ul>
+</div>
+</div>
+<p>¡Y con esto se cierra la unidad! Has diseñado una BD relacional de cero, la has poblado, le has hablado en SQL y has dejado consultas guardadas dentro del archivo. Es exactamente lo que hace cualquier desarrollador que trabaja con datos en el mundo real, solo que con herramientas más sofisticadas.</p>
+</section>
+<section id="si-te-atascas" class="level2">
+<h2 class="anchored" data-anchor-id="si-te-atascas">Si te atascas</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mi consulta da <em>“Column not found: TITULO”</em></td>
+<td>Te has olvidado las comillas dobles en una columna</td>
+<td>Pon comillas dobles alrededor de <strong>todos</strong> los identificadores: <code>"titulo"</code>, <code>"Libros"</code>, etc.</td>
+</tr>
+<tr class="even">
+<td>Mi consulta da <em>“User lacks privilege or object not found: LIBROS”</em></td>
+<td>Comillas dobles olvidadas en el nombre de la tabla</td>
+<td>Igual: <code>"Libros"</code>, no <code>Libros</code>.</td>
+</tr>
+<tr class="odd">
+<td>Mi <code>JOIN</code> da error de sintaxis</td>
+<td>Te has dejado el <code>ON</code> o el <code>=</code></td>
+<td>Patrón fijo: <code>JOIN "tabla_b" AS "B" ON "A"."columna" = "B"."columna"</code>. Cada lado del <code>=</code> debe ser una columna, no un valor.</td>
+</tr>
+<tr class="even">
+<td>Guardé la consulta y al reabrir el <code>.odb</code> no aparece en panel <em>Consultas</em></td>
+<td>No has guardado el <code>.odb</code> desde la ventana principal de Base</td>
+<td><code>Ctrl+S</code> desde la ventana principal de Base (no desde la ventana de la consulta). Las consultas se persisten en el archivo <code>.odb</code> solo cuando guardas el <code>.odb</code> entero.</td>
+</tr>
+<tr class="odd">
+<td>Al exportar a PDF, las imágenes salen cortadas</td>
+<td>La imagen se sale del margen de la página</td>
+<td>Clic derecho sobre la imagen en Writer → <em>Tamaño y posición</em> → reduce el ancho. Vuelve a exportar.</td>
+</tr>
+<tr class="even">
+<td>No encuentro <em>Captura de pantalla</em> en el menú</td>
+<td>Está en <em>Aplicaciones → Accesorios → Captura de pantalla</em></td>
+<td>Si tampoco aparece ahí, usa la tecla <strong>Impr Pant</strong>: copia la pantalla al portapapeles y luego en Writer pulsas <code>Ctrl+V</code>.</td>
+</tr>
+<tr class="odd">
+<td>Pulsé <em>Entregar tarea</em> y me falta un archivo</td>
+<td>Pasa a veces</td>
+<td>Avisa al profesor para que reabra tu intento. Cuando vuelva al estado borrador podrás añadir el archivo y volver a pulsar <em>Entregar</em>.</td>
+</tr>
+<tr class="even">
+<td>Subo <code>memoria.odt</code> y Moodle me lo rechaza por tamaño</td>
+<td>El archivo pesa demasiado</td>
+<td>Suele ser por imágenes muy grandes. En Writer, <em>Herramientas → Reducir tamaño de las imágenes</em> o exporta y sube solo el <code>memoria.pdf</code> (suele pesar menos).</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./s6_minicontrol_y_proyecto.html" class="pagination-link" aria-label="S6 · Mini-control SQL + arranque del proyecto">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">S6 · Mini-control SQL + arranque del proyecto</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chuleta_sql.html" class="pagination-link" aria-label="Chuleta SQL">
+        <span class="nav-page-text"><span class="chapter-title">Chuleta SQL</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

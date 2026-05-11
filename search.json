@@ -1,0 +1,1065 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bases de Datos",
+    "section": "",
+    "text": "Bienvenida\nLas bases de datos están en todas partes: cuando entras en Netflix, cuando consultas tus notas en iPasen, cuando pides en Glovo, cuando una clínica busca el historial de tu mascota. En esta unidad vas a diseñar y construir tu propia base de datos sobre un tema que tú elijas, y aprenderás a preguntarle a una base de datos con SQL, el lenguaje con el que se habla con cualquier sistema de gestión de datos del mundo real.\nAl final de la unidad sabrás:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#la-tarea-moodle",
+    "href": "index.html#la-tarea-moodle",
+    "title": "Bases de Datos",
+    "section": "La tarea Moodle",
+    "text": "La tarea Moodle\nEn el curso de Moodle de TICO encontrarás la tarea “TAREA - Bases de datos”. Esa tarea es donde vives durante esta unidad: cada sesión sales de ella al empezar, y vuelves a ella al terminar. No pulses “Entregar tarea” hasta el final de S7 (entrega definitiva). Hasta entonces, tu trabajo está siempre en estado borrador: lo subes, lo bajas, lo vuelves a subir, sin pulsar “Entregar”.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#flujo-al-empezar-cada-sesión-excepto-s1",
+    "href": "index.html#flujo-al-empezar-cada-sesión-excepto-s1",
+    "title": "Bases de Datos",
+    "section": "Flujo al EMPEZAR cada sesión (excepto S1)",
+    "text": "Flujo al EMPEZAR cada sesión (excepto S1)\n\nAbre Moodle → curso de TICO → tarea “TAREA - Bases de datos”.\nDescarga el archivo (o los archivos) que subiste el día anterior. Por defecto los navegadores del IES los guardan en la carpeta Descargas.\nAbre los archivos desde Descargas y trabaja sobre ellos.\n\nEn S1 no descargas nada porque todavía no has subido nada: la sesión arranca creando tu archivo desde cero.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#flujo-al-terminar-cada-sesión",
+    "href": "index.html#flujo-al-terminar-cada-sesión",
+    "title": "Bases de Datos",
+    "section": "Flujo al TERMINAR cada sesión",
+    "text": "Flujo al TERMINAR cada sesión\n\nAsegúrate de tener el archivo guardado en local con tus cambios del día.\nAbre Moodle → tarea “TAREA - Bases de datos” → tu entrega.\nBorra el archivo que estaba subido del día anterior.\nSube la versión actualizada (la que acabas de guardar).\nComprueba que en Moodle aparece como borrador, NO como “Entregado”. Si por error pulsaste “Entregar tarea”, avisa al profesor para que reabra tu intento.\n\n\n\n\n\n\n\nTipQué archivo subes en cada sesión\n\n\n\nDurante toda la unidad trabajas sobre un único &lt;tu_tema&gt;.odb (sin sufijo). La única excepción es el final de S4: ahí haces una copia con sello -s4.odb que se queda en Moodle como foto del estado pre-SQL y no se vuelve a tocar.\n\n\n\n\n\n\n\nSesión\nArchivo(s) que subes\n\n\n\n\nS1\n&lt;tu_tema&gt;.odb (con 1 tabla y 5 registros)\n\n\nS2\n&lt;tu_tema&gt;.odb actualizado (con 3 tablas y 2 relaciones)\n\n\nS3\n&lt;tu_tema&gt;.odb actualizado (con formulario, 3 consultas e informe)\n\n\nS4\nretos_sql.sql (las 10 consultas de S4) + &lt;tu_tema&gt;-s4.odb (copia idéntica del &lt;tu_tema&gt;.odb con sello pre-SQL). El &lt;tu_tema&gt;.odb se queda como estaba: hoy no se modifica.\n\n\nS5\n&lt;tu_tema&gt;.odb actualizado (con INSERT/UPDATE/DELETE aplicados) + retos_sql.sql ampliado a 20 consultas. El &lt;tu_tema&gt;-s4.odb no se toca.\n\n\nS6\n&lt;tu_tema&gt;.odb actualizado (15 registros por tabla) + retos_sql.sql con 3 ideas anotadas para S7. El examen del mini-control va en papel: NO se sube a Moodle.\n\n\nS7\n&lt;tu_tema&gt;.odb final (con 3 consultas guardadas en el panel Consultas) + retos_sql.sql final + memoria.odt + memoria.pdf. Aquí sí pulsas “Entregar tarea”.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html",
+    "href": "s1_concepto_y_primera_tabla.html",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#lo-que-vas-a-hacer-hoy",
+    "href": "s1_concepto_y_primera_tabla.html#lo-que-vas-a-hacer-hoy",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "",
+    "text": "Entender qué es una base de datos relacional y los conceptos básicos: tabla, registro, campo, clave primaria.\nElegir el tema de tu proyecto (uno de los 6 del catálogo).\nCrear tu propia base de datos vacía en LibreOffice Base.\nDiseñar la primera tabla y meter 5 registros con IDs del 1 al 5.\n\n\n\n\n\n\n\nNotaImportante: en esta unidad biblioteca es solo el ejemplo del profesor\n\n\n\nA lo largo de las sesiones verás capturas de una base de datos llamada biblioteca. Esa base de datos es el ejemplo del profesor, no la tuya. Tú no la copias. Tú vas a construir tu propia base de datos sobre el tema que elijas en el catálogo (Streaming, Tienda de tecnología, Veterinaria, Liga deportiva, Tatuajes/peluquería o Gimnasio).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#qué-es-una-base-de-datos-relacional",
+    "href": "s1_concepto_y_primera_tabla.html#qué-es-una-base-de-datos-relacional",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "1. ¿Qué es una base de datos relacional?",
+    "text": "1. ¿Qué es una base de datos relacional?\nUna base de datos es un sistema para guardar información de forma organizada y poder consultarla rápido. Una base de datos relacional organiza la información en tablas (parecidas a las hojas de una hoja de cálculo) que se pueden conectar entre sí mediante valores comunes.\nTres conceptos que vas a usar todo el tiempo:\n\nTabla: una entidad del mundo real (Series, Productos, Mascotas…). Es como una hoja de cálculo con columnas y filas.\nRegistro: una fila de la tabla. Una serie concreta, un producto concreto, una mascota concreta.\nCampo: una columna de la tabla. Un atributo de la entidad: el título de la serie, el precio del producto, la edad de la mascota.\n\nY un concepto clave para que la base de datos no se vuelva loca:\n\nClave primaria (Primary Key): un campo cuyo valor identifica de forma única a cada registro. Suele ser un número entero que va 1, 2, 3, 4… Por convención lo llamaremos id_loquesea (id_serie, id_producto, id_mascota…).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#elige-tu-tema",
+    "href": "s1_concepto_y_primera_tabla.html#elige-tu-tema",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "2. Elige tu tema",
+    "text": "2. Elige tu tema\nEn las próximas sesiones vas a construir una base de datos sobre uno de estos 6 temas. Elige ahora y manténlo durante toda la unidad. Hoy vas a crear la primera tabla de tu tema (la entidad principal). En S2 añadirás otras dos tablas y las conectarás.\n\n\n\n\n\n\n\n\nTema\nPrimera tabla (la de hoy)\n5 campos sugeridos\n\n\n\n\n1. Plataforma de streaming\nSeries\nid_serie, titulo, anio, plataforma, valoracion\n\n\n2. Tienda de tecnología\nProductos\nid_producto, nombre, marca, precio, stock\n\n\n3. Clínica veterinaria\nMascotas\nid_mascota, nombre, especie, raza, edad\n\n\n4. Liga deportiva\nEquipos\nid_equipo, nombre, ciudad, estadio, anio_fundacion\n\n\n5. Tatuajes / peluquería\nClientes\nid_cliente, nombre, apellidos, telefono, email\n\n\n6. Gimnasio\nSocios\nid_socio, nombre, apellidos, fecha_alta, plan\n\n\n\n\n\n\n\n\n\nTipAntes de seguir\n\n\n\nSi dudas entre dos temas, abre el Brief del proyecto para ver con más detalle cómo será cada uno al completo. Una vez elegido, anota el tema en tu cuaderno: lo necesitarás cada sesión.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#crea-tu-base-de-datos-vacía",
+    "href": "s1_concepto_y_primera_tabla.html#crea-tu-base-de-datos-vacía",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "3. Crea tu base de datos vacía",
+    "text": "3. Crea tu base de datos vacía\nAbre LibreOffice Base. Ve a Archivo → Nueva → Base de datos….\nAparecerá un asistente. En el primer paso, marca “Crear una base de datos nueva” y, muy importante, elige el motor HSQLDB integrado, no Firebird.\n\n\n\nAsistente con HSQLDB integrado seleccionado.\n\n\n\n\n\n\n\n\nWarning¿Por qué HSQLDB y no Firebird?\n\n\n\nLibreOffice Base ofrece dos motores. En esta unidad usaremos HSQLDB integrado porque es el que tienen configurado los equipos del IES y el que coincide con todas las capturas del material. Si eliges Firebird por error, las pantallas no se parecerán a las de este sitio y te costará seguir los pasos.\n\n\nPulsa Siguiente. En el segundo paso deja marcadas las dos casillas por defecto (“Sí, registrar la base de datos” y “Abrir la base de datos para editarla”) → Finalizar.\nAparecerá el diálogo Guardar como. Ponle un nombre que identifique tu tema, por ejemplo streaming.odb, tienda_tecnologia.odb, veterinaria.odb. Guárdalo en la carpeta que te haya indicado el profesor.\n\n\n\nDiálogo “Guardar como” con la ruta de tu carpeta de trabajo.\n\n\n\nLa captura muestra biblioteca.odb porque es el ejemplo del profesor. Tú guardarás tu propia base de datos con el nombre de tu tema.\n\nTras guardar, se abre la ventana principal de Base con la barra lateral izquierda: Tablas, Consultas, Formularios, Informes. Esta es la pantalla con la que vas a trabajar las próximas tres sesiones.\n\n\n\nVista principal de Base. La barra lateral izquierda es tu zona de trabajo.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#diseña-la-primera-tabla",
+    "href": "s1_concepto_y_primera_tabla.html#diseña-la-primera-tabla",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "4. Diseña la primera tabla",
+    "text": "4. Diseña la primera tabla\nEn la barra lateral izquierda haz clic en Tablas. En el panel central pulsa “Crear tabla en vista Diseño…”.\nSe abre la vista Diseño, donde defines los campos de la tabla sin meter todavía ningún dato. Esto es importante: primero diseñas, después rellenas.\nCrea los 5 campos de tu primera tabla siguiendo la fila de tu tema en la tabla de la sección 2. Para cada campo:\n\nEscribe el nombre del campo (por ejemplo id_serie).\nElige el tipo:\n\nid_* → Entero [INTEGER]\nTexto (títulos, nombres, marcas, ciudades…) → Texto [VARCHAR], longitud según necesites (50–200 caracteres).\nAño o edad → Entero pequeño [SMALLINT].\nPrecio o valoración con decimales → Decimal [DECIMAL].\nFecha (fecha_alta) → Fecha [DATE].\n\n\n\n\n\nVista Diseño con los campos definidos. La tabla está vacía: no hay datos todavía.\n\n\n\nLa captura corresponde a la tabla Libros del ejemplo del profesor. La tuya tendrá los campos de tu tema, pero la pantalla se ve igual.\n\nAhora marca tu campo id_* como clave primaria: haz clic con el botón derecho sobre la flecha verde a la izquierda del nombre del campo y elige “Llave primaria”. Aparecerá un icono de llave amarilla.\n\n\n\nClick derecho sobre la flecha verde → “Llave primaria”.\n\n\nCierra la pestaña de diseño con Ctrl+W. Te preguntará por el nombre de la tabla: pon el nombre que aparece en la columna “Primera tabla” de tu fila (Series, Productos, Mascotas…).\n\n\n\nDiálogo “Guardar la tabla” con el nombre escrito.\n\n\n\n\n\n\n\n\nImportanteTodavía no abras la tabla\n\n\n\nHas diseñado la estructura. Antes de meter datos, comprueba en la barra lateral que tu tabla aparece listada. Si está, sigue al paso 5.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#introduce-5-registros",
+    "href": "s1_concepto_y_primera_tabla.html#introduce-5-registros",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "5. Introduce 5 registros",
+    "text": "5. Introduce 5 registros\nAhora sí: doble clic en tu tabla en la barra lateral. Se abre la vista hoja de datos, donde introduces los registros.\nMete 5 registros con id_* del 1 al 5 correlativos. Es muy importante mantener esos IDs porque en S2 las otras tablas se conectarán con esta usando esos números.\n\n\n\nHoja de datos con los 5 primeros registros introducidos.\n\n\n\nLa captura es de Libros del ejemplo del profesor. La tuya tendrá tus propios títulos, marcas, mascotas o equipos.\n\n\n\n\n\n\n\nWarningCuida la ortografía de tus datos\n\n\n\nLos datos que metas en la base de datos son simultáneamente ejemplo de campo de texto y ejemplo de buen español. Escribe con tildes y mayúsculas reales: Stranger Things, La Casa de Papel, Lucía Gómez, José Martínez, Pastor Alemán, Salmorejo cordobés.\nExcepción técnica: las direcciones de correo electrónico no llevan tildes ni eñes en la parte antes de la @, por convención del estándar SMTP. Si tu tema incluye un campo email, usa el dominio del centro: nombre.apellido@iesmajuelo.com (sin tildes en nombre.apellido).\n\n\nCuando termines, cierra la pestaña de la hoja de datos. Tu tabla queda guardada dentro del archivo .odb.\n\n\n\n\n\n\nImportanteAntes de irte: sube tu archivo a Moodle\n\n\n\nLos ordenadores del IES borran todo al apagarse. Sube tu .odb a la tarea “TAREA - Bases de datos” del curso de Moodle, en estado borrador (no pulses “Entregar tarea”). Si no lo haces, mañana empiezas otra vez desde cero.\nEl procedimiento completo está en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#producto-final-de-s1",
+    "href": "s1_concepto_y_primera_tabla.html#producto-final-de-s1",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "Producto final de S1",
+    "text": "Producto final de S1\nAl terminar la sesión debes tener:\n\nTu archivo .odb con un nombre que identifique tu tema.\n1 tabla diseñada (la entidad principal) con sus 5 campos y la clave primaria marcada.\n5 registros con id_* correlativos del 1 al 5.\n\nEn la siguiente sesión añadirás 2 tablas más y aprenderás a conectarlas para que la base de datos sepa, por ejemplo, que el préstamo número 7 lo hizo el lector número 3 sobre el libro número 6.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s1_concepto_y_primera_tabla.html#si-te-atascas",
+    "href": "s1_concepto_y_primera_tabla.html#si-te-atascas",
+    "title": "S1 · Concepto de BD relacional y tu primera tabla",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nProblema\nQué pasa\nCómo se arregla\n\n\n\n\nEl asistente solo me ofrece Firebird\nTu LibreOffice tiene HSQLDB desactivado\nAvisa al profesor: hay que activarlo en Preferencias.\n\n\nHe cerrado la pestaña sin guardar\nHas perdido el diseño de la tabla\nVuelve a empezar el paso 4. No pasa nada, ahora vas más rápido.\n\n\nNo me deja marcar clave primaria\nPuede que estés pulsando sobre el nombre del campo\nClick derecho sobre la flecha verde a la izquierda del nombre, no sobre el texto del nombre.\n\n\nMi tabla pone (Sin nombre) en la barra lateral\nNo le pusiste nombre al guardarla\nClick derecho sobre la tabla → “Renombrar”.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>S1 · Concepto de BD relacional y tu primera tabla</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html",
+    "href": "s2_relaciones_e_integridad.html",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#lo-que-vas-a-hacer-hoy",
+    "href": "s2_relaciones_e_integridad.html#lo-que-vas-a-hacer-hoy",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "",
+    "text": "Entender qué es una clave foránea y por qué se llaman bases de datos relacionales.\nCrear las otras 2 tablas del proyecto, todavía vacías.\nDefinir 2 relaciones 1:N entre las 3 tablas con integridad referencial.\nCargar los datos en el orden correcto para que la base de datos no proteste.\n\n\n\n\n\n\n\nImportanteAntes de empezar: descarga tu archivo de Moodle\n\n\n\nAbre la tarea “TAREA - Bases de datos” y descarga el .odb que subiste al final de S1. Trabaja sobre ese archivo descargado, no crees uno nuevo. Si no lo descargas, perderás todo lo de S1.\nEl procedimiento completo está en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#por-qué-necesitamos-relaciones",
+    "href": "s2_relaciones_e_integridad.html#por-qué-necesitamos-relaciones",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "1. Por qué necesitamos relaciones",
+    "text": "1. Por qué necesitamos relaciones\nMira la base de datos biblioteca del profesor (la que aparece en las capturas). Si solo tuvieras una tabla Libros, no habría forma decente de guardar quién toma prestado cada libro y cuándo, sin repetir información mil veces. La solución es separar en varias tablas y conectarlas: Libros, Lectores y Prestamos.\n\n\n\n\n\nflowchart LR\n  L[Libros] -- 1:N --&gt; P[Prestamos]\n  R[Lectores] -- 1:N --&gt; P\n\n\n\n\n\n\nUn libro puede aparecer en muchos préstamos. Un lector puede tener muchos préstamos. Pero cada préstamo está asociado a un solo libro y a un solo lector. Eso es una relación 1:N.\n\n\n\n\n\n\nTipTu tema sigue la misma estructura\n\n\n\nLas imágenes y los ejemplos del cuerpo de esta sesión usan biblioteca porque es la base de datos que el profesor ha preparado para que veas el procedimiento completo. Tú trabajas con el tema que elegiste en S1. Tu base de datos tendrá exactamente la misma forma (2 tablas padre + 1 tabla hija con 2 relaciones 1:N), pero con los nombres y campos de tu tema. Mira la tabla maestra de §3 cuando necesites concretar.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#tres-conceptos-clave",
+    "href": "s2_relaciones_e_integridad.html#tres-conceptos-clave",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "2. Tres conceptos clave",
+    "text": "2. Tres conceptos clave\n\n\n\n\n\n\nNotaClave foránea (FK)\n\n\n\nUn campo de una tabla que apunta a la clave primaria de otra. Por ejemplo, si en Prestamos tienes id_libro = 3, ese 3 significa “el registro número 3 de Libros”. Sin la clave foránea, el número 3 no querría decir nada.\n\n\n\n\n\n\n\n\nNotaRelación 1:N\n\n\n\nUna fila en la tabla padre puede estar relacionada con muchas filas de la hija. Un libro aparece en muchos préstamos; un lector tiene muchos préstamos; pero cada préstamo pertenece a un solo libro y a un solo lector.\n\n\n\n\n\n\n\n\nNotaIntegridad referencial\n\n\n\nUna “alarma” que la base de datos activa cuando defines una relación. A partir de entonces, te impide meter un valor en una FK que no exista en la tabla padre. Si en Prestamos intentas escribir id_libro = 99 y no existe el registro 99 en Libros, la base de datos rechaza el INSERT. Te protege de la incoherencia.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#crea-las-otras-2-tablas-todavía-vacías",
+    "href": "s2_relaciones_e_integridad.html#crea-las-otras-2-tablas-todavía-vacías",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "3. Crea las otras 2 tablas (todavía vacías)",
+    "text": "3. Crea las otras 2 tablas (todavía vacías)\n\n\n\n\n\n\nImportanteNO metas datos todavía\n\n\n\nHoy las tablas se quedan vacías. Primero las diseñas, luego defines las relaciones, y al final cargas los datos. Si lo haces al revés, las relaciones fallarán al crearse.\n\n\nBusca tu tema en la siguiente tabla. La Tabla 2 es la otra padre (junto a la que hiciste en S1) y la Tabla 3 es la hija, que tendrá las dos claves foráneas.\n\n\n\n\n\n\n\n\nTema\nTabla 2 (otra padre) — campos\nTabla 3 (hija) — campos\n\n\n\n\n1. Streaming\nUsuarios: id_usuario, nombre, apellidos, email\nVisualizaciones: id_visualizacion, id_serie, id_usuario, fecha, episodios\n\n\n2. Tienda\nClientes: id_cliente, nombre, apellidos, email, ciudad\nPedidos: id_pedido, id_producto, id_cliente, fecha, cantidad\n\n\n3. Veterinaria\nDueños: id_dueno, nombre, apellidos, telefono\nVisitas: id_visita, id_mascota, id_dueno, fecha, motivo\n\n\n4. Liga\nJugadores: id_jugador, nombre, apellidos, posicion, dorsal\nPartidos: id_partido, id_equipo, id_jugador, fecha, resultado\n\n\n5. Tatuajes\nEmpleados: id_empleado, nombre, especialidad, anios_experiencia\nTrabajos: id_trabajo, id_cliente, id_empleado, fecha, precio\n\n\n6. Gimnasio\nClases: id_clase, nombre, dia_semana, hora, duracion_min\nAsistencias: id_asistencia, id_socio, id_clase, fecha\n\n\n\nCrea las dos tablas con el procedimiento de S1 (barra lateral → Tablas → Crear tabla en vista Diseño…). Para cada una:\n\nDefine los campos con sus tipos (mismas reglas que en S1: id_* → INTEGER, texto → VARCHAR, fechas → DATE).\nMarca como clave primaria el id_* propio de la tabla (el primer campo de cada fila en la tabla maestra de arriba; en biblioteca, sería id_lector para Lectores e id_prestamo para Prestamos).\nGuarda con el nombre exacto que aparece en la columna correspondiente.\n\n\n\n\n\n\n\nTipEn la tabla 3, las FKs son INTEGER normales, NO claves primarias\n\n\n\nPor ejemplo, en Prestamos (la hija de biblioteca), la única clave primaria es id_prestamo. Los campos id_libro e id_lector son INTEGER sin más: serán claves foráneas, pero eso lo definirás en el siguiente paso (Herramientas → Relaciones), no marcando llaves.\n\n\nCuando termines, en tu barra lateral deben aparecer 3 tablas listadas, todas vacías.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#define-las-relaciones",
+    "href": "s2_relaciones_e_integridad.html#define-las-relaciones",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "4. Define las relaciones",
+    "text": "4. Define las relaciones\nAbre el menú Herramientas → Relaciones….\n\n\n\nMenú Herramientas con la opción “Relaciones…”.\n\n\nSe abre la ventana del diseñador de relaciones y, encima, el diálogo “Añadir tablas”. Selecciona las 3 tablas y pulsa Añadir. Después Cerrar.\n\n\n\nDiálogo “Añadir tablas” con tus 3 tablas.\n\n\nYa tienes las 3 tablas representadas como cajitas. Ahora arrastra desde el id_* de la padre hasta el campo equivalente en la hija. En el ejemplo de biblioteca:\n\nArrastra Libros.id_libro → soltar sobre Prestamos.id_libro. Aparece una línea con un “1” en Libros y una “n” en Prestamos.\nArrastra Lectores.id_lector → soltar sobre Prestamos.id_lector. Aparece otra línea 1:N.\n\nAdapta los nombres a las tablas de tu tema (mira la columna “Tabla 3 (hija) — campos” de la tabla maestra de §3 para saber qué dos FKs tienes que arrastrar) y repite el procedimiento con tus dos relaciones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#configura-la-integridad-referencial",
+    "href": "s2_relaciones_e_integridad.html#configura-la-integridad-referencial",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "5. Configura la integridad referencial",
+    "text": "5. Configura la integridad referencial\nHaz doble click sobre cada línea que acabas de crear. Se abre el diálogo “Relaciones”.\n\n\n\nDiálogo de relaciones: cascada en actualización, “Sin acción” en eliminación.\n\n\nEn cada relación, configura:\n\nOpciones de actualización: “Actualizar en cascada”. Significa que si cambias el id_* de un padre, las FKs de los hijos se actualizan automáticamente.\nOpciones de eliminación: “Sin acción”. Significa que no podrás borrar un padre que tenga hijos asociados, lo cual es exactamente lo que queremos: nada de fantasmas.\n\n\n\n\n\n\n\nWarningNUNCA selecciones “Predeterminar” en eliminación\n\n\n\nSi eliges Opciones de eliminación → “Predeterminar”, LibreOffice Base te devuelve el error missing DEFAULT value on column id_X y la relación no se crea. Es porque “Predeterminar” exige que la columna FK tenga un valor por defecto definido en la tabla, y aquí no lo hemos puesto.\nUsa siempre “Sin acción” o “Restringir”: en HSQLDB se comportan igual y te protegen de borrar padres con hijos.\n\n\nAcepta el diálogo. Repite con la segunda relación.\nCuando termines, Archivo → Guardar dentro de la ventana de relaciones, y ciérrala.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#comprueba-tu-diagrama",
+    "href": "s2_relaciones_e_integridad.html#comprueba-tu-diagrama",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "6. Comprueba tu diagrama",
+    "text": "6. Comprueba tu diagrama\nReabre Herramientas → Relaciones… una última vez. Debes ver tus 3 tablas vacías con 2 líneas 1:N entre ellas. Esta es la forma de tu base de datos:\n\n\n\nDiagrama de relaciones con 3 tablas vacías y 2 líneas 1:N. Este es el “mapa” de tu base de datos.\n\n\n\nLa captura corresponde al ejemplo biblioteca del profesor (Libros, Lectores, Préstamos). Tu diagrama tendrá las 3 tablas y los nombres de tu tema, pero la estructura será idéntica: 2 padres, 1 hija, 2 líneas 1:N.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#ahora-sí-carga-los-datos-en-orden-topológico",
+    "href": "s2_relaciones_e_integridad.html#ahora-sí-carga-los-datos-en-orden-topológico",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "7. Ahora sí: carga los datos en orden topológico",
+    "text": "7. Ahora sí: carga los datos en orden topológico\n\n\n\n\n\n\nImportanteEl orden importa\n\n\n\nCarga los datos primero en las dos padres, después en la hija. Si metes datos en la hija antes que en las padres, la integridad referencial los rechazará.\n\n\n\nTabla 1 (la de S1): ya tiene 5 registros con id_* 1–5. No tocar.\nTabla 2 (la nueva padre): introduce 5 registros con id_* correlativos del 1 al 5.\nTabla 3 (la hija): introduce 5 registros. En las FKs (id_padre1, id_padre2), pon únicamente valores entre 1 y 5: tienen que existir ya en las padres.\n\nPara meter los datos, doble click sobre cada tabla en la barra lateral y rellena la hoja de datos como en S1. Recuerda: los datos que escribes son los del tema que elegiste, no los de biblioteca del ejemplo.\n\n\n\n\n\n\nWarningCuida ortografía y emails\n\n\n\nVuelve a aplicar lo de S1: nombres con tildes y mayúsculas reales (Lucía Gómez, Adrián Moreno, Pastor Alemán, Salmorejo cordobés). Los emails sin tildes ni eñes en la parte antes de @, con dominio @iesmajuelo.com.\n\n\nSi la base de datos rechaza algún INSERT con un error parecido a Integrity constraint violation, es que has puesto en una FK un número que no existe en la padre. Cambia ese valor a uno entre 1 y 5.\n\n\n\n\n\n\nImportanteAntes de irte: sustituye tu archivo en Moodle\n\n\n\nEn la tarea “TAREA - Bases de datos”: borra el .odb que tenías subido de S1 y sube el .odb actualizado de hoy. Mantenlo en estado borrador (no pulses “Entregar tarea”). Detalles en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#producto-final-de-s2",
+    "href": "s2_relaciones_e_integridad.html#producto-final-de-s2",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "Producto final de S2",
+    "text": "Producto final de S2\nCuando termines, tu base de datos tiene:\n\n3 tablas, cada una con su clave primaria y 5 registros.\n2 relaciones 1:N definidas con integridad referencial.\nLas FKs de la tabla hija son todas valores entre 1 y 5 (sin huérfanos).\n\nEn S3 aprenderás a explotar esta base de datos: harás un formulario para que un usuario meta datos sin tocar las hojas, una consulta para responder preguntas concretas y un informe imprimible.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s2_relaciones_e_integridad.html#si-te-atascas",
+    "href": "s2_relaciones_e_integridad.html#si-te-atascas",
+    "title": "S2 · Relaciones 1:N e integridad referencial",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa\nCómo se arregla\n\n\n\n\nIntegrity constraint violation - no parent X\nHay datos en la hija que apuntan a un ID que no existe en la padre\nVacía la hija (DELETE) o asegúrate de que cargas primero las padres con IDs 1–5\n\n\nmissing DEFAULT value on column id_X al guardar relación\nOpciones de eliminación = “Predeterminar”\nCambiar a “Sin acción” o “Restringir”\n\n\nLa línea de relación no aparece como 1:N\nLos tipos de los dos campos no coinciden\nComprueba que los dos id_* son INTEGER en ambas tablas\n\n\nHe cerrado la ventana de relaciones sin guardar\nEl diagrama no se guardó\nVuelve a Herramientas → Relaciones…; las tablas seguirán ahí, solo tienes que volver a arrastrar\n\n\nDoble click sobre la línea no abre el diálogo\nA veces hay que hacer click derecho sobre la línea\nClick derecho → Editar relación…",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>S2 · Relaciones 1:N e integridad referencial</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html",
+    "href": "s3_formularios_consultas_informes.html",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#lo-que-vas-a-hacer-hoy",
+    "href": "s3_formularios_consultas_informes.html#lo-que-vas-a-hacer-hoy",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "",
+    "text": "Construir un formulario con subformulario para introducir datos cómodamente, sin tocar las hojas de datos.\nResolver 3 consultas gráficas sobre tu base de datos: una con filtro simple, otra con filtro por rango y otra con filtro por campo vacío.\nGenerar un informe agrupado por una categoría.\nDejar tu base de datos lista para empezar a hablarle en SQL en S4.\n\n\n\n\n\n\n\nTipSigue siendo tu base de datos, no biblioteca\n\n\n\nLas capturas de hoy son del ejemplo biblioteca del profesor (con Libros, Lectores y Prestamos). Tú trabajas con la base de datos del tema que elegiste en S1 y completaste en S2. En cada apartado encontrarás una tabla por tema con el ejemplo concreto que te toca y el nombre con el que guardar cada elemento.\n\n\n\n\n\n\n\n\nImportanteAntes de empezar: descarga tu archivo de Moodle\n\n\n\nAbre la tarea “TAREA - Bases de datos” y descarga el .odb que subiste al final de S2. Trabaja sobre ese archivo. Detalles en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#qué-vas-a-construir-hoy",
+    "href": "s3_formularios_consultas_informes.html#qué-vas-a-construir-hoy",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "1. Qué vas a construir hoy",
+    "text": "1. Qué vas a construir hoy\nHasta ahora has diseñado tablas y las has conectado. Hoy le añades a tu base de datos tres herramientas para usarla sin tener que tocar las hojas de datos en bruto.\n\n\n\n\n\n\nNotaFormulario\n\n\n\nUna pantalla pensada para introducir y ver registros de forma cómoda. En lugar de rellenar la hoja de datos a pelo, escribes los valores en una ficha. Un formulario puede llevar un subformulario dentro, que muestra los registros relacionados de la tabla hija.\n\n\n\n\n\n\n\n\nNotaConsulta gráfica\n\n\n\nUna pregunta que le haces a la base de datos sin escribir SQL. La construyes arrastrando tablas y campos en una vista visual y poniendo criterios (igual a esto, mayor que aquello, contiene tal palabra). La base de datos te devuelve solo las filas que cumplen los criterios.\n\n\n\n\n\n\n\n\nNotaInforme\n\n\n\nUn documento imprimible generado a partir de los datos. Sirve para presentar resultados de forma ordenada: listados agrupados por categoría, totales, fichas para entregar. Suele construirse a partir de una tabla o de una consulta.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#tu-formulario-con-subformulario",
+    "href": "s3_formularios_consultas_informes.html#tu-formulario-con-subformulario",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "2. Tu formulario con subformulario",
+    "text": "2. Tu formulario con subformulario\nVas a crear un formulario que muestre los registros de la tabla padre 2 (la que añadiste en S2) y, dentro, un subformulario con los registros de la tabla hija que le pertenecen. Así, al moverte entre fichas de la padre, el subformulario te enseña automáticamente sus hijos relacionados.\nEn el ejemplo biblioteca del profesor, la padre 2 es Lectores y la hija es Prestamos. El formulario “Préstamos por lector” muestra una ficha por cada lector y, debajo, sus préstamos.\n\nPasos del asistente\n\nEn la barra lateral izquierda, haz clic en Formularios.\nEn el panel central, pulsa “Usar el asistente para crear un formulario…”.\nPaso 1 — Selección de campos. Como tabla base, elige tu padre 2 (en biblioteca, Lectores). Pasa al panel de la derecha 3 campos identificativos (en biblioteca: nombre, apellidos, curso).\n\n\n\nAsistente de formulario, paso 1: selección de campos de la tabla padre.\n\n\nPaso 2 — Configurar el subformulario. Marca la casilla “Añadir subformulario” y elige “Subformulario basado en relación existente”. En la lista de relaciones disponibles selecciona la que conecta tu padre 2 con la hija (en biblioteca, la relación con Prestamos).\n\n\n\nAsistente, paso 2: añadir subformulario basado en la relación con la tabla hija.\n\n\nPaso 3 — Campos del subformulario. Pasa los campos que te interesa ver de la hija. En biblioteca: id_libro, fecha_prestamo, fecha_devolucion. Sigue Siguiente hasta el final aceptando los valores por defecto (disposición en columnas, modo de uso “El formulario muestra todos los datos”).\n\n\n\nAsistente, paso 3: campos del subformulario sobre la tabla hija.\n\n\nAl terminar, dale un nombre significativo y guarda. En biblioteca: “Préstamos por lector”.\n\nTu formulario abre así, con una ficha de la padre arriba y, debajo, los registros de la hija que pertenecen a esa ficha. Al avanzar con las flechas inferiores, el subformulario se actualiza solo.\n\n\n\nFormulario terminado: arriba, datos del lector; abajo, sus préstamos.\n\n\n\n\nTu formulario por tema\nBusca tu fila y úsala como referencia. Sustituye los nombres del ejemplo biblioteca por los de tu tema.\n\n\n\n\n\n\n\n\n\n\nTema\nTabla base (padre 2)\nSubformulario sobre (hija)\nCampo de vinculación\nNombre con el que guardarlo\n\n\n\n\n1. Streaming\nUsuarios\nVisualizaciones\nid_usuario\nVisualizaciones por usuario\n\n\n2. Tienda\nClientes\nPedidos\nid_cliente\nPedidos por cliente\n\n\n3. Veterinaria\nDueños\nVisitas\nid_dueno\nVisitas por dueño\n\n\n4. Liga\nJugadores\nPartidos\nid_jugador\nPartidos por jugador\n\n\n5. Tatuajes\nEmpleados\nTrabajos\nid_empleado\nTrabajos por empleado\n\n\n6. Gimnasio\nClases\nAsistencias\nid_clase\nAsistencias por clase\n\n\n\n\n\n\n\n\n\nTipRecuerda: tu tema, no biblioteca\n\n\n\nEl procedimiento es idéntico, solo cambian los nombres. Si abres biblioteca.odb por curiosidad, hazlo en una ventana aparte, no en la tuya.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#consulta-gráfica-1-filtro-simple-igualdad-o-like",
+    "href": "s3_formularios_consultas_informes.html#consulta-gráfica-1-filtro-simple-igualdad-o-like",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "3. Consulta gráfica 1 — filtro simple (igualdad o LIKE)",
+    "text": "3. Consulta gráfica 1 — filtro simple (igualdad o LIKE)\nUna consulta gráfica es una pregunta que le haces a la base de datos. Para construirla:\n\nBarra lateral → Consultas → “Crear consulta en vista Diseño…”.\nSe abre el diálogo “Añadir tablas o consultas”. Añade las tablas que necesites (las que contienen los campos que vas a mostrar o filtrar) y cierra.\nArrastra los campos a mostrar desde las cajitas de las tablas hasta las columnas de la rejilla inferior.\nEn la fila Criterio de la columna por la que quieras filtrar, escribe la condición. Para una igualdad: 'Fantasía' (con comillas si es texto). Para una coincidencia parcial con texto: LIKE '%viento%' (encuentra cualquier título que contenga la palabra “viento”).\nPulsa el botón Ejecutar consulta (la barra de herramientas tiene un icono de ▶) para ver el resultado. Si te convence, Archivo → Guardar como y dale un nombre significativo.\n\nEn el ejemplo biblioteca, una consulta de filtro simple es “Libros de fantasía”: añadimos la tabla Libros, ponemos como columnas titulo, autor y genero, y en la fila Criterio de genero escribimos 'Fantasía'. La consulta devuelve los libros de ese género.\n\nTu consulta 1 por tema\n\n\n\n\n\n\n\n\n\nTema\nPregunta que responde\nCriterio en el editor gráfico\nNombre con el que guardarla\n\n\n\n\n1. Streaming\nSeries de una plataforma concreta\nplataforma = 'Netflix'\nSeries en Netflix\n\n\n2. Tienda\nProductos de una marca concreta\nmarca = 'Apple'\nProductos Apple\n\n\n3. Veterinaria\nMascotas de una especie\nespecie = 'Perro'\nMascotas perro\n\n\n4. Liga\nEquipos de una ciudad\nciudad = 'Sevilla'\nEquipos de Sevilla\n\n\n5. Tatuajes\nEmpleados de una especialidad\nespecialidad = 'Color'\nEmpleados de color\n\n\n6. Gimnasio\nSocios con plan concreto\nplan = 'Premium'\nSocios Premium\n\n\n\nSi en tus datos no tienes ningún registro que cumpla el criterio del ejemplo, adapta el valor al que sí aparezca en tu tabla. Lo que importa es ver cómo el filtro deja pasar solo las filas que cumplen la condición.\n\n\n\n\n\n\nTipRecuerda: tu tema, no biblioteca\n\n\n\nLa tabla Libros de la captura mental del ejemplo no existe en tu base de datos. Tú filtras sobre tus tablas con los datos que tú metiste.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#consulta-gráfica-2-filtro-por-rango-between",
+    "href": "s3_formularios_consultas_informes.html#consulta-gráfica-2-filtro-por-rango-between",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "4. Consulta gráfica 2 — filtro por rango (BETWEEN)",
+    "text": "4. Consulta gráfica 2 — filtro por rango (BETWEEN)\nLas consultas con rango sirven para preguntar por números o fechas dentro de un intervalo. La sintaxis del editor gráfico es:\n\nNumérico: BETWEEN 1950 AND 2000 (incluye los dos extremos).\nFechas: BETWEEN '2025-09-01' AND '2025-12-31' (formato ISO entre comillas simples).\n\nEn el ejemplo biblioteca, “Libros publicados entre 1950 y 2000” se construye así: tabla Libros, columnas titulo, autor, anio, criterio en anio igual a BETWEEN 1950 AND 2000. La consulta devuelve solo los libros cuyo año cae en ese intervalo.\n\nTu consulta 2 por tema\n\n\n\n\n\n\n\n\n\nTema\nPregunta que responde\nCriterio en el editor gráfico\nNombre con el que guardarla\n\n\n\n\n1. Streaming\nSeries de una década\nanio BETWEEN 2010 AND 2020\nSeries 2010-2020\n\n\n2. Tienda\nProductos en un rango de precio\nprecio BETWEEN 100 AND 500\nProductos 100-500 €\n\n\n3. Veterinaria\nMascotas en un rango de edad\nedad BETWEEN 1 AND 5\nMascotas jóvenes\n\n\n4. Liga\nEquipos fundados en una época\nanio_fundacion BETWEEN 1900 AND 1950\nEquipos clásicos\n\n\n5. Tatuajes\nTrabajos en un rango de precio\nprecio BETWEEN 50 AND 150\nTrabajos 50-150 €\n\n\n6. Gimnasio\nSocios dados de alta en un periodo\nfecha_alta BETWEEN '2024-01-01' AND '2024-12-31'\nSocios 2024\n\n\n\nSi tu rango deja todo dentro o todo fuera, ajusta los extremos para que el filtro tenga sentido con tus datos.\n\n\n\n\n\n\nTipRecuerda: tu tema, no biblioteca\n\n\n\nAplica el rango a tu propia tabla y a tu propio campo. La idea es la misma; los nombres y los números, no.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#consulta-gráfica-3-filtro-por-campo-vacío-is-empty",
+    "href": "s3_formularios_consultas_informes.html#consulta-gráfica-3-filtro-por-campo-vacío-is-empty",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "5. Consulta gráfica 3 — filtro por campo vacío (IS EMPTY)",
+    "text": "5. Consulta gráfica 3 — filtro por campo vacío (IS EMPTY)\nA veces queremos preguntar por las filas en las que un campo no tiene valor: préstamos sin devolver, clientes sin email, partidos sin resultado registrado todavía. En español, “el campo está vacío”.\n\n\n\n\n\n\nWarningEn el editor gráfico de Base se escribe IS EMPTY, no IS NULL\n\n\n\nAunque en SQL puro un campo sin valor se llama NULL, el editor gráfico de LibreOffice Base usa internamente la sintaxis IS EMPTY. Si escribes IS NULL en la fila Criterio, al guardar la consulta verás que Base lo reescribe a IS EMPTY automáticamente. Escribe IS EMPTY directamente y te ahorras la confusión.\nEn S4 trabajarás con SQL puro en otra herramienta (SQLime) y allí esa misma idea se escribe IS NULL. Es el mismo concepto, dos sintaxis según el contexto: editor gráfico → IS EMPTY; SQL puro → IS NULL.\n\n\n\n\n\n\n\n\nTip¿Tus registros no tienen ningún campo vacío?\n\n\n\nSi en tus 5 registros has rellenado todos los campos, edita uno y déjale deliberadamente vacío un campo no obligatorio (un email, un teléfono, una fecha de finalización…). Así puedes ver cómo IS EMPTY filtra justo esa fila. Es una prueba útil; no rompe nada.\n\n\nEn el ejemplo biblioteca, la consulta “Libros prestados que no se han devuelto” combina Prestamos y Libros. Las columnas mostradas son Libros.titulo, Prestamos.fecha_prestamo y Prestamos.fecha_devolucion. En la columna fecha_devolucion, fila Criterio, se escribe IS EMPTY, y se desmarca su casilla Visible para que el resultado salga limpio. La consulta devuelve solo los libros que aún siguen prestados.\n\n\n\nVista Diseño de la consulta: criterio IS EMPTY en la columna fecha_devolucion.\n\n\n\nTu consulta 3 por tema\n\n\n\n\n\n\n\n\n\nTema\nPregunta que responde\nTabla/campo con criterio\nNombre con el que guardarla\n\n\n\n\n1. Streaming\nUsuarios sin email registrado\nUsuarios.email IS EMPTY\nUsuarios sin email\n\n\n2. Tienda\nClientes sin ciudad\nClientes.ciudad IS EMPTY\nClientes sin ciudad\n\n\n3. Veterinaria\nDueños sin teléfono\nDueños.telefono IS EMPTY\nDueños sin teléfono\n\n\n4. Liga\nJugadores sin dorsal asignado\nJugadores.dorsal IS EMPTY\nJugadores sin dorsal\n\n\n5. Tatuajes\nClientes sin email\nClientes.email IS EMPTY\nClientes sin email\n\n\n6. Gimnasio\nClases sin duración registrada\nClases.duracion_min IS EMPTY\nClases sin duración\n\n\n\nSi en tus datos ya tienes algún registro con ese campo en blanco, perfecto. Si no, deja un campo vacío en uno de tus registros y vuelve a ejecutar la consulta.\n\n\n\n\n\n\nTipRecuerda: tu tema, no biblioteca\n\n\n\nLibros y Prestamos no están en tu base de datos. Sustituye por las tuyas según la tabla de arriba.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#informe-agrupado-por-una-categoría",
+    "href": "s3_formularios_consultas_informes.html#informe-agrupado-por-una-categoría",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "6. Informe agrupado por una categoría",
+    "text": "6. Informe agrupado por una categoría\nUn informe es un documento listo para imprimir o presentar, generado automáticamente a partir de los datos. Su uso típico aquí es agrupar los registros por un campo categórico (género, marca, especie, posición…) y listar los de cada grupo seguidos.\n\n\n\n\n\n\nWarning“Informes” es una entrada propia en la barra lateral\n\n\n\nEn LibreOffice Base, Informes está al mismo nivel que Tablas, Consultas y Formularios en la barra lateral izquierda. No es un submenú dentro de Formularios. Si buscas “Informes” dentro de “Formularios” no lo vas a encontrar; vuelve a la barra lateral y haz clic directamente en Informes.\n\n\n\nPasos\n\nBarra lateral → Informes.\nPanel central → “Utilizar asistente para crear un informe…”.\nOrigen de datos: elige tu tabla padre 1 (la que diseñaste en S1, en biblioteca es Libros).\nCampos: pasa al panel derecho los que quieras mostrar. En biblioteca: titulo, autor, genero, anio.\nEtiquetas: deja por defecto, o renómbralas a algo más legible.\nNiveles de agrupación: este es el paso clave. Pasa a la derecha el campo categórico por el que quieres agrupar. En biblioteca: genero.\nOpciones de orden: dentro de cada grupo, ordena por un campo (ej. titulo ascendente).\nEstilo: elige uno simple (Predeterminado, Compacto…). Sin pasarse.\nCrear informe: dale un nombre significativo y Finalizar. En biblioteca: “Catálogo de libros por género”.\n\nEl resultado es un documento en el que los registros aparecen agrupados bajo cada valor del campo de agrupación. En el ejemplo, todos los libros de Fantasía bajo “Fantasía”, todos los de Novela bajo “Novela”, etc.\n\n\n\nInforme generado: catálogo de libros agrupado por género.\n\n\n\n\nTu informe por tema\n\n\n\n\n\n\n\n\n\nTema\nTabla origen\nAgrupar por\nNombre con el que guardarlo\n\n\n\n\n1. Streaming\nSeries\nplataforma\nCatálogo de series por plataforma\n\n\n2. Tienda\nProductos\nmarca\nCatálogo de productos por marca\n\n\n3. Veterinaria\nMascotas\nespecie\nMascotas por especie\n\n\n4. Liga\nJugadores\nposicion\nPlantilla por posición\n\n\n5. Tatuajes\nEmpleados\nespecialidad\nEmpleados por especialidad\n\n\n6. Gimnasio\nClases\ndia_semana\nClases por día de la semana\n\n\n\n\n\n\n\n\n\nTipRecuerda: tu tema, no biblioteca\n\n\n\nLibros y genero no están en tu base de datos. Coge tu tabla y tu campo de la fila correspondiente.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#producto-final-de-s3",
+    "href": "s3_formularios_consultas_informes.html#producto-final-de-s3",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "Producto final de S3",
+    "text": "Producto final de S3\nCuando termines, tu base de datos debe contener:\n\n1 formulario guardado con su nombre significativo, mostrando una ficha de la padre 2 con un subformulario de la hija debajo.\n3 consultas gráficas guardadas con sus nombres significativos: una con filtro simple, una con filtro por rango, una con filtro por campo vacío.\n1 informe guardado, agrupado por un campo categórico de tu padre 1.\n\nResumen rápido de lo que tienes que tener guardado, según tu tema:\n\n\n\n\n\n\n\n\n\n\n\nTema\nFormulario\nConsulta 1\nConsulta 2\nConsulta 3\nInforme\n\n\n\n\n1. Streaming\nVisualizaciones por usuario\nSeries en Netflix\nSeries 2010-2020\nUsuarios sin email\nCatálogo de series por plataforma\n\n\n2. Tienda\nPedidos por cliente\nProductos Apple\nProductos 100-500 €\nClientes sin ciudad\nCatálogo de productos por marca\n\n\n3. Veterinaria\nVisitas por dueño\nMascotas perro\nMascotas jóvenes\nDueños sin teléfono\nMascotas por especie\n\n\n4. Liga\nPartidos por jugador\nEquipos de Sevilla\nEquipos clásicos\nJugadores sin dorsal\nPlantilla por posición\n\n\n5. Tatuajes\nTrabajos por empleado\nEmpleados de color\nTrabajos 50-150 €\nClientes sin email\nEmpleados por especialidad\n\n\n6. Gimnasio\nAsistencias por clase\nSocios Premium\nSocios 2024\nClases sin duración\nClases por día de la semana\n\n\n\nA partir de S4 dejas Base y le hablas a la base de datos en SQL puro desde el navegador. Las ideas son las mismas (filtrar, combinar tablas, agrupar) pero con sintaxis. La consulta 3 que hoy escribes como IS EMPTY allí la verás como IS NULL: mismo concepto, dos sintaxis.\n\n\n\n\n\n\nImportanteAntes de irte: sustituye tu archivo en Moodle\n\n\n\nEn la tarea “TAREA - Bases de datos”: borra el .odb de S2 y sube el .odb actualizado de hoy con el formulario, las 3 consultas y el informe. Estado borrador (no pulses “Entregar tarea”). Detalles en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s3_formularios_consultas_informes.html#si-te-atascas",
+    "href": "s3_formularios_consultas_informes.html#si-te-atascas",
+    "title": "S3 · Formularios, consultas gráficas e informes",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa probable\nCómo se arregla\n\n\n\n\nEl asistente de formulario no me deja añadir subformulario\nNo marcaste la casilla “Añadir subformulario” en el paso 2\nVuelve atrás y márcala. Selecciona después “basado en relación existente” y elige tu relación padre 2 ↔︎ hija.\n\n\nEl subformulario sale vacío al moverme entre fichas\nEl asistente no detectó la relación o elegiste mal el campo de vinculación\nBórralo y rehazlo: el paso 2 debe usar “Subformulario basado en relación existente”, no manual.\n\n\nMi consulta no devuelve nada con IS NULL\nEn el editor gráfico hay que escribir IS EMPTY, no IS NULL\nCambia el criterio a IS EMPTY y vuelve a ejecutar.\n\n\nAl guardar la consulta veo IS EMPTY aunque escribí IS NULL\nEs el comportamiento normal del editor gráfico de Base\nNo es un error: el editor reescribe la sintaxis. En Vista SQL aparecería como IS NULL.\n\n\nNo encuentro “Informes” dentro de Formularios\nInformes es categoría propia en la barra lateral, no un submenú\nVuelve a la barra lateral y haz clic en Informes directamente.\n\n\nEl informe no me agrupa: los registros salen sueltos\nNo elegiste un campo en el paso “Niveles de agrupación”\nEdita el informe (clic derecho → Editar) o créalo de nuevo y, en ese paso, pasa al panel derecho el campo categórico.\n\n\nLa consulta sale con columnas que no quiero ver (FKs)\nLa columna está marcada como Visible\nDesmarca la casilla Visible en esa columna del editor gráfico.\n\n\nBETWEEN con fechas me da error\nFaltan las comillas simples o el formato no es ISO\nEscribe las fechas como '2025-09-01', con comillas simples y formato aaaa-mm-dd.\n\n\nMi consulta 3 no devuelve filas\nTodos tus registros tienen ese campo lleno\nEdita uno de tus registros y deja vacío deliberadamente el campo. Vuelve a ejecutar.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>S3 · Formularios, consultas gráficas e informes</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html",
+    "href": "s4_sql_select.html",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#lo-que-vas-a-hacer-hoy",
+    "href": "s4_sql_select.html#lo-que-vas-a-hacer-hoy",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "",
+    "text": "Cargar biblioteca.db en SQLime, una herramienta web para escribir SQL sin instalar nada.\nAprender los 5 ladrillos del SQL para preguntar: SELECT, WHERE, ORDER BY, LIKE, BETWEEN (más IS NULL para campos vacíos).\nResolver 10 retos sobre biblioteca.db que cubren todo lo anterior.\nEmpezar a usar la Chuleta SQL que llevarás impresa al mini-control de S6.\n\n\n\n\n\n\n\nImportanteAntes de empezar\n\n\n\nHoy no vas a tocar tu .odb: trabajarás sobre biblioteca.db (la base de datos del profesor) directamente en el navegador. Tu proyecto vuelve a aparecer en S5.\nLo único que tienes que descargar hoy es biblioteca.db. Lo encontrarás en el siguiente apartado.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#hoy-cambian-dos-cosas-a-la-vez",
+    "href": "s4_sql_select.html#hoy-cambian-dos-cosas-a-la-vez",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "Hoy cambian dos cosas a la vez",
+    "text": "Hoy cambian dos cosas a la vez\n\n\n\n\n\n\nImportanteLa herramienta y el idioma\n\n\n\nHasta S3 trabajabas con LibreOffice Base sobre tu base de datos del proyecto. A partir de hoy y hasta S6 cambian dos cosas:\n\nLa herramienta: SQLime, en el navegador, sobre biblioteca.db (la base de datos del profesor).\nEl idioma: SQL puro, escrito por ti. Adiós al editor gráfico de consultas.\n\nTu propio proyecto vuelve a aparecer en S5, cuando le lleves SQL. Y se cierra en S7, con la entrega final.\n\n\n\n\n\n\n\n\nTipTres diferencias prácticas con Base que vas a notar enseguida\n\n\n\n\nIdentificadores sin comillas dobles: en SQL puro escribes SELECT titulo FROM Libros, no \"Libros\".\nFechas como TEXT en formato ISO entre comillas simples: '2025-10-02'.\nLo que en S3 escribías como IS EMPTY en el editor gráfico de Base, en SQL puro se escribe IS NULL. Mismo concepto, sintaxis distinta.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#abrir-sqlime-y-cargar-biblioteca.db",
+    "href": "s4_sql_select.html#abrir-sqlime-y-cargar-biblioteca.db",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "1. Abrir SQLime y cargar biblioteca.db",
+    "text": "1. Abrir SQLime y cargar biblioteca.db\nDescarga aquí biblioteca.db. Por defecto se guardará en la carpeta Descargas del equipo. Hoy te basta con eso (se borrará cuando se apague el equipo, pero hoy te llega).\nAbre el navegador y ve a https://sqlime.org/. Verás la pantalla inicial:\n\n\n\nSQLime al abrirlo: editor vacío con select * from ... como pista, barra superior con open file / open url / settings, y bajo el editor los botones run / share / tables / ask AI. Todo en minúsculas.\n\n\n\n\n\n\n\n\nTipDetalles del interfaz que conviene fijar\n\n\n\n\nArriba a la izquierda, junto al limón, pone SQLite Playground // new.db. Cuando cargues tu archivo, ahí leerás biblioteca.db.\nArriba a la derecha tienes open file (abrir un .db desde tu disco) y open url (abrir uno desde una dirección web).\nEl editor es la caja blanca grande del centro, con la pista en gris select * from ....\nBajo el editor, run ▶ ejecuta lo que tengas escrito. Atajo: Ctrl+Enter.\ntables te muestra qué tablas tiene cargada la base de datos en este momento.\nNo hay panel lateral: todo lo que necesitas está en esta única pantalla.\n\n\n\nPara cargar biblioteca.db:\n\nPulsa open file arriba a la derecha.\nSelecciona el archivo biblioteca.db desde la carpeta Descargas.\nLa barra superior cambiará de new.db a biblioteca.db: ya está cargada.\n\nPara comprobar que las 3 tablas están donde tienen que estar, pulsa tables bajo el editor. Debes ver:\n\n\n\nTras pulsar tables aparece la lista “3 tables:” con Libros, Lectores y Prestamos. Si ves esas tres, has cargado bien.\n\n\nSi solo te aparece new.db y ninguna tabla, vuelve al paso 1: la BD no se cargó.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#select-pedir-columnas-de-una-tabla",
+    "href": "s4_sql_select.html#select-pedir-columnas-de-una-tabla",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "2. SELECT — pedir columnas de una tabla",
+    "text": "2. SELECT — pedir columnas de una tabla\nLa instrucción más básica del SQL pide columnas concretas (o todas) de una tabla. La forma general:\nSELECT columna1, columna2, ...\nFROM tabla;\nPara pedir todas las columnas se usa el comodín *:\nSELECT * FROM Libros;\nCada instrucción SQL termina en punto y coma (;). En SQLime puedes omitirlo si solo escribes una, pero acostúmbrate: en otras herramientas es obligatorio.\n\nPruébalo: pide título y autor\nBorra lo que haya en el editor y escribe:\nSELECT titulo, autor\nFROM Libros;\nPulsa run ▶ (o Ctrl+Enter). Aparece debajo una tabla con 12 filas, una por libro. Arriba de la tabla, SQLime te dice cuántas filas devolvió y cuánto tardó: algo como “12 rows, took 7 ms”.\n\n\n\n\n\n\nTip¿Qué pasa si pongo SELECT *?\n\n\n\n\n\nSELECT * FROM Libros; devuelve todas las columnas: id, título, autor, género, año y ejemplares. Útil para echar un vistazo, pero en consultas serias se piden solo las columnas que interesan, para que el resultado sea más legible.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#where-filtrar-las-filas",
+    "href": "s4_sql_select.html#where-filtrar-las-filas",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "3. WHERE — filtrar las filas",
+    "text": "3. WHERE — filtrar las filas\nCon SELECT solo, te llevas toda la tabla. Para quedarte con las filas que cumplen una condición se añade WHERE:\nSELECT columnas\nFROM tabla\nWHERE condicion;\nOperadores que vas a usar a diario:\n\n\n\n\n\n\n\n\nOperador\nSignificado\nEjemplo\n\n\n\n\n=\nigual a\ngenero = 'Fantasía'\n\n\n&lt;&gt;\ndistinto de\ngenero &lt;&gt; 'Novela'\n\n\n&lt;, &gt;, &lt;=, &gt;=\nmenor/mayor que (incluye igual)\nanio &lt; 1950\n\n\nAND\ny a la vez\ngenero = 'Novela' AND anio &gt; 2000\n\n\nOR\nuna de las dos\ngenero = 'Novela' OR genero = 'Fantasía'\n\n\nNOT\nniega la condición\nNOT (anio &lt; 2000)\n\n\n\nLas cadenas de texto van entre comillas simples: 'Fantasía', 'Lucía'. Los números, sin comillas: 1950, 3.\n\nPruébalo\nSELECT titulo, genero\nFROM Libros\nWHERE genero = 'Fantasía';\nDebe devolverte 3 filas: Harry Potter…, El señor de los anillos y El nombre del viento.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#order-by-ordenar-el-resultado",
+    "href": "s4_sql_select.html#order-by-ordenar-el-resultado",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "4. ORDER BY — ordenar el resultado",
+    "text": "4. ORDER BY — ordenar el resultado\nORDER BY se pone al final de la consulta:\nSELECT columnas\nFROM tabla\nWHERE condicion\nORDER BY campo ASC;   -- ASC = ascendente (por defecto)\nORDER BY campo DESC;  -- DESC = descendente\nTambién puedes ordenar por varios campos a la vez: ORDER BY genero, anio DESC ordena primero por género (alfabéticamente) y, dentro de cada género, por año descendente.\n\nPruébalo\nSELECT titulo, autor, anio\nFROM Libros\nORDER BY anio DESC;\nEl resultado son los 12 libros, los más recientes primero (Breves respuestas a grandes preguntas, 2018) y al final el más antiguo (El Quijote, 1605):\n\n\n\nResultado de la consulta SELECT titulo, autor, anio FROM Libros ORDER BY anio DESC; en SQLime. La cabecera del resultado pone “12 rows, took 7 ms”.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#like-buscar-texto-por-patrón",
+    "href": "s4_sql_select.html#like-buscar-texto-por-patrón",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "5. LIKE — buscar texto por patrón",
+    "text": "5. LIKE — buscar texto por patrón\nCuando no buscas un valor exacto sino algo que contenga una palabra, usa LIKE con dos comodines:\n\n\n\nComodín\nSignifica\n\n\n\n\n%\ncualquier secuencia de caracteres (incluida vacía)\n\n\n_\nexactamente un carácter\n\n\n\nPatrones típicos:\n\n\n\nPatrón\nEncuentra\n\n\n\n\n'García%'\nempieza por García\n\n\n'%viento%'\ncontiene viento en cualquier posición\n\n\n'%a'\ntermina en a\n\n\n'_a%'\nla segunda letra es una a\n\n\n\n\n\n\n\n\n\nWarningLas tildes cuentan\n\n\n\nEn SQLite, LIKE ignora mayúsculas/minúsculas para letras ASCII ('fantasia' ≈ 'FANTASIA'), pero las tildes son letras distintas: 'fantasia' no encuentra 'Fantasía'. Si la palabra del dato lleva tilde, escribe la tilde en el patrón. La regla práctica es: copia el patrón con tildes y mayúsculas reales.\n\n\n\nPruébalo\nSELECT titulo\nFROM Libros\nWHERE titulo LIKE '%viento%';\nDebe devolver 2 filas: La sombra del viento y El nombre del viento.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#between-rangos-de-números-o-fechas",
+    "href": "s4_sql_select.html#between-rangos-de-números-o-fechas",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "6. BETWEEN — rangos de números o fechas",
+    "text": "6. BETWEEN — rangos de números o fechas\nPara filtrar por un intervalo (incluyendo los dos extremos), BETWEEN x AND y:\nWHERE anio BETWEEN 1950 AND 2000\n-- equivale a:\nWHERE anio &gt;= 1950 AND anio &lt;= 2000\nFunciona también con fechas, que en SQLite se guardan como TEXT en formato 'aaaa-mm-dd':\nWHERE fecha_prestamo BETWEEN '2025-10-01' AND '2025-10-31'\n\nPruébalo\nSELECT titulo, anio\nFROM Libros\nWHERE anio BETWEEN 1950 AND 2000\nORDER BY anio;\nDevuelve 4 filas, los libros publicados entre 1950 y 2000 (ambos incluidos): El señor de los anillos (1954), Cien años de soledad (1967), Crónica de una muerte anunciada (1981) y Harry Potter y la piedra filosofal (1997). La sombra del viento (2001) queda fuera por un año, y 1984 (1949) también.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#is-null-filas-con-un-campo-vacío",
+    "href": "s4_sql_select.html#is-null-filas-con-un-campo-vacío",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "7. IS NULL — filas con un campo vacío",
+    "text": "7. IS NULL — filas con un campo vacío\nCuando un campo no tiene valor, en SQL se llama NULL. Para preguntar por filas con un campo vacío:\nWHERE campo IS NULL       -- el campo está vacío\nWHERE campo IS NOT NULL   -- el campo tiene algún valor\n\n\n\n\n\n\nTipPuente con S3\n\n\n\nEn S3, en el editor gráfico de Base, escribías IS EMPTY para lo mismo. Es la misma idea: NULL = sin valor. Solo cambia la sintaxis: en SQL puro siempre IS NULL (estándar mundial); el IS EMPTY era una rareza del editor visual de LibreOffice.\n\n\n\nPruébalo\nSELECT id_prestamo, id_libro, fecha_prestamo\nFROM Prestamos\nWHERE fecha_devolucion IS NULL;\nDevuelve los préstamos cuyo libro aún no se ha devuelto: 4 filas (los préstamos 6, 9, 12 y 14).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#los-10-retos-de-s4",
+    "href": "s4_sql_select.html#los-10-retos-de-s4",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "8. Los 10 retos de S4",
+    "text": "8. Los 10 retos de S4\nAhora te toca a ti. Resuelve los 10 retos siguientes sobre biblioteca.db. Cada reto te dice cuántas filas debe devolver tu consulta (y, si el orden importa, cuál es la primera). Si tu resultado coincide, está bien.\nConserva tus consultas en un archivo de texto llamado retos_sql.sql. Para crearlo, abre el editor de texto Pluma (lo tienes en el menú de aplicaciones del IES, en Accesorios). Pega cada consulta funcionando precedida de un comentario -- Reto N. Ese archivo lo subirás a Moodle al final de la sesión y lo seguirás usando en S5.\n\n\n\n\n\n\nWarningCuida el nombre Y la extensión al guardar\n\n\n\nEn Pluma → Guardar como…:\n\nNombre del archivo: escribe retos_sql.sql exactamente. Sin espacios, todo en minúsculas.\nExtensión: debe ser .sql, no .txt. Si Pluma te añade .txt automáticamente, en el desplegable de tipo de archivo elige “Todos los archivos” o equivalente, y escribe la extensión .sql tú mismo.\nComprueba al final que el archivo aparece en Descargas (o donde lo hayas guardado) como retos_sql.sql. Si pone retos_sql.sql.txt o retos_sql.txt, renómbralo (clic derecho → Renombrar).\n\nEsto importa: si subes a Moodle un .txt, en S5 abrirás un archivo que no se identifica como SQL y empiezas el día con un problema técnico evitable.\n\n\n\n\n\n\n\n\nTipSi un reto no te sale\n\n\n\nSalta al siguiente. No te quedes bloqueado: en clase los corregimos todos juntos. Lo importante es que lo hayas intentado y tengas claro qué cláusula te faltaba.\n\n\n\nReto 1 — Lista título y autor de todos los libros\nTu consulta debe devolver: 12 filas, con dos columnas (titulo, autor).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nSELECT con dos columnas, FROM la tabla Libros. Sin WHERE, sin ORDER BY. Termina la sentencia con ;.\n\n\n\n\n\nReto 2 — Lista todos los datos de todos los lectores\nTu consulta debe devolver: 8 filas, con 5 columnas (id_lector, nombre, apellidos, curso, email).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nPara “todos los datos” tienes el comodín * después de SELECT. Tabla: Lectores.\n\n\n\n\n\nReto 3 — Lista los libros ordenados por año, del más antiguo al más reciente\nTu consulta debe devolver: 12 filas. La primera debe ser El Quijote (1605); la última, Breves respuestas a grandes preguntas (2018).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nSELECT + FROM + ORDER BY por la columna del año. Para “del más antiguo al más reciente” piensa: del valor más pequeño al más grande. ¿Eso es ASC o DESC? (Pista de la pista: ASC es el por defecto, así que puedes omitirlo.)\n\n\n\n\n\nReto 4 — Lectores del curso 1BACH-A\nTu consulta debe devolver: 2 filas. Son Lucía Gómez y Mario Pérez.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nWHERE con =. Cuidado: 1BACH-A es texto, así que va entre comillas simples. Si pones comillas dobles o lo dejas sin comillas, fallará.\n\n\n\n\n\nReto 5 — Libros publicados antes de 1950\nTu consulta debe devolver: 4 filas. Los más antiguos de la base de datos. La primera (sin orden, según el orden natural de la tabla) será El Quijote.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nWHERE con &lt;. El año es un número, así que va sin comillas: WHERE anio &lt; 1950.\n\n\n\n\n\nReto 6 — Libros del género Novela ordenados por título\nTu consulta debe devolver: 3 filas, en este orden:\n\nCien años de soledad\nCrónica de una muerte anunciada\nLa sombra del viento\n\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nWHERE para filtrar por género + ORDER BY para ordenar. El género 'Novela' va con comillas simples (es texto). El orden alfabético es ASC (por defecto).\n\n\n\n\n\nReto 7 — Libros cuyo título contiene “viento”\nTu consulta debe devolver: 2 filas. Son La sombra del viento y El nombre del viento.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nWHERE con LIKE y dos comodines %. Recuerda: %palabra% significa “contiene la palabra en cualquier posición”. La palabra viento no lleva tilde, así que el patrón tampoco.\n\n\n\n\n\nReto 8 — Libros publicados entre 1950 y 2000, ordenados por año descendente\nTu consulta debe devolver: 4 filas, en este orden:\n\nHarry Potter y la piedra filosofal (1997)\nCrónica de una muerte anunciada (1981)\nCien años de soledad (1967)\nEl señor de los anillos (1954)\n\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nWHERE con BETWEEN ... AND ... (es inclusivo: 1950 y 2000 entran) + ORDER BY anio DESC. Recuerda: el año es número, sin comillas.\n\n\n\n\n\nReto 9 — Préstamos hechos en octubre de 2025\nTu consulta debe devolver: 4 filas (los préstamos 1, 2, 3 y 4).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nBETWEEN también funciona con fechas, pero las fechas son TEXT. Las escribes entre comillas simples y en formato 'aaaa-mm-dd'. ¿Cuál es el primer día de octubre de 2025? ¿Y el último?\n\n\n\n\n\nReto 10 — Lectores que no tienen email registrado\nTu consulta debe devolver: 1 fila. Es Paula Navarro Suárez.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nPara campos vacíos, en SQL puro: WHERE email IS NULL. Recuerda: ya no estamos en Base, así que no es IS EMPTY.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#producto-final-de-s4",
+    "href": "s4_sql_select.html#producto-final-de-s4",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "Producto final de S4",
+    "text": "Producto final de S4\nCuando termines, debes tener:\n\nbiblioteca.db cargada en SQLime y funcionando.\nUn archivo retos_sql.sql con las 10 consultas resueltas, cada una precedida de -- Reto N.\n\nPlantilla del archivo:\n-- retos_sql.sql · TICO 1.º Bach · IES El Majuelo\n-- Alumno: &lt;tu nombre&gt;     Tema: &lt;tu tema&gt;\n\n-- Reto 1\nSELECT titulo, autor FROM Libros;\n\n-- Reto 2\nSELECT * FROM Lectores;\n\n-- ... (etcétera hasta el Reto 10)\n\n\n\n\n\n\nImportanteAntes de irte: sube retos_sql.sql y crea una copia de seguridad -s4\n\n\n\nEn la tarea “TAREA - Bases de datos” harás dos cosas:\n\nSube tu retos_sql.sql con las 10 consultas (archivo nuevo).\nCrea una copia -s4.odb como foto del estado pre-SQL:\n\nDescarga el &lt;tu_tema&gt;.odb que tenías subido de S3.\nÁbrelo en LibreOffice Base con doble clic.\nArchivo → Guardar como… → escribe el nombre &lt;tu_tema&gt;-s4.odb. Guárdalo en Descargas, junto al &lt;tu_tema&gt;.odb original.\nSube &lt;tu_tema&gt;-s4.odb a Moodle. NO borres el &lt;tu_tema&gt;.odb que ya tenías subido: tiene que quedarse ahí para que en S5 lo descargues y sigas trabajando con él.\n\n\nAl terminar S4 deben quedar tres archivos en Moodle: &lt;tu_tema&gt;.odb (intacto desde S3), &lt;tu_tema&gt;-s4.odb (copia idéntica con sello pre-SQL) y retos_sql.sql.\nHoy no has modificado el contenido del .odb, pero hacemos una foto con el sello -s4 para guardar el estado anterior a tocar SQL. A partir de S5 seguirás trabajando sobre el &lt;tu_tema&gt;.odb (sin sufijo) durante el resto de la unidad; el -s4.odb se queda en Moodle como referencia y no se vuelve a tocar.\nMantén la entrega en estado borrador (no pulses “Entregar tarea”). Detalles en Cómo se guarda tu trabajo entre sesiones.\n\n\nEn S5 vas a aprender a combinar tablas con JOIN y a modificar datos con INSERT, UPDATE y DELETE. Después llevarás esos comandos a tu propio .odb. Y para repasar en cualquier momento, tienes la Chuleta SQL.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s4_sql_select.html#si-te-atascas",
+    "href": "s4_sql_select.html#si-te-atascas",
+    "title": "S4 · SQL para preguntar a la base de datos",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa probable\nCómo se arregla\n\n\n\n\nno such table: Libros\nNo has cargado biblioteca.db, o lo has cargado pero estás en otra pestaña\nPulsa open file → selecciona biblioteca.db otra vez. La barra superior debe poner biblioteca.db.\n\n\nno such column: titulo\nHas escrito mal el nombre del campo o de la tabla (mayúsculas/minúsculas en el nombre de tabla SÍ importan en SQLite)\nComprueba el nombre exacto. Pulsa tables y haz clic en el nombre de la tabla para ver sus columnas.\n\n\nMi WHERE con texto no devuelve nada\nHas usado comillas dobles \"Novela\" en vez de comillas simples 'Novela'\nCambia a comillas simples. En SQLite, las comillas dobles son para identificadores con espacios, no para texto.\n\n\nLIKE 'fantasia%' no devuelve nada y debería\nEl dato lleva tilde (Fantasía) y el patrón no\nEscribe el patrón con tilde: LIKE 'Fantasía%' o LIKE '%fantasía%'.\n\n\nIS EMPTY me da error\nIS EMPTY solo existe en el editor gráfico de Base\nAquí, en SQL puro, escribe IS NULL.\n\n\nPulso run y no pasa nada\nEl editor está vacío o solo tiene comentarios --\nAsegúrate de que hay al menos una sentencia SELECT.\n\n\nMi BETWEEN con fechas no devuelve nada\nTe has olvidado de las comillas simples o has puesto formato dd/mm/aaaa\nUsa formato 'aaaa-mm-dd' con comillas simples: BETWEEN '2025-10-01' AND '2025-10-31'.\n\n\nCierro el navegador y pierdo todo\nSQLime corre en el navegador: si cierras la pestaña, se pierde lo que tengas escrito en el editor\nPor eso guardas tus consultas en retos_sql.sql en local. La BD biblioteca.db la vuelves a cargar al día siguiente.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>S4 · SQL para preguntar a la base de datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html",
+    "href": "s5_sql_join_y_modificacion.html",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#lo-que-vas-a-hacer-hoy",
+    "href": "s5_sql_join_y_modificacion.html#lo-que-vas-a-hacer-hoy",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "",
+    "text": "Aprender a combinar varias tablas con JOIN para responder preguntas que cruzan datos.\nAprender a crear, modificar y borrar filas con INSERT, UPDATE y DELETE.\nAplicar al menos 1 INSERT, 1 UPDATE y 1 DELETE en TU propia base de datos desde LibreOffice Base, vía Herramientas → SQL….\nResolver los 10 retos de S5 sobre biblioteca.db y dejar tu archivo retos_sql.sql ampliado a 20 consultas.\n\n\n\n\n\n\n\nImportanteAntes de empezar: descarga tus archivos de Moodle\n\n\n\nHoy descargas dos archivos de la tarea “TAREA - Bases de datos”:\n\nTu &lt;tu_tema&gt;.odb (el archivo sin sufijo). Este es el que vas a modificar hoy y el que seguirás usando hasta el final de la unidad.\nTu retos_sql.sql (con los 10 retos de S4 resueltos).\n\nEl &lt;tu_tema&gt;-s4.odb (la copia de seguridad pre-SQL que dejaste en Moodle al cerrar S4) se queda en Moodle y no lo tocas. Es la “foto” del antes; no la necesitas hoy.\nA lo largo de la sesión añadirás 1 INSERT, 1 UPDATE y 1 DELETE a &lt;tu_tema&gt;.odb desde Herramientas → SQL…, y al final lo subirás reemplazando el de Moodle. El retos_sql.sql lo abrirás con Pluma y le añadirás los 10 retos nuevos.\nDetalles en Cómo se guarda tu trabajo entre sesiones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#hoy-trabajas-en-dos-herramientas-a-la-vez",
+    "href": "s5_sql_join_y_modificacion.html#hoy-trabajas-en-dos-herramientas-a-la-vez",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "Hoy trabajas en dos herramientas a la vez",
+    "text": "Hoy trabajas en dos herramientas a la vez\n\n\n\n\n\n\nImportanteSQLime y LibreOffice Base, en paralelo\n\n\n\n\n\n\n\n\n\n\nHerramienta\nPara qué la usas hoy\n\n\n\n\nSQLime sobre biblioteca.db\nAprender JOIN, practicar INSERT/UPDATE/DELETE y resolver los 10 retos\n\n\nLibreOffice Base sobre tu .odb\nAplicar 1 INSERT + 1 UPDATE + 1 DELETE en tu propia BD del proyecto, vía Herramientas → SQL…\n\n\n\nLa mayor parte del tiempo estarás en SQLime. Al final de la sesión, abres tu .odb en Base y le llevas tres modificaciones.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#refresco-rápido-vuelve-a-cargar-biblioteca.db-en-sqlime",
+    "href": "s5_sql_join_y_modificacion.html#refresco-rápido-vuelve-a-cargar-biblioteca.db-en-sqlime",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "1. Refresco rápido: vuelve a cargar biblioteca.db en SQLime",
+    "text": "1. Refresco rápido: vuelve a cargar biblioteca.db en SQLime\nComo los equipos del IES se reinician cada noche, biblioteca.db ya no está en tu carpeta Descargas del día anterior. Descárgala de nuevo aquí.\nAbre después https://sqlime.org/, pulsa open file y selecciona el archivo desde Descargas.\nComprueba que la barra superior pone biblioteca.db y que al pulsar tables ves las 3 tablas: Libros, Lectores, Prestamos. Si algo no encaja, repasa el apartado 1 de S4.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#join-combinar-datos-de-varias-tablas",
+    "href": "s5_sql_join_y_modificacion.html#join-combinar-datos-de-varias-tablas",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "2. JOIN — combinar datos de varias tablas",
+    "text": "2. JOIN — combinar datos de varias tablas\nHasta ahora todas tus consultas iban a una sola tabla. Pero muchas preguntas reales cruzan tablas: la fecha de un préstamo está en Prestamos, el título del libro en Libros y el nombre del lector en Lectores. Con SELECT solo ya no llegas: necesitas JOIN.\n\n2.1 INNER JOIN — la combinación más habitual\nJOIN (que también puedes escribir como INNER JOIN, equivalente) une dos tablas a través de una columna que tienen en común — normalmente la clave primaria de la padre y la clave foránea de la hija. Sintaxis general:\nSELECT columnas\nFROM   tabla_a\nJOIN   tabla_b ON tabla_a.columna_comun = tabla_b.columna_comun;\nEn biblioteca, Prestamos.id_libro apunta a Libros.id_libro. Si los unimos por ahí, podemos pedir la fecha del préstamo y el título del libro en la misma fila:\nSELECT Prestamos.fecha_prestamo, Libros.titulo\nFROM   Prestamos\nJOIN   Libros ON Prestamos.id_libro = Libros.id_libro;\nDevuelve 15 filas, una por cada préstamo, con la fecha y el título correspondientes mezclados en una sola tabla.\n\n\n2.2 Alias con AS — escritura más corta\nEscribir Prestamos.fecha_prestamo y Libros.titulo cada vez es largo. Para acortar puedes darle un alias a cada tabla con AS:\nSELECT P.fecha_prestamo, L.titulo\nFROM   Prestamos AS P\nJOIN   Libros    AS L ON P.id_libro = L.id_libro;\nMismo resultado, menos texto. A partir de aquí usaremos alias.\n\n\n\n\n\n\nTip¿Y si dos tablas tienen una columna del mismo nombre?\n\n\n\nSi en una consulta intervienen Prestamos y Libros, las dos tienen una columna id_libro. Si pides solo id_libro sin prefijar, SQLite te da error ambiguous column: id_libro. Soluciónalo prefijando con el alias: P.id_libro o L.id_libro.\n\n\n\n\nPruébalo: une tres tablas a la vez\nPuedes encadenar varios JOIN en la misma consulta. Aquí cruzamos Prestamos con Libros (para el título) y con Lectores (para el nombre):\nSELECT P.fecha_prestamo, L.titulo, R.nombre, R.apellidos\nFROM   Prestamos AS P\nJOIN   Libros    AS L ON P.id_libro  = L.id_libro\nJOIN   Lectores  AS R ON P.id_lector = R.id_lector;\nPulsa run ▶ (Ctrl+Enter). Te devuelve 15 filas y 4 columnas: la fecha del préstamo, el título del libro, y el nombre y apellidos del lector. Es la consulta más completa que has escrito hasta ahora:\n\n\n\nResultado del JOIN de 3 tablas en SQLime: la cabecera marca “15 rows, took N ms” y se ve cómo columnas de Prestamos, Libros y Lectores aparecen mezcladas en una única tabla resultado.\n\n\n\n\n2.3 LEFT JOIN — incluir lo que NO cruza\nINNER JOIN solo devuelve filas que tienen pareja en ambas tablas. Eso significa que se pierden los lectores que nunca han pedido un libro o los libros que nadie ha pedido nunca.\nPara incluir también lo “huérfano” se usa LEFT JOIN: trae todas las filas de la tabla de la izquierda, y rellena con NULL las columnas de la derecha cuando no hay pareja.\nEjemplo: lista todos los lectores con su préstamo asociado, incluyendo los que no han pedido nunca:\nSELECT R.nombre, R.apellidos, P.fecha_prestamo\nFROM   Lectores  AS R\nLEFT JOIN Prestamos AS P ON R.id_lector = P.id_lector\nORDER BY R.id_lector;\nPara los lectores que sí tienen préstamos aparecen sus fechas. Para los que no tienen ninguno aparece NULL en la columna fecha_prestamo.\n\n\n\n\n\n\nTip“Quiero solo los lectores SIN préstamos”\n\n\n\nCombinando LEFT JOIN con WHERE columna_de_la_derecha IS NULL se filtra justo eso:\nSELECT R.nombre, R.apellidos\nFROM   Lectores  AS R\nLEFT JOIN Prestamos AS P ON R.id_lector = P.id_lector\nWHERE  P.id_prestamo IS NULL;\nEl resultado son solo los lectores que no aparecen en Prestamos. Te tocará usar este patrón en uno de los retos de hoy.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#aviso-importante-antes-de-tocar-datos",
+    "href": "s5_sql_join_y_modificacion.html#aviso-importante-antes-de-tocar-datos",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "3. Aviso importante antes de tocar datos",
+    "text": "3. Aviso importante antes de tocar datos\nHasta ahora solo has hecho SELECT: pediste información, la base de datos te respondió, no cambió nada. Ahora vas a aprender a modificar datos: añadir libros, cambiar campos, borrar filas. Esto requiere un aviso.\n\n\n\n\n\n\nWarningLos cambios en SQLime NO PERSISTEN\n\n\n\nbiblioteca.db está cargada en la memoria del navegador. Cualquier INSERT, UPDATE o DELETE que ejecutes funciona mientras la pestaña esté abierta, pero se pierde:\n\nSi recargas la página.\nSi cargas otra BD con open file.\nSi cierras la pestaña.\n\nPor eso los Pruébalos y los retos de modificación de hoy son para practicar la sintaxis, no para “modificar la biblioteca de verdad”. Para que tus cambios se queden, al final de la sesión los llevarás a tu propio .odb en LibreOffice Base, donde sí persisten en el archivo.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#insert-añadir-filas",
+    "href": "s5_sql_join_y_modificacion.html#insert-añadir-filas",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "4. INSERT — añadir filas",
+    "text": "4. INSERT — añadir filas\nINSERT añade una nueva fila a una tabla. Sintaxis:\nINSERT INTO tabla (columna1, columna2, ...)\nVALUES (valor1, valor2, ...);\nLas columnas que listas tras el nombre de la tabla deben coincidir, en orden y en número, con los valores que pones en VALUES.\n\nPruébalo: añade un libro\nINSERT INTO Libros (titulo, autor, genero, anio, ejemplares)\nVALUES ('Pedro Páramo', 'Juan Rulfo', 'Novela', 1955, 2);\nPulsa run ▶. Verás algo extraño:\n\n\n\nTras un INSERT, SQLime muestra “0 rows, took N ms” bajo el editor. El INSERT ha funcionado: lo que pasa es que las sentencias de modificación no devuelven filas.\n\n\n\n\n\n\n\n\nWarning“0 rows” tras un INSERT NO es un error\n\n\n\nSQLime muestra “0 rows” después de un INSERT, UPDATE o DELETE. No es un fallo: simplemente esas sentencias no devuelven filas (no son consultas). Para comprobar que el cambio se ha aplicado, ejecuta a continuación un SELECT que busque el dato.\n\n\nLo verificamos con un SELECT:\nSELECT * FROM Libros WHERE titulo = 'Pedro Páramo';\nAhora sí: 1 fila con todas las columnas del libro recién insertado.\n\n\n\nSELECT de verificación tras el INSERT: aparece la fila de Pedro Páramo con todas sus columnas. Cabecera “1 row, took N ms”.\n\n\n\n\n\n\n\n\nTipEl id_libro se autoasignó solo\n\n\n\nFíjate: en el INSERT no especificaste el id_libro, y aun así la fila tiene un id (en este caso, el 13). En SQLite, cuando una columna se declara como INTEGER PRIMARY KEY, se autoincrementa automáticamente al insertar. Más adelante verás que en LibreOffice Base esto no funciona igual y hay que dar el id a mano.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#update-modificar-filas-existentes",
+    "href": "s5_sql_join_y_modificacion.html#update-modificar-filas-existentes",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "5. UPDATE — modificar filas existentes",
+    "text": "5. UPDATE — modificar filas existentes\nUPDATE cambia el valor de una o varias columnas en filas que cumplan una condición:\nUPDATE tabla\nSET    columna1 = valor1, columna2 = valor2, ...\nWHERE  condicion;\n\n\n\n\n\n\nWarningSin WHERE, UPDATE modifica TODAS las filas\n\n\n\nUPDATE Libros SET ejemplares = 0 (sin WHERE) pondría todos los libros con cero ejemplares. Casi nunca es lo que quieres. Acostúmbrate a escribir el WHERE antes que el SET para no olvidarlo.\n\n\n\nPruébalo: cambia los ejemplares de un libro\nUPDATE Libros\nSET    ejemplares = 6\nWHERE  id_libro = 3;\nrun ▶ te dirá “0 rows, took N ms” (recuerda: no es error). Verifica con un SELECT:\nSELECT id_libro, titulo, ejemplares\nFROM   Libros\nWHERE  id_libro = 3;\nDebe devolver una fila con La sombra del viento y ejemplares = 6.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#delete-borrar-filas",
+    "href": "s5_sql_join_y_modificacion.html#delete-borrar-filas",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "6. DELETE — borrar filas",
+    "text": "6. DELETE — borrar filas\nDELETE elimina filas de una tabla:\nDELETE FROM tabla\nWHERE  condicion;\n\n\n\n\n\n\nWarningSin WHERE, DELETE borra TODAS las filas\n\n\n\nDELETE FROM Prestamos (sin WHERE) deja la tabla vacía. Igual que con UPDATE: nunca escribas un DELETE sin un WHERE que lo acote.\n\n\n\nPruébalo: borra un préstamo\nDELETE FROM Prestamos\nWHERE  id_prestamo = 15;\nVerifica con:\nSELECT * FROM Prestamos WHERE id_prestamo = 15;\nDebe devolver 0 filas (la consulta no encuentra el préstamo, porque ya lo borraste).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#llevar-sql-a-tu-propio-.odb",
+    "href": "s5_sql_join_y_modificacion.html#llevar-sql-a-tu-propio-.odb",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "7. Llevar SQL a tu propio .odb",
+    "text": "7. Llevar SQL a tu propio .odb\nHasta aquí has practicado con biblioteca.db en SQLime. Ahora vas a hacer lo mismo, pero de verdad, sobre tu propia base de datos en LibreOffice Base, donde los cambios sí se quedan grabados en el archivo .odb.\n\n\n\n\n\n\nTipLa copia de seguridad ya la tienes\n\n\n\nNo tienes que crear ninguna copia hoy: el &lt;tu_tema&gt;-s4.odb que dejaste en Moodle al final de S4 es la foto del estado pre-SQL. Si algo saliera muy mal, siempre puedes descargarla de Moodle y empezar de cero.\nHoy trabajas directamente sobre &lt;tu_tema&gt;.odb (el archivo sin sufijo que descargaste al empezar la sesión).\n\n\n\nEl sitio donde se ejecuta SQL en Base\nCon &lt;tu_tema&gt;.odb abierto, ve a la barra superior: menú Herramientas → SQL…. Se abre un cuadro con dos zonas:\n\nArriba: el editor donde pegas la sentencia SQL.\nAbajo: el panel de Estado, donde Base te dice si el comando se ejecutó o falló.\n\n\n\n\nDiálogo Herramientas → SQL de LibreOffice Base con un INSERT pegado arriba y el mensaje “1: Comando ejecutado correctamente” en el panel de estado abajo.\n\n\n\n\n\n\n\n\nWarningDos diferencias muy importantes con SQLime\n\n\n\nLibreOffice Base usa internamente un motor distinto a SQLite (se llama HSQLDB). Eso obliga a dos cambios obligatorios en cada sentencia que pases de SQLime a Base:\n1. Los nombres de tabla y de columna van entre comillas dobles.\nEn SQLite escribes Libros y titulo sin comillas. En Base, si te las dejas, HSQLDB convierte el nombre a mayúsculas internamente (TITULO) y no lo encuentra. Tienes que escribir \"Libros\" y \"titulo\" con comillas dobles.\n-- En SQLime (SQLite):\nINSERT INTO Libros (titulo, autor) VALUES ('X', 'Y');\n\n-- En Base (HSQLDB):\nINSERT INTO \"Libros\" (\"titulo\", \"autor\") VALUES ('X', 'Y');\n2. La clave primaria id_X NO se autoincrementa.\nEn SQLite podías omitir el id en un INSERT y se rellenaba solo. En Base tienes que dar el id_X a mano, eligiendo un número que no exista todavía en la tabla.\nSi te olvidas, Base te devuelve “Attempt to insert null into a non-nullable column: column: id_X” y la fila no se inserta.\n\n\n\n\nTus 3 modificaciones obligatorias\nSobre tu .odb, ejecuta 3 sentencias desde Herramientas → SQL…. Adáptalas a tu tema:\n\n\n\n\n\n\n\n\nOperación\nQué hacer\nTabla recomendada\n\n\n\n\nINSERT\nAñade un 6.º registro a una de tus tablas padre. Acuérdate del id manual y de las comillas dobles.\nTu padre 1 (la de S1) o tu padre 2 (la de S2)\n\n\nUPDATE\nCambia el valor de un campo no clave en un registro existente.\nCualquier tabla\n\n\nDELETE\nBorra un registro de la tabla hija. (No borres en una padre con hijos: la integridad referencial te lo va a impedir, y eso es justo lo que tiene que pasar.)\nTu hija (la de S2)\n\n\n\n\n\n\n\n\n\nTipPlantilla guía adaptada a cada tema\n\n\n\nPunto de partida con los nombres exactos. Cambia los '??' y los números por los que tengan sentido en tu BD. Recuerda: comillas dobles en los identificadores, comillas simples en las cadenas.\n\n\n\n\n\n\n\n\n\nTema\nINSERT (padre)\nUPDATE\nDELETE (hija)\n\n\n\n\n1. Streaming\nINSERT INTO \"Series\" (\"id_serie\",\"titulo\",\"anio\",\"plataforma\",\"valoracion\") VALUES (6,'??',????,'??',??);\nUPDATE \"Series\" SET \"valoracion\" = ?? WHERE \"id_serie\" = 1;\nDELETE FROM \"Visualizaciones\" WHERE \"id_visualizacion\" = 5;\n\n\n2. Tienda\nINSERT INTO \"Productos\" (\"id_producto\",\"nombre\",\"marca\",\"precio\",\"stock\") VALUES (6,'??','??',??,??);\nUPDATE \"Productos\" SET \"precio\" = ?? WHERE \"id_producto\" = 1;\nDELETE FROM \"Pedidos\" WHERE \"id_pedido\" = 5;\n\n\n3. Veterinaria\nINSERT INTO \"Mascotas\" (\"id_mascota\",\"nombre\",\"especie\",\"raza\",\"edad\") VALUES (6,'??','??','??',??);\nUPDATE \"Mascotas\" SET \"edad\" = ?? WHERE \"id_mascota\" = 1;\nDELETE FROM \"Visitas\" WHERE \"id_visita\" = 5;\n\n\n4. Liga\nINSERT INTO \"Equipos\" (\"id_equipo\",\"nombre\",\"ciudad\",\"estadio\",\"anio_fundacion\") VALUES (6,'??','??','??',????);\nUPDATE \"Equipos\" SET \"estadio\" = '??' WHERE \"id_equipo\" = 1;\nDELETE FROM \"Partidos\" WHERE \"id_partido\" = 5;\n\n\n5. Tatuajes\nINSERT INTO \"Clientes\" (\"id_cliente\",\"nombre\",\"apellidos\",\"telefono\",\"email\") VALUES (6,'??','??','??','??');\nUPDATE \"Clientes\" SET \"telefono\" = '??' WHERE \"id_cliente\" = 1;\nDELETE FROM \"Trabajos\" WHERE \"id_trabajo\" = 5;\n\n\n6. Gimnasio\nINSERT INTO \"Socios\" (\"id_socio\",\"nombre\",\"apellidos\",\"fecha_alta\",\"plan\") VALUES (6,'??','??','????-??-??','??');\nUPDATE \"Socios\" SET \"plan\" = '??' WHERE \"id_socio\" = 1;\nDELETE FROM \"Asistencias\" WHERE \"id_asistencia\" = 5;\n\n\n\n\n\nDespués de cada ejecución correcta, Base te dirá “Comando ejecutado correctamente” en el panel de Estado. Cierra el diálogo y guarda el archivo (Ctrl+S desde la ventana principal de Base) para que los cambios queden grabados en &lt;tu_tema&gt;.odb.\nPara comprobar que las modificaciones se aplicaron, abre la tabla afectada con doble clic en la barra lateral: deberías ver el nuevo registro, el valor cambiado y la fila desaparecida.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#los-10-retos-de-s5",
+    "href": "s5_sql_join_y_modificacion.html#los-10-retos-de-s5",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "8. Los 10 retos de S5",
+    "text": "8. Los 10 retos de S5\nIgual que en S4: cada reto te dice cuántas filas debe devolver tu consulta y, cuando importa, qué primera/última fila o qué dato concreto debe aparecer. Si tu resultado coincide, está bien.\nConserva tus consultas en el mismo archivo retos_sql.sql que abriste al empezar la sesión, continuando desde el Reto 11. Al final del día tendrás 20 retos numerados (10 de S4 + 10 de S5).\n\n\n\n\n\n\nWarningVuelve a SQLime y recarga biblioteca.db\n\n\n\nLos retos se hacen de nuevo en SQLime sobre biblioteca.db, no en LibreOffice Base. Si vienes del apartado anterior con Base abierto, guarda tu .odb (Ctrl+S), ciérralo y vuelve a la pestaña de SQLime.\nUna vez en SQLime, recarga la página (Ctrl+R) y vuelve a cargar biblioteca.db con open file. Esto borra las huellas que dejaron los Pruébalos de los apartados 4, 5 y 6 (un libro de más, ejemplares cambiados, un préstamo borrado) y deja la BD en su estado original, para que las validaciones de los retos cuadren con tu resultado.\n\n\n\n\n\n\n\n\nTipSi un reto no te sale\n\n\n\nSalta al siguiente. En clase los corregimos todos juntos. Lo importante es que lo intentes y tengas claro qué cláusula te faltaba.\n\n\n\nReto 11 — Para cada préstamo, lista la fecha y el título del libro\nTu consulta debe devolver: 15 filas, con dos columnas (fecha_prestamo, titulo).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nSELECT con dos columnas + FROM Prestamos + JOIN Libros ON .... Une las dos tablas por la columna que tienen en común. Si dudas cuál es, mira § 2.1.\n\n\n\n\n\nReto 12 — Libros que ha pedido prestados Lucía Gómez (id_lector = 1)\nTu consulta debe devolver: 2 filas, con titulo y fecha_prestamo. Los libros son Harry Potter y la piedra filosofal y La sombra del viento.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nJOIN entre Prestamos y Libros, más un WHERE que filtre por id_lector = 1. Cuidado: id_lector está en Prestamos, no en Libros.\n\n\n\n\n\nReto 13 — Para cada préstamo, lista fecha + título del libro + nombre y apellidos del lector\nTu consulta debe devolver: 15 filas, con 4 columnas (fecha_prestamo, titulo, nombre, apellidos).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nDos JOIN encadenados, como en el ejemplo del cuerpo de § 2.2. Une Prestamos con Libros por id_libro y con Lectores por id_lector. Usa alias para no tener que escribir el nombre completo de cada tabla.\n\n\n\n\n\nReto 14 — Préstamos hechos en octubre de 2025, con el título del libro\nTu consulta debe devolver: 4 filas, con fecha_prestamo y titulo.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nEs como el Reto 9 de S4 (préstamos de octubre con BETWEEN), pero añadiendo un JOIN con Libros para sacar el título.\n\n\n\n\n\nReto 15 — Préstamos de libros de Fantasía con título del libro y nombre del lector\nTu consulta debe devolver: 5 filas, con titulo, nombre y apellidos. Aparecerán préstamos de Lucía Gómez, Mario Pérez, Adrián Moreno, Paula Navarro y Álvaro Rodríguez.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nTres tablas en juego: Prestamos, Libros (para filtrar por género) y Lectores (para sacar el nombre). Encadena dos JOIN y añade un WHERE genero = 'Fantasía'. Recuerda: el género lleva tilde, copia el patrón con tilde.\n\n\n\n\n\nReto 16 — Libros que NADIE ha pedido nunca\nTu consulta debe devolver: 1 fila. El libro es Así habló Zaratustra.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nAquí necesitas LEFT JOIN, no INNER JOIN: queremos los libros aunque no tengan préstamos. Empieza desde Libros y haz LEFT JOIN hacia Prestamos. Después, filtra con WHERE Prestamos.id_prestamo IS NULL para quedarte solo con los libros sin préstamo. El patrón está en el callout de § 2.3.\n\n\n\n\n\nReto 17 — Añade el libro El amor en los tiempos del cólera\nInserta en Libros un nuevo libro: título “El amor en los tiempos del cólera”, autor “Gabriel García Márquez”, género “Novela”, año 1985, 3 ejemplares. No especifiques el id_libro: deja que SQLite lo asigne solo.\nTu solución debe: ejecutar sin error (verás “0 rows, took N ms”) y, al hacer un SELECT * FROM Libros WHERE titulo = 'El amor en los tiempos del cólera'; después, devolver 1 fila con el libro recién insertado.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nINSERT INTO Libros (...) VALUES (...);. Lista en el primer paréntesis las 5 columnas que vas a rellenar (sin id_libro) y en el segundo los 5 valores correspondientes en el mismo orden. Las cadenas con tildes van entre comillas simples; los números, sin comillas.\n\n\n\n\n\nReto 18 — Añade un préstamo de hoy\nInserta en Prestamos un préstamo nuevo: el lector con id_lector = 4 (Hugo Sánchez) toma prestado el libro con id_libro = 5 (El señor de los anillos) hoy, 2026-05-12. El libro aún no se ha devuelto, así que fecha_devolucion debe ser NULL.\nTu solución debe: ejecutar sin error y, al hacer SELECT * FROM Prestamos WHERE id_lector = 4 AND id_libro = 5; después, devolver 1 fila con el préstamo recién creado.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nIgual que el reto anterior pero sobre Prestamos. Para fecha_devolucion = NULL, en el VALUES simplemente escribe NULL (sin comillas: NULL no es texto, es la palabra reservada). La fecha de hoy va como TEXT con comillas simples y formato 'aaaa-mm-dd'.\n\n\n\n\n\nReto 19 — Sube a 5 los ejemplares de El Quijote\nModifica el libro con id_libro = 1 (El Quijote) para que tenga 5 ejemplares en lugar de los 3 que tiene en la BD original.\nTu solución debe: ejecutar sin error y, al hacer SELECT id_libro, titulo, ejemplares FROM Libros WHERE id_libro = 1; después, mostrar ejemplares = 5.\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nUPDATE Libros SET ... WHERE .... No olvides el WHERE: si lo dejas fuera, los 12 libros se quedarían con 5 ejemplares cada uno.\n\n\n\n\n\nReto 20 — Borra el préstamo número 7\nElimina de Prestamos la fila cuyo id_prestamo = 7.\nTu solución debe: ejecutar sin error y, al hacer SELECT * FROM Prestamos WHERE id_prestamo = 7; después, devolver 0 filas (la fila ya no existe).\n\n\n\n\n\n\nNotaPista\n\n\n\n\n\nDELETE FROM Prestamos WHERE id_prestamo = 7;. No olvides el WHERE: sin él, te cargas los 15 préstamos.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#producto-final-de-s5",
+    "href": "s5_sql_join_y_modificacion.html#producto-final-de-s5",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "Producto final de S5",
+    "text": "Producto final de S5\nCuando termines, debes tener:\n\nTu archivo retos_sql.sql con 20 consultas numeradas (los 10 de S4 + los 10 de hoy), cada una precedida de -- Reto N.\nTu &lt;tu_tema&gt;.odb (el archivo sin sufijo) con al menos 1 INSERT, 1 UPDATE y 1 DELETE aplicados desde Herramientas → SQL…. Guardado con Ctrl+S desde la ventana principal de Base.\nTu &lt;tu_tema&gt;-s4.odb sin tocar en Moodle (sigue como referencia del estado pre-SQL).\n\nPlantilla del archivo (continuando desde el Reto 11):\n-- ... (Retos 1 a 10 que ya tenías de S4)\n\n-- Reto 11\nSELECT P.fecha_prestamo, L.titulo\nFROM   Prestamos AS P\nJOIN   Libros    AS L ON P.id_libro = L.id_libro;\n\n-- Reto 12\n-- ... (etcétera hasta el Reto 20)\n\n\n\n\n\n\nImportanteAntes de irte: actualiza Moodle (sin tocar el -s4)\n\n\n\nEn la tarea “TAREA - Bases de datos”:\n\nretos_sql.sql: borra el archivo de S4 que tenías subido y sube esta versión ampliada a 20 consultas.\n&lt;tu_tema&gt;.odb (sin sufijo, con tus 3 modificaciones SQL aplicadas hoy): borra el &lt;tu_tema&gt;.odb que estaba subido y sube el actualizado.\n&lt;tu_tema&gt;-s4.odb: NO lo toques. Tiene que quedarse en Moodle como referencia del estado pre-SQL.\n\nEs decir, al terminar S5 deben quedar tres archivos en Moodle: &lt;tu_tema&gt;.odb (con SQL aplicado hoy), &lt;tu_tema&gt;-s4.odb (intacto) y retos_sql.sql (con 20 retos).\nMantén la entrega en estado borrador (no pulses “Entregar tarea”). Detalles en Cómo se guarda tu trabajo entre sesiones.\n\n\nEn S6 harás un mini-control SQL en papel (40 minutos, individual, con la chuleta de 1 cara) sobre una BD nueva que verás en clase. Después arrancarás los últimos retoques de tu proyecto. Y para repasar JOIN/INSERT/UPDATE/DELETE en cualquier momento, te queda la Chuleta SQL.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s5_sql_join_y_modificacion.html#si-te-atascas",
+    "href": "s5_sql_join_y_modificacion.html#si-te-atascas",
+    "title": "S5 · SQL para combinar y modificar datos",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa probable\nCómo se arregla\n\n\n\n\nambiguous column: id_libro\nDos tablas tienen una columna con el mismo nombre y no la has prefijado\nPrefija con el alias: P.id_libro o L.id_libro.\n\n\nMi JOIN devuelve más filas de las esperadas\nTe has olvidado del ON o has unido por una columna equivocada\nComprueba que el ON une la clave primaria de la padre con la clave foránea de la hija.\n\n\nMi LEFT JOIN se comporta como INNER (no aparece nada huérfano)\nHas puesto un WHERE sobre una columna de la tabla derecha que filtra los NULL por accidente\nSi querías filtrar solo los huérfanos, el WHERE correcto es ... IS NULL. Si los querías ver mezclados con el resto, quita el WHERE.\n\n\nINSERT da “0 rows, took N ms” en SQLime\nComportamiento normal: los INSERT no devuelven filas\nNo es error. Verifica con un SELECT que la fila aparece.\n\n\nAttempt to insert null into a non-nullable column: id_X (en Base)\nEn HSQLDB no se autoincrementa: hay que dar el id a mano\nAñade id_X a la lista de columnas y un valor nuevo a la lista de VALUES.\n\n\nColumn not found: TITULO (en Base)\nTe has olvidado las comillas dobles en una columna\nPon comillas dobles alrededor de todos los identificadores: \"titulo\", \"Libros\", etc.\n\n\nHe hecho un UPDATE o DELETE sin WHERE y “ya no me cuadra nada”\nHas tocado todas las filas a la vez\nEn SQLime: recarga la página y vuelve a cargar biblioteca.db (la BD vuelve al estado original). En Base: si guardaste, el cambio es permanente; restaura desde la copia que tienes en Moodle.\n\n\nMi SELECT tras INSERT/UPDATE/DELETE no muestra el cambio en SQLime\nRecargaste la página entre el INSERT y el SELECT\nLos cambios en SQLime no persisten al recargar. Vuelve a ejecutar el INSERT y luego, sin recargar, el SELECT.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>S5 · SQL para combinar y modificar datos</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html",
+    "href": "s6_minicontrol_y_proyecto.html",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#lo-que-vas-a-hacer-hoy",
+    "href": "s6_minicontrol_y_proyecto.html#lo-que-vas-a-hacer-hoy",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "",
+    "text": "Hacer el mini-control SQL en papel (40 minutos, individual, con la chuleta de 1 cara).\nReabrir tu base de datos del proyecto (&lt;tu_tema&gt;.odb) en LibreOffice Base.\nAmpliar tus 3 tablas hasta 15 registros cada una, respetando la integridad referencial.\nAnotar 3 ideas de consultas que te gustaría poder responder en S7, dejándolas comentadas en retos_sql.sql.\n\n\n\n\n\n\n\nImportanteAntes de empezar\n\n\n\nHoy es un día con dos ritmos. Lee esto antes de sentarte:\n\nTrae la chuleta SQL impresa de 1 cara. Es la única ayuda permitida en el examen.\nBolígrafo (azul o negro). Móvil y mochila al fondo del aula.\nNO descargues nada de Moodle todavía. El examen es en papel y en silencio. Solo cuando lo entregues abrirás el ordenador para el bloque 2; entonces sí descargarás tu .odb.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#hoy-son-dos-bloques",
+    "href": "s6_minicontrol_y_proyecto.html#hoy-son-dos-bloques",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "Hoy son dos bloques",
+    "text": "Hoy son dos bloques\nLa hora se reparte así:\n\n\n\n\n\n\n\n\n\nBloque\nTiempo\nHerramienta\nProducto\n\n\n\n\n1. Mini-control SQL\n40 min\nPapel + chuleta SQL\nExamen entregado en mano al profesor\n\n\n2. Arranque del proyecto\n20 min\nLibreOffice Base + Pluma\nTu .odb ampliado a 15 registros por tabla + 3 ideas anotadas para S7\n\n\n\nNo esperes a que terminen los demás: en cuanto entregues el examen al profesor, pasas a tu ordenador y empiezas el bloque 2 por tu cuenta.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#mini-control-sql-40-min-papel",
+    "href": "s6_minicontrol_y_proyecto.html#mini-control-sql-40-min-papel",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "1. Mini-control SQL (40 min, papel)",
+    "text": "1. Mini-control SQL (40 min, papel)\nEl profesor te entrega dos hojas:\n\nLa hoja del examen (versión A o B; la asigna el profesor).\nUna hoja aparte con el esquema E-R de una base de datos nueva, que verás por primera vez al recibir el examen.\n\nSobre la mesa, solo: el examen, el esquema, la chuleta SQL impresa y el bolígrafo. Nada de ordenador, móvil, apuntes ni la base de datos biblioteca que has usado en S4 y S5.\nEl examen tiene 9 cuestiones, todas del tipo “escribe la consulta SQL que…”, con un total de 10 puntos repartidos así: 1 + 1 + 1 + 1 + 1,5 + 1,5 + 1,5 + 0,75 + 0,75. Es individual y silencioso.\n\n\n\n\n\n\nTipLee primero el esquema E-R\n\n\n\nAntes de escribir nada, dedica 2 minutos a mirar el esquema: identifica las tablas, sus claves primarias y, sobre todo, qué claves foráneas conectan qué tablas. Saber por qué columna se enlazan dos tablas te ahorra la mitad de los errores en los JOIN. Es el tropiezo que más se repitió en los retos de S5.\n\n\nCuando termines, entrega el examen en mano al profesor. No se sube a Moodle: la corrección la hace el profesor sobre el papel.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#pasamos-al-ordenador",
+    "href": "s6_minicontrol_y_proyecto.html#pasamos-al-ordenador",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "2. Pasamos al ordenador",
+    "text": "2. Pasamos al ordenador\nUna vez entregado el examen, abres tu equipo y arrancas el segundo bloque. Te quedan unos 20 minutos. El objetivo de hoy no es terminar el proyecto (eso es S7): es dejar tu base de datos cargada de datos suficientes para que en S7 puedas escribir consultas con sentido sobre ella.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#reabre-tu-tu_tema.odb",
+    "href": "s6_minicontrol_y_proyecto.html#reabre-tu-tu_tema.odb",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "3. Reabre tu <tu_tema>.odb",
+    "text": "3. Reabre tu &lt;tu_tema&gt;.odb\n\nAbre Moodle → curso de TICO → tarea “TAREA - Bases de datos”.\nDescarga &lt;tu_tema&gt;.odb (el archivo sin sufijo, el que vienes usando desde S5). Por defecto se guarda en la carpeta Descargas.\nÁbrelo con doble clic. Se abre en LibreOffice Base.\n\n\n\n\n\n\n\nTipHoy NO creas ninguna copia nueva\n\n\n\nSigues trabajando directamente sobre &lt;tu_tema&gt;.odb, igual que en S5. Las modificaciones de S6 son solo acumulativas (más datos, sin riesgo de perder nada): no hace falta copia de seguridad. Al final del día subes el &lt;tu_tema&gt;.odb actualizado y reemplaza al de Moodle. El &lt;tu_tema&gt;-s4.odb sigue intacto en Moodle como referencia del estado pre-SQL: no lo toques.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#amplía-los-datos-a-15-registros-por-tabla",
+    "href": "s6_minicontrol_y_proyecto.html#amplía-los-datos-a-15-registros-por-tabla",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "4. Amplía los datos a 15 registros por tabla",
+    "text": "4. Amplía los datos a 15 registros por tabla\nTu objetivo es que cada una de tus 3 tablas tenga 15 registros. Como en S5 tenías 5 o 6 por tabla, te tocará añadir entre 9 y 10 filas en cada una.\n\n\n\n\n\n\nWarningOrden defensivo: padres primero, hija después\n\n\n\nLa integridad referencial está activa en tu BD desde S2. Si añades una fila a la tabla hija que apunte a un id que aún no existe en la tabla padre correspondiente, Base te lo rechaza con un mensaje en pantalla. No se rompe nada, pero pierdes tiempo.\nPara evitarlo: llena primero las dos tablas padre hasta sus 15 registros, y solo después la tabla hija. Así, cuando teclees una FK en la hija, su id ya existe en la padre.\n\n\nCómo introducir los datos:\n\nEn la barra lateral de Base, doble clic sobre una tabla padre. Se abre la vista de datos.\nEn la fila vacía (la marcada con un asterisco a la izquierda), teclea los valores. Tabulador para pasar de un campo al siguiente.\nRepite hasta tener 15 filas. Cierra la pestaña de la tabla con la X.\nPasa a la otra tabla padre y, por último, a la hija.\nCuando hayas terminado, vuelve a la ventana principal de Base (la que lista Tablas, Consultas, Formularios, Informes) y guarda con Ctrl+S.\n\n\n\n\n\n\n\nTipDatos coherentes, no inventados al azar\n\n\n\n\nTildes reales en nombres y campos de texto: Lucía, García, Sofía, Clásico, Fantasía.\nSi tu tema lleva emails, usa el dominio del IES: nombre.apellido@iesmajuelo.com.\nEn la tabla hija, antes de teclear una FK, comprueba en las tablas padre qué id existen. Cada FK que escribas debe apuntar a un id que ya esté arriba.\nSi te quedas sin ideas para los datos, mira el mini-conjunto sugerido para tu tema en el Brief del proyecto y amplíalo siguiendo el mismo patrón.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#anota-3-ideas-de-consultas-para-s7",
+    "href": "s6_minicontrol_y_proyecto.html#anota-3-ideas-de-consultas-para-s7",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "5. Anota 3 ideas de consultas para S7",
+    "text": "5. Anota 3 ideas de consultas para S7\nEn S7 escribirás SQL real sobre tu BD. Para no llegar en blanco, hoy dejas anotadas 3 preguntas que querrías que tu base de datos pudiera responder. En S7 las convertirás en consultas SQL.\n\nAbre Pluma (Aplicaciones → Accesorios → Pluma).\nAbre tu retos_sql.sql desde la carpeta Descargas. Si no está ahí, descárgalo primero de Moodle (lo subiste al final de S5 con los 20 retos).\nBaja al final del archivo y añade tres líneas comentadas con tus ideas, una por línea, con este formato:\n\n-- Idea S7 1: ...\n-- Idea S7 2: ...\n-- Idea S7 3: ...\nLas preguntas tienen que ser cosas que tu BD pueda responder con lo aprendido en S4 y S5: filtros con WHERE, ordenaciones con ORDER BY, búsquedas parciales con LIKE, cruces de dos tablas con JOIN. Ejemplos del estilo, adaptados a algunos temas:\n\n“¿Qué clientes han hecho más de un pedido?”\n“¿Cuál es el equipo con más partidos jugados como local?”\n“¿Qué socios se inscribieron antes de 2025?”\n\nGuarda con Ctrl+S.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#producto-final-de-s6",
+    "href": "s6_minicontrol_y_proyecto.html#producto-final-de-s6",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "Producto final de S6",
+    "text": "Producto final de S6\nCuando termines la sesión debes tener:\n\nEl examen del mini-control entregado en mano al profesor (no se sube a Moodle).\nTu &lt;tu_tema&gt;.odb ampliado: 15 registros en cada una de las 3 tablas, con la integridad referencial respetada.\nTu retos_sql.sql con las 20 consultas de S5 + 3 ideas comentadas al final, listas para convertirlas en SQL en S7.\n\n\n\n\n\n\n\nImportanteAntes de irte: sube todo a Moodle\n\n\n\nLos ordenadores del IES borran todo al apagarse. Si dejas tu trabajo en Descargas, mañana ya no estará. Sube siempre todo a Moodle antes de irte.\nEn la tarea “TAREA - Bases de datos”:\n\n&lt;tu_tema&gt;.odb (versión ampliada de hoy): borra el &lt;tu_tema&gt;.odb que tenías subido y sube el actualizado. Mantén el mismo nombre, sin sufijo (no le añadas -s6).\nretos_sql.sql (con las 3 ideas añadidas): borra el de S5 y sube esta versión.\n&lt;tu_tema&gt;-s4.odb: no lo toques. Sigue como referencia del estado pre-SQL.\n\nAl terminar S6 deben quedar tres archivos en Moodle: &lt;tu_tema&gt;.odb (actualizado hoy), &lt;tu_tema&gt;-s4.odb (intacto desde S4) y retos_sql.sql.\nMantén la entrega en estado borrador. NO pulses “Entregar tarea” todavía: eso es en S7.\n\n\nEn S7 cerrarás el proyecto: convertirás las 3 ideas que has anotado hoy en SQL real, escribirás la memoria del proyecto y harás la entrega definitiva pulsando Entregar tarea.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s6_minicontrol_y_proyecto.html#si-te-atascas",
+    "href": "s6_minicontrol_y_proyecto.html#si-te-atascas",
+    "title": "S6 · Mini-control SQL + arranque del proyecto",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa probable\nCómo se arregla\n\n\n\n\nBase me dice “Integrity constraint violation” al añadir una fila a la tabla hija\nLa FK apunta a un id que no existe en la tabla padre\nComprueba que el id que estás escribiendo en la hija aparece arriba en la padre correspondiente. Si no, primero añade ese registro a la padre y vuelve a la hija.\n\n\nHe añadido datos pero al volver a abrir el .odb no aparecen\nNo has guardado el .odb desde la ventana principal\nVuelve a la ventana principal de Base (la que lista Tablas, Consultas, Formularios, Informes) y pulsa Ctrl+S. Después vuelve a probar.\n\n\nNo encuentro Pluma\nEstá en Aplicaciones → Accesorios → Pluma\nSi tampoco aparece ahí, abre el gestor de archivos, ve a Descargas, clic derecho sobre retos_sql.sql → Abrir con… → Pluma.\n\n\nHe subido un archivo equivocado a Moodle\nPasa a menudo\nEn tu entrega, borra el archivo erróneo y sube el correcto. Mientras estés en estado borrador puedes hacerlo cuantas veces quieras.\n\n\nSe me olvidó traer la chuleta SQL impresa\nPasa\nEl profesor lleva copias en clase y grapa una al examen al entregártelo. No te quedes sin examen por esto.\n\n\nMe sobra tiempo en el bloque 2\nHas ido rápido con la ampliación de datos\nEmpieza a adelantar S7: traduce alguna de tus 3 ideas a SQL real en retos_sql.sql comentándola con -- S7 borrador. En S7 la refinas.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>S6 · Mini-control SQL + arranque del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html",
+    "href": "s7_cierre_y_entrega.html",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "",
+    "text": "Lo que vas a hacer hoy",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#lo-que-vas-a-hacer-hoy",
+    "href": "s7_cierre_y_entrega.html#lo-que-vas-a-hacer-hoy",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "",
+    "text": "Convertir las 3 ideas que dejaste anotadas en retos_sql.sql en 3 consultas SQL reales sobre tu propia base de datos, guardadas en el panel Consultas de tu .odb.\nRellenar la memoria del proyecto sobre una plantilla .odt de LibreOffice Writer, con tu esquema E-R, tus 3 tablas, tus 3 consultas y una breve reflexión.\nHacer la autoevaluación dentro de la propia memoria.\nSubir los archivos finales a Moodle y, por primera y única vez en toda la unidad, pulsar “Entregar tarea”.\n\n\n\n\n\n\n\nImportanteAntes de empezar\n\n\n\nHoy es el día de cierre. Lee esto antes de tocar el teclado:\n\nTrae a clase tus 3 ideas claras: las que anotaste al final de S6 en retos_sql.sql con el formato -- Idea S7 N. Si no te acuerdas, repásalas en cuanto descargues el archivo.\nVas a usar dos programas a la vez: LibreOffice Base (para las 3 consultas y el .odb) y LibreOffice Writer (para la memoria).\nFecha límite: la que el profesor indique en Moodle. Si no te da tiempo a terminar la memoria en clase, la terminas en casa antes de esa fecha.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#descarga-tus-archivos-de-moodle",
+    "href": "s7_cierre_y_entrega.html#descarga-tus-archivos-de-moodle",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "1. Descarga tus archivos de Moodle",
+    "text": "1. Descarga tus archivos de Moodle\nEn la tarea “TAREA - Bases de datos” de Moodle tienes ahora mismo tres archivos del trabajo de las sesiones anteriores. Descárgalos los tres a la carpeta Descargas:\n\n&lt;tu_tema&gt;.odb (sin sufijo): tu base de datos al completo, con 15 registros por tabla y los cambios SQL de S5 ya aplicados. Es la que vas a usar hoy.\nretos_sql.sql: con tus 20 retos resueltos y, al final, las 3 ideas comentadas que anotaste en S6 (-- Idea S7 1: … y siguientes).\n&lt;tu_tema&gt;-s4.odb: la foto pre-SQL. Hoy no la tocas; sigue ahí como referencia.\n\nÁbrelos para tenerlos listos:\n\nDoble clic sobre &lt;tu_tema&gt;.odb → se abre en LibreOffice Base.\nDoble clic sobre retos_sql.sql → se abre en Pluma (si no, clic derecho → Abrir con… → Pluma).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#convierte-tus-3-ideas-en-sql-real",
+    "href": "s7_cierre_y_entrega.html#convierte-tus-3-ideas-en-sql-real",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "2. Convierte tus 3 ideas en SQL real",
+    "text": "2. Convierte tus 3 ideas en SQL real\nLas 3 ideas que anotaste en S6 eran preguntas en castellano del estilo “¿qué clientes han hecho más de un pedido?”. Hoy las traduces a SQL y las guardas como consultas dentro del propio .odb, igual que las consultas gráficas que creaste en S3, pero ahora escritas en SQL.\n\n\n\n\n\n\nWarningRecordatorio rápido: en Base se escribe SQL distinto\n\n\n\nLibreOffice Base usa el motor HSQLDB, no SQLite. La diferencia que más te va a afectar hoy:\n\nIdentificadores entre comillas dobles: nombres de tabla y de columna. Ejemplo: \"Series\", \"titulo\". Si te las dejas, HSQLDB convierte el nombre a mayúsculas internamente y no lo encuentra.\nCadenas de texto entre comillas simples, igual que en SQLite: 'Fantasía', 'Lucía'.\n\nPor lo demás, todo lo que aprendiste en S4 y S5 funciona igual: SELECT, WHERE, ORDER BY, LIKE, BETWEEN, IS NULL, JOIN. Lo que estás haciendo es lo mismo de siempre, solo que con comillas dobles en los identificadores.\nTienes el resumen completo en el bloque “Llevar SQL a Base” de la Chuleta SQL.\n\n\n\n2.1 Dónde se crean las consultas guardadas\nCon &lt;tu_tema&gt;.odb abierto en LibreOffice Base, fíjate en la barra lateral izquierda: lista cuatro categorías en este orden vertical: Tablas, Consultas, Formularios, Informes. Hoy trabajas en Consultas.\n\nHaz clic en Consultas (segunda categoría).\nEn el panel central pulsa Crear consulta en vista SQL….\nSe abre una ventana con un editor SQL grande. Es muy parecido a SQLime, pero corre dentro de Base y consulta tu BD.\n\n\n\n2.2 Para cada una de tus 3 ideas\nPara la Idea 1, vuelve a Pluma y mira qué escribiste como -- Idea S7 1. Tradúcela a SQL siguiendo este flujo:\n\nEscribe la consulta SQL en el editor de la ventana Crear consulta en vista SQL…. Recuerda las comillas dobles en los identificadores.\nEjecútala: en la barra superior de la ventana hay un icono Ejecutar consulta SQL (también funciona la tecla F5). Si la consulta es correcta, arriba aparece la tabla con el resultado. Si falla, abajo verás el mensaje de error.\nSi falla: corrige y vuelve a ejecutar. Errores típicos: comillas dobles olvidadas, nombre de columna mal escrito, JOIN sin ON. Mira la sección Si te atascas si te bloqueas.\nCuando funcione, guarda la consulta: pulsa Archivo → Guardar (o Ctrl+S). Base te pregunta el nombre. Llámala Consulta_1 (o algo más descriptivo, como libros_más_prestados). Cierra la ventana de la consulta con la X.\nDe vuelta a la ventana principal de Base, en el panel central de Consultas debe aparecer ahora Consulta_1 en la lista. Doble clic sobre ella te muestra el resultado tantas veces como quieras.\n\nRepite los pasos 1–5 con la Idea 2 (llámala Consulta_2) y con la Idea 3 (llámala Consulta_3).\n\n\n\n\n\n\nTipQué piden las 3 consultas como mínimo\n\n\n\n\nQue se ejecuten sin error (no aparece mensaje rojo abajo).\nQue devuelvan resultado coherente con tu pregunta original (no necesariamente muchas filas: a veces 0 filas es la respuesta correcta, si nadie cumple la condición que preguntaste).\nAl menos una de las tres tiene que cruzar dos tablas con JOIN, para que se note que aprovechas la estructura relacional. Las otras dos pueden ser SELECT con WHERE, LIKE o ORDER BY.\n\nSi tus 3 ideas eran las tres de tabla única, modifica una de ellas para que pase a usar JOIN. Por ejemplo: en lugar de “¿qué pedidos son del cliente con id_cliente = 3?”, formúlala como “¿qué pedidos ha hecho la clienta Lucía García?” — eso ya exige cruzar Pedidos con Clientes.\n\n\n\n\n2.3 Pega las consultas en retos_sql.sql\nLas consultas guardadas viven en el .odb y son la evidencia oficial. Pero también las queremos en retos_sql.sql como texto plano, para que sean fáciles de leer en la corrección.\nEn Pluma, abre retos_sql.sql. Al final del archivo verás las 3 ideas comentadas:\n-- Idea S7 1: ¿qué clientes han hecho más de un pedido?\n-- Idea S7 2: ¿cuál es el equipo con más partidos como local?\n-- Idea S7 3: ¿qué socios se inscribieron antes de 2025?\nSustituye cada idea por la consulta SQL real, manteniendo el comentario justo encima. Queda así:\n-- Consulta S7 1: ¿qué clientes han hecho más de un pedido?\nSELECT \"C\".\"nombre\", \"C\".\"apellidos\", COUNT(\"P\".\"id_pedido\") AS \"n_pedidos\"\nFROM \"Clientes\" AS \"C\"\nJOIN \"Pedidos\" AS \"P\" ON \"C\".\"id_cliente\" = \"P\".\"id_cliente\"\nGROUP BY \"C\".\"id_cliente\", \"C\".\"nombre\", \"C\".\"apellidos\"\nHAVING COUNT(\"P\".\"id_pedido\") &gt; 1;\n\n-- Consulta S7 2: …\n-- Consulta S7 3: …\nSi tu consulta no usa GROUP BY ni HAVING (cosas que no hemos visto en clase), no pasa nada: lo importante es que aparezca la SQL real, con las comillas dobles HSQLDB tal cual la pegaste en Base.\nGuarda el archivo con Ctrl+S.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#descarga-la-plantilla-de-la-memoria",
+    "href": "s7_cierre_y_entrega.html#descarga-la-plantilla-de-la-memoria",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "3. Descarga la plantilla de la memoria",
+    "text": "3. Descarga la plantilla de la memoria\nDescarga aquí plantilla_memoria.odt. Se guarda en Descargas. Doble clic la abre en LibreOffice Writer.\nLo primero, antes de escribir nada: Archivo → Guardar como… → ponle el nombre memoria.odt y guárdalo en Descargas. Así la plantilla queda intacta por si necesitas volver a empezar.\n\n\n\n\n\n\nTipComprobación rápida\n\n\n\nEn la barra de título de Writer ahora pone memoria.odt, no plantilla_memoria.odt. Si sigue poniendo plantilla_memoria, repite el Guardar como.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#rellena-la-memoria-sección-a-sección",
+    "href": "s7_cierre_y_entrega.html#rellena-la-memoria-sección-a-sección",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "4. Rellena la memoria sección a sección",
+    "text": "4. Rellena la memoria sección a sección\nLa plantilla ya tiene la estructura hecha. Tu trabajo es ir reemplazando los huecos marcados ([…]) por tu información real. Estas son las secciones, de arriba abajo:\n\n\n\n\n\n\n\n\nSección\nQué pones\nCuánto te lleva\n\n\n\n\nPortada\nTema elegido, tu nombre y apellidos, grupo (1.º TIC o 1.º BTOPA), fecha.\n1 min\n\n\nDescripción del dominio\n4–6 líneas explicando qué representa tu BD: qué entidades hay, qué relación tienen entre sí, para qué serviría.\n5 min\n\n\nEsquema E-R\nCaptura del diseñador de relaciones de Base. Ábrelo con Herramientas → Relaciones, organiza las 3 cajas y haz captura con la tecla Impr Pant o con Captura de pantalla del menú de aplicaciones. Pega la imagen en el hueco de la plantilla.\n5 min\n\n\nLas 3 tablas\nUna tabla por cada una de tus 3 tablas, listando sus campos: nombre, tipo, si es PK o FK, si admite NULL. La plantilla ya lleva una cabecera de ejemplo: solo tienes que rellenar las filas.\n5 min\n\n\nLas 3 consultas SQL\nPara cada consulta: enunciado en castellano, código SQL (copia-pega de retos_sql.sql), captura del resultado en Base, y 2 líneas explicando qué te dice ese resultado.\n8 min\n\n\nAutoevaluación\nMarca con X la casilla que mejor describa tu trabajo en cada uno de los 5 criterios + 4–6 líneas de reflexión final.\n5 min\n\n\nQué he aprendido\n3–5 líneas en formato libre. Lo más sincero que puedas: qué se te dio bien, qué se te resistió, qué cambiarías si volvieras a empezar.\n3 min\n\n\n\n\n\n\n\n\n\nTipCómo capturar bien una pantalla\n\n\n\n\nEn los equipos del IES, la tecla Impr Pant copia la pantalla al portapapeles. Pegas en Writer con Ctrl+V.\nSi solo quieres una zona, en Aplicaciones → Accesorios → Captura de pantalla puedes seleccionar un rectángulo. Guárdalo como PNG en Descargas y arrástralo a Writer.\nEn la imagen pegada en Writer, clic derecho → Tamaño y posición te deja redimensionarla. Que se vea legible (ni minúscula ni que ocupe una página entera).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#autoevaluación",
+    "href": "s7_cierre_y_entrega.html#autoevaluación",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "5. Autoevaluación",
+    "text": "5. Autoevaluación\nLa sección de autoevaluación ya está dentro de la memoria, justo antes de la reflexión. Funciona en dos partes.\n\nCasillas de la rúbrica simplificada\nPara cada uno de los 5 criterios, marca con X la casilla que mejor describa tu trabajo. Sé honesto: la autoevaluación no afecta a la nota final (la pone el profesor), pero sí ayuda a que aprendas a juzgar tu propio trabajo con criterio.\n\n\n\n\n\n\n\n\n\n\nCriterio\n4 — Excelente\n3 — Logrado\n2 — En desarrollo\n1 — Iniciado\n\n\n\n\nDiseño de tablas\n☐\n☐\n☐\n☐\n\n\nRelaciones e integridad\n☐\n☐\n☐\n☐\n\n\nDatos poblados\n☐\n☐\n☐\n☐\n\n\nConsultas SQL\n☐\n☐\n☐\n☐\n\n\nMemoria\n☐\n☐\n☐\n☐\n\n\n\nPara conocer al detalle qué pide cada nivel, mira la Rúbrica del proyecto.\n\n\nReflexión final\n4–6 líneas en las que respondas a estas tres preguntas:\n\n¿Qué parte del trabajo me ha salido mejor y por qué?\n¿En qué parte he tenido que pedir ayuda o repetir varias veces? ¿Qué hice para resolverlo?\nSi volviera a hacer este proyecto, ¿qué cambiaría?",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#exporta-la-memoria-a-pdf",
+    "href": "s7_cierre_y_entrega.html#exporta-la-memoria-a-pdf",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "6. Exporta la memoria a PDF",
+    "text": "6. Exporta la memoria a PDF\nCuando tengas la memoria completa y guardada como memoria.odt, vamos a exportar también una versión en PDF. Te servirá para dejar el formato congelado y para practicar la exportación, una habilidad útil más allá de esta unidad.\n\nEn Writer, con memoria.odt abierto: Archivo → Exportar como → Exportar como PDF….\nEn el cuadro que sale, deja las opciones por defecto y pulsa Exportar.\nDale el nombre memoria.pdf y guarda en Descargas, junto al memoria.odt.\nComprueba que se ha creado: en Descargas deben aparecer ahora memoria.odt Y memoria.pdf. Ábrelo con doble clic para verificar que se ve igual que en Writer.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#entrega-definitiva-en-moodle",
+    "href": "s7_cierre_y_entrega.html#entrega-definitiva-en-moodle",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "7. Entrega definitiva en Moodle",
+    "text": "7. Entrega definitiva en Moodle\nLlegó el momento. Vas a sustituir los archivos antiguos en Moodle por los finales y, después, pulsar “Entregar tarea”.\n\n7.1 Sube los archivos finales\nEn la tarea “TAREA - Bases de datos”, en tu entrega:\n\nBorra el &lt;tu_tema&gt;.odb antiguo (el que estaba subido al final de S6) y sube el &lt;tu_tema&gt;.odb actualizado de hoy, con las 3 consultas guardadas en el panel Consultas.\nBorra el retos_sql.sql antiguo y sube el actualizado, con las 3 consultas SQL reales (no solo las ideas comentadas).\nSube memoria.odt y memoria.pdf (archivos nuevos).\nNO toques &lt;tu_tema&gt;-s4.odb. Tiene que quedarse ahí como referencia del estado pre-SQL.\n\nAl final deben aparecer 5 archivos en tu entrega:\n\n\n\n\n\n\n\nArchivo\nContenido\n\n\n\n\n&lt;tu_tema&gt;.odb\nBD final, con 15 registros por tabla, INSERT/UPDATE/DELETE de S5 aplicados y 3 consultas guardadas en panel Consultas\n\n\n&lt;tu_tema&gt;-s4.odb\nFoto pre-SQL (intacta desde S4)\n\n\nretos_sql.sql\n20 retos sobre biblioteca + 3 consultas SQL reales sobre tu BD\n\n\nmemoria.odt\nMemoria editable\n\n\nmemoria.pdf\nMemoria con formato congelado\n\n\n\n\n\n7.2 Pulsa “Entregar tarea”\n\n\n\n\n\n\nWarningEsto es la entrega DEFINITIVA\n\n\n\nHasta hoy, tu entrega estaba en estado borrador: podías subir, borrar, volver a subir tantas veces como quisieras. Cuando pulses “Entregar tarea”, el estado pasa a Enviado y ya no podrás modificar los archivos sin pedir al profesor que reabra tu intento.\nAntes de pulsar, revisa una última vez que están los 5 archivos que toca y que abres memoria.pdf y se ve bien.\n\n\n\nEn tu entrega, pulsa el botón “Entregar tarea”.\nMoodle te pedirá confirmación con un mensaje del tipo “Una vez que envíe esta entrega, ya no podrá realizar más cambios”. Pulsa Continuar.\nEl estado de tu entrega cambia a Enviado. Comprúebalo: en la página de la tarea debe aparecer ahora “Estado de la entrega: Enviado para calificar” en lugar de “Borrador (no entregado)”.\n\nSi por accidente pulsaste Entregar antes de subir un archivo, avisa al profesor: puede reabrir tu intento para que termines.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#producto-final-de-s7",
+    "href": "s7_cierre_y_entrega.html#producto-final-de-s7",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "Producto final de S7",
+    "text": "Producto final de S7\nCuando termines la sesión debes tener:\n\nTu &lt;tu_tema&gt;.odb final con 3 consultas guardadas en el panel Consultas.\nTu retos_sql.sql con 20 retos + 3 consultas SQL reales.\nTu memoria.odt y tu memoria.pdf completos.\nEn Moodle, los 5 archivos subidos y la entrega en estado Enviado.\n\n\n\n\n\n\n\nImportanteAntes de irte\n\n\n\n\nComprueba el estado: en Moodle, en la tarea, debe aparecer “Enviado para calificar”, no “Borrador”. Si pone borrador, no has pulsado Entregar tarea o el navegador no llegó a confirmar la acción.\nSi te falta tiempo: si no terminas la memoria en clase, NO pulses Entregar tarea todavía. Sube lo que tengas en estado borrador, termina la memoria en casa antes de la fecha límite, y entonces sí pulsas Entregar.\nUna vez entregado, no se puede deshacer salvo que el profesor reabra tu intento. Pídelo solo si es necesario.\n\n\n\n¡Y con esto se cierra la unidad! Has diseñado una BD relacional de cero, la has poblado, le has hablado en SQL y has dejado consultas guardadas dentro del archivo. Es exactamente lo que hace cualquier desarrollador que trabaja con datos en el mundo real, solo que con herramientas más sofisticadas.",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "s7_cierre_y_entrega.html#si-te-atascas",
+    "href": "s7_cierre_y_entrega.html#si-te-atascas",
+    "title": "S7 · Cierre del proyecto y entrega",
+    "section": "Si te atascas",
+    "text": "Si te atascas\n\n\n\n\n\n\n\n\nSíntoma\nCausa probable\nCómo se arregla\n\n\n\n\nMi consulta da “Column not found: TITULO”\nTe has olvidado las comillas dobles en una columna\nPon comillas dobles alrededor de todos los identificadores: \"titulo\", \"Libros\", etc.\n\n\nMi consulta da “User lacks privilege or object not found: LIBROS”\nComillas dobles olvidadas en el nombre de la tabla\nIgual: \"Libros\", no Libros.\n\n\nMi JOIN da error de sintaxis\nTe has dejado el ON o el =\nPatrón fijo: JOIN \"tabla_b\" AS \"B\" ON \"A\".\"columna\" = \"B\".\"columna\". Cada lado del = debe ser una columna, no un valor.\n\n\nGuardé la consulta y al reabrir el .odb no aparece en panel Consultas\nNo has guardado el .odb desde la ventana principal de Base\nCtrl+S desde la ventana principal de Base (no desde la ventana de la consulta). Las consultas se persisten en el archivo .odb solo cuando guardas el .odb entero.\n\n\nAl exportar a PDF, las imágenes salen cortadas\nLa imagen se sale del margen de la página\nClic derecho sobre la imagen en Writer → Tamaño y posición → reduce el ancho. Vuelve a exportar.\n\n\nNo encuentro Captura de pantalla en el menú\nEstá en Aplicaciones → Accesorios → Captura de pantalla\nSi tampoco aparece ahí, usa la tecla Impr Pant: copia la pantalla al portapapeles y luego en Writer pulsas Ctrl+V.\n\n\nPulsé Entregar tarea y me falta un archivo\nPasa a veces\nAvisa al profesor para que reabra tu intento. Cuando vuelva al estado borrador podrás añadir el archivo y volver a pulsar Entregar.\n\n\nSubo memoria.odt y Moodle me lo rechaza por tamaño\nEl archivo pesa demasiado\nSuele ser por imágenes muy grandes. En Writer, Herramientas → Reducir tamaño de las imágenes o exporta y sube solo el memoria.pdf (suele pesar menos).",
+    "crumbs": [
+      "Las 7 sesiones",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>S7 · Cierre del proyecto y entrega</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html",
+    "href": "chuleta_sql.html",
+    "title": "Chuleta SQL",
+    "section": "",
+    "text": "Estructura básica de una consulta\nSELECT * devuelve todas las columnas. Cada sentencia termina en ;. Cadenas: 'comillas simples'. Los identificadores no se entrecomillan en SQLite.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#estructura-básica-de-una-consulta",
+    "href": "chuleta_sql.html#estructura-básica-de-una-consulta",
+    "title": "Chuleta SQL",
+    "section": "",
+    "text": "SELECT col1, col2, ...    -- columnas\nFROM   tabla              -- tabla\nWHERE  condición          -- filtro\nORDER BY campo ASC|DESC;  -- orden",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#operadores-en-where",
+    "href": "chuleta_sql.html#operadores-en-where",
+    "title": "Chuleta SQL",
+    "section": "Operadores en WHERE",
+    "text": "Operadores en WHERE\n\n\n\nOperador\nSignificado\nEjemplo\n\n\n\n\n=\nigual a\ngenero = 'Novela'\n\n\n&lt;&gt;\ndistinto de\ngenero &lt;&gt; 'Novela'\n\n\n&lt; &gt; &lt;= &gt;=\nmayor/menor\nanio &lt; 1950\n\n\nAND\ny\nanio&gt;2000 AND genero='Novela'\n\n\nOR\no\ngenero='Novela' OR genero='Fantasía'\n\n\nNOT\nniega\nNOT (anio &lt; 2000)",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#ordenar",
+    "href": "chuleta_sql.html#ordenar",
+    "title": "Chuleta SQL",
+    "section": "Ordenar",
+    "text": "Ordenar\nORDER BY anio ASC;            -- ascendente (por defecto)\nORDER BY anio DESC;           -- descendente\nORDER BY genero, anio DESC;   -- 1.º género, luego año desc",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#like-patrones-de-texto",
+    "href": "chuleta_sql.html#like-patrones-de-texto",
+    "title": "Chuleta SQL",
+    "section": "LIKE — patrones de texto",
+    "text": "LIKE — patrones de texto\n\n\n\nComodín\nSignifica\n\n\n\n\n%\ncualquier secuencia (incluida vacía)\n\n\n_\nexactamente un carácter\n\n\n\nWHERE titulo LIKE '%viento%'   -- contiene \"viento\"\nWHERE autor  LIKE 'García%'    -- empieza por \"García\"\nWHERE nombre LIKE '_a%'        -- 2.ª letra es \"a\"\nTildes: LIKE 'fantasia' no encuentra 'Fantasía'. Copia la tilde.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#between-rangos-inclusivos",
+    "href": "chuleta_sql.html#between-rangos-inclusivos",
+    "title": "Chuleta SQL",
+    "section": "BETWEEN — rangos (inclusivos)",
+    "text": "BETWEEN — rangos (inclusivos)\nWHERE anio BETWEEN 1950 AND 2000\nWHERE fecha BETWEEN '2025-10-01' AND '2025-10-31'\nBETWEEN x AND y ≡ &gt;= x AND &lt;= y. Las fechas son TEXT en formato ISO 'aaaa-mm-dd' con comillas simples.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#is-null-campos-vacíos",
+    "href": "chuleta_sql.html#is-null-campos-vacíos",
+    "title": "Chuleta SQL",
+    "section": "IS NULL — campos vacíos",
+    "text": "IS NULL — campos vacíos\nWHERE campo IS NULL        -- vacío\nWHERE campo IS NOT NULL    -- con valor\n(En el editor gráfico de Base se escribía IS EMPTY. En SQL puro siempre IS NULL.)",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#join-combinar-tablas",
+    "href": "chuleta_sql.html#join-combinar-tablas",
+    "title": "Chuleta SQL",
+    "section": "JOIN — combinar tablas",
+    "text": "JOIN — combinar tablas\nSELECT P.fecha_prestamo, L.titulo\nFROM   Prestamos AS P\nJOIN   Libros    AS L\n       ON P.id_libro = L.id_libro;\n\nJOIN ≡ INNER JOIN. Solo filas con pareja en ambas tablas.\nUne por la columna común: PK padre = FK hija.\nAlias con AS: Prestamos AS P → P.columna.\nEncadena más JOIN para 3+ tablas.\n\n\nLEFT JOIN — incluir lo huérfano\nSELECT R.nombre, P.fecha_prestamo\nFROM   Lectores  AS R\nLEFT JOIN Prestamos AS P\n       ON R.id_lector = P.id_lector;\nTrae todas las filas de la izquierda. Las que no tienen pareja a la derecha aparecen con NULL.\nFiltro típico para “solo huérfanos”: WHERE columna_de_la_derecha IS NULL.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#insert-añadir-filas",
+    "href": "chuleta_sql.html#insert-añadir-filas",
+    "title": "Chuleta SQL",
+    "section": "INSERT — añadir filas",
+    "text": "INSERT — añadir filas\nINSERT INTO Libros\n  (titulo, autor, genero, anio, ejemplares)\nVALUES\n  ('Pedro Páramo', 'Juan Rulfo', 'Novela', 1955, 2);\n\nColumnas y valores: mismo orden y número.\nEn SQLite, INTEGER PRIMARY KEY se autoasigna (puedes omitirlo).\nEn SQLime, tras un INSERT verás 0 rows. No es error. Verifica con un SELECT.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#update-modificar-filas",
+    "href": "chuleta_sql.html#update-modificar-filas",
+    "title": "Chuleta SQL",
+    "section": "UPDATE — modificar filas",
+    "text": "UPDATE — modificar filas\nUPDATE Libros\nSET    ejemplares = 5\nWHERE  id_libro = 1;\nSin WHERE se modifican TODAS las filas. Escribe siempre el WHERE.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#delete-borrar-filas",
+    "href": "chuleta_sql.html#delete-borrar-filas",
+    "title": "Chuleta SQL",
+    "section": "DELETE — borrar filas",
+    "text": "DELETE — borrar filas\nDELETE FROM Prestamos\nWHERE  id_prestamo = 7;\nSin WHERE se borran TODAS las filas. Mismo aviso.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#sql-en-tu-.odb-libreoffice-base",
+    "href": "chuleta_sql.html#sql-en-tu-.odb-libreoffice-base",
+    "title": "Chuleta SQL",
+    "section": "SQL en tu .odb (LibreOffice Base)",
+    "text": "SQL en tu .odb (LibreOffice Base)\nBase usa HSQLDB, no SQLite. Dos cambios obligatorios al pegar SQL en Herramientas → SQL…:\n1. Comillas dobles en identificadores (tabla y columnas):\nINSERT INTO \"Libros\" (\"titulo\", \"autor\")\nVALUES ('X', 'Y');\nSin comillas: Column not found: TITULO.\n2. id_X manual: HSQLDB no autoincrementa.\nINSERT INTO \"Libros\"\n  (\"id_libro\",\"titulo\",\"autor\",\n   \"genero\",\"anio\",\"ejemplares\")\nVALUES (13,'…','…','…',1985,3);\nSin id: Attempt to insert null into id_libro.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#esquema-de-biblioteca.db",
+    "href": "chuleta_sql.html#esquema-de-biblioteca.db",
+    "title": "Chuleta SQL",
+    "section": "Esquema de biblioteca.db",
+    "text": "Esquema de biblioteca.db\nLibros    (id_libro PK, titulo, autor,\n           genero, anio, ejemplares)\nLectores  (id_lector PK, nombre, apellidos,\n           curso, email)\nPrestamos (id_prestamo PK,\n           id_libro FK, id_lector FK,\n           fecha_prestamo, fecha_devolucion)",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "chuleta_sql.html#errores-típicos",
+    "href": "chuleta_sql.html#errores-típicos",
+    "title": "Chuleta SQL",
+    "section": "Errores típicos",
+    "text": "Errores típicos\n\n\n\n\n\n\n\nError\nArreglo\n\n\n\n\nno such table: X\nCarga biblioteca.db con open file.\n\n\nno such column: X\nPulsa tables y comprueba el nombre.\n\n\nambiguous column: id_X\nPrefija con alias: P.id_libro.\n\n\nWHERE con texto sin resultados\n'comillas simples' para texto.\n\n\nLIKE 'fantasia' no encuentra Fantasía\nCopia la tilde: '%Fantasía%'.\n\n\nBETWEEN con fechas vacío\n'aaaa-mm-dd' con comillas simples.\n\n\nIS EMPTY da error\nEn SQL puro: IS NULL.\n\n\nWHERE x = NULL no devuelve nada\nIS NULL / IS NOT NULL.\n\n\nINSERT/UPDATE/DELETE da 0 rows\nNormal en SQLime. Verifica con SELECT.\n\n\nColumn not found: TITULO (Base)\nComillas dobles: \"titulo\", \"Libros\".\n\n\nAttempt to insert null into id_X (Base)\nDa el id manualmente en el INSERT.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chuleta SQL</span>"
+    ]
+  },
+  {
+    "objectID": "brief_proyecto.html",
+    "href": "brief_proyecto.html",
+    "title": "Brief del proyecto",
+    "section": "",
+    "text": "Cómo elegir tema\nTu proyecto consiste en diseñar y construir una base de datos relacional sobre uno de los 6 temas que aparecen abajo. El catálogo es cerrado: no se aceptan temas fuera de la lista. La razón es práctica: el profesor ha pensado las 6 estructuras y puede atender dudas con eficiencia; un tema improvisado multiplicaría el coste de tutoría individual.\nPara cada tema tienes:\n\nUna descripción del dominio (qué representa).\nLas 3 tablas obligatorias, con sus campos sugeridos.\nUna 4.ª tabla opcional que sube nota.\nUn mini-conjunto de datos sugerido (5 registros por tabla con tildes reales y FKs coherentes). Te servirá como punto de partida en S1, S2 y S3. En S6 lo amplías a 15 registros por tabla.\n\n\n\n\n\n\n\nTipEl mini-conjunto sugerido es un patrón, no una imposición\n\n\n\nPuedes inventarte otros datos siempre que respetes:\n\nTildes y mayúsculas reales en los datos literales (Lucía, no Lucia).\nIDs correlativos del 1 al 5 en las dos tablas padre.\nFKs válidas en la tabla hija: cada id_padre que aparezca en una fila de la hija tiene que existir en la tabla padre correspondiente.\nEmails con dominio del IES: nombre.apellido@iesmajuelo.com.\n\n\n\n\n\n\nTema 1 — Plataforma de streaming\nDominio. Una plataforma como Netflix gestiona series y los usuarios que las ven. Cada visualización registra qué usuario empezó qué serie, cuándo y si la completó. La BD permite responder: ¿qué series son las más vistas?, ¿qué porcentaje de visualizaciones se completan?, ¿qué usuarios son más activos?.\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nSeries (padre 1)\nid_serie PK · titulo · anio · plataforma · valoracion\n\n\nUsuarios (padre 2)\nid_usuario PK · nombre · apellidos · edad · email\n\n\nVisualizaciones (hija)\nid_visualizacion PK · id_serie FK → Series · id_usuario FK → Usuarios · fecha · completada (0/1)\n\n\n\n4.ª opcional (sube nota): Generos. Campos: id_genero PK · nombre · descripcion. Cada serie tendría un id_genero (FK).\nMini-conjunto sugerido.\nSeries:\n  (1, 'Stranger Things',         2016, 'Netflix', 4.5)\n  (2, 'La Casa de Papel',        2017, 'Netflix', 4.7)\n  (3, 'The Crown',               2016, 'Netflix', 4.3)\n  (4, 'Élite',                   2018, 'Netflix', 4.0)\n  (5, 'Sherlock',                2010, 'HBO',     4.8)\n\nUsuarios:\n  (1, 'Lucía',  'Gómez Ruiz',     17, 'lucia.gomez@iesmajuelo.com')\n  (2, 'Mario',  'Pérez Sánchez',  16, 'mario.perez@iesmajuelo.com')\n  (3, 'Sofía',  'Ramírez Cruz',   18, 'sofia.ramirez@iesmajuelo.com')\n  (4, 'Adrián', 'Moreno Díaz',    17, 'adrian.moreno@iesmajuelo.com')\n  (5, 'Paula',  'Navarro Suárez', 16, 'paula.navarro@iesmajuelo.com')\n\nVisualizaciones (id_serie ∈ {1..5}, id_usuario ∈ {1..5}):\n  (1, 1, 1, '2026-04-15', 1)\n  (2, 2, 3, '2026-04-20', 1)\n  (3, 4, 2, '2026-05-01', 0)\n  (4, 1, 4, '2026-05-03', 1)\n  (5, 5, 5, '2026-05-08', 0)\n\n\n\nTema 2 — Tienda de tecnología\nDominio. Una tienda de informática y electrónica vende productos a clientes. Cada pedido registra qué cliente compró qué producto, cuándo y en qué cantidad. La BD permite responder: ¿qué productos se venden más?, ¿qué clientes han comprado más de un producto?, ¿qué facturación generó cada marca el mes pasado?.\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nProductos (padre 1)\nid_producto PK · nombre · marca · precio · stock\n\n\nClientes (padre 2)\nid_cliente PK · nombre · apellidos · telefono · email\n\n\nPedidos (hija)\nid_pedido PK · id_producto FK → Productos · id_cliente FK → Clientes · fecha · cantidad\n\n\n\n4.ª opcional (sube nota): Categorias. Campos: id_categoria PK · nombre · descripcion. Cada producto tendría una id_categoria (FK).\nMini-conjunto sugerido.\nProductos:\n  (1, 'iPad Air 11\"',                 'Apple',    599.00, 12)\n  (2, 'Galaxy Tab S9',                'Samsung',  729.00,  8)\n  (3, 'MacBook Air M3',               'Apple',   1199.00,  5)\n  (4, 'Logitech MX Master 3S',        'Logitech',  99.00, 25)\n  (5, 'Auriculares Sony WH-1000XM5',  'Sony',     359.00, 15)\n\nClientes:\n  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')\n  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')\n  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')\n  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')\n  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')\n\nPedidos (id_producto ∈ {1..5}, id_cliente ∈ {1..5}):\n  (1, 1, 1, '2026-04-10', 1)\n  (2, 4, 2, '2026-04-12', 2)\n  (3, 3, 3, '2026-04-18', 1)\n  (4, 5, 4, '2026-05-02', 1)\n  (5, 2, 5, '2026-05-06', 1)\n\n\n\nTema 3 — Clínica veterinaria\nDominio. Una clínica veterinaria atiende mascotas que pertenecen a sus dueños. Cada visita registra qué mascota acudió, traída por qué dueño, cuándo y por qué motivo. La BD permite responder: ¿qué mascotas vienen más a menudo?, ¿qué dueños han traído a sus animales este mes?, ¿qué motivos de consulta son más frecuentes?.\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nMascotas (padre 1)\nid_mascota PK · nombre · especie · raza · edad\n\n\nDuenos (padre 2)\nid_dueno PK · nombre · apellidos · telefono · email\n\n\nVisitas (hija)\nid_visita PK · id_mascota FK → Mascotas · id_dueno FK → Duenos · fecha · motivo\n\n\n\n4.ª opcional (sube nota): Especies. Campos: id_especie PK · nombre · descripcion. Cada mascota tendría una id_especie (FK).\nMini-conjunto sugerido.\nMascotas:\n  (1, 'Toby',  'Perro',   'Labrador',         4)\n  (2, 'Luna',  'Gato',    'Siamés',           2)\n  (3, 'Coco',  'Perro',   'Bulldog Francés',  6)\n  (4, 'Mía',   'Gato',    'Común europeo',    3)\n  (5, 'Rocky', 'Conejo',  'Belier',           1)\n\nDuenos:\n  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')\n  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')\n  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')\n  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')\n  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')\n\nVisitas (id_mascota ∈ {1..5}, id_dueno ∈ {1..5}):\n  (1, 1, 1, '2026-04-08', 'Vacuna anual')\n  (2, 2, 2, '2026-04-15', 'Revisión rutinaria')\n  (3, 3, 3, '2026-04-22', 'Otitis')\n  (4, 5, 4, '2026-05-04', 'Corte de uñas')\n  (5, 1, 1, '2026-05-09', 'Desparasitación')\n\n\n\n\n\n\nTip¿Por qué Duenos sin tilde?\n\n\n\nDuenos es el nombre técnico de la tabla, no un dato. Los nombres de tabla suelen escribirse sin tildes ni eñes para evitar problemas con motores o herramientas que no soportan UTF-8 fuera de cadenas. Los datos dentro de la tabla, en cambio, sí llevan tildes reales: el nombre del dueño es 'Lucía', no 'Lucia'.\n\n\n\n\n\nTema 4 — Liga deportiva\nDominio. Una liga (de fútbol o baloncesto) gestiona equipos, jugadores y los partidos que se disputan entre ellos. Cada partido tiene un equipo local y un jugador destacado (MVP). La BD permite responder: ¿qué equipo ha sido local más veces?, ¿qué jugadores han sido MVP en más de un partido?, ¿qué partidos se jugaron en el último mes?.\n\n\n\n\n\n\nWarningDecisión de modelado simplificada\n\n\n\nEn la realidad un jugador pertenece a un equipo. Para que las 3 tablas encajen en el patrón “padre 1 + padre 2 + hija con dos FKs” que estamos practicando en la unidad, simplificamos: Jugadores y Equipos son entidades independientes, y se relacionan a través de Partidos (el equipo local del partido y el jugador destacado del partido). Es un modelo pedagógico, no la BD que usaría una liga real.\n\n\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nEquipos (padre 1)\nid_equipo PK · nombre · ciudad · estadio · anio_fundacion\n\n\nJugadores (padre 2)\nid_jugador PK · nombre · apellidos · posicion · edad\n\n\nPartidos (hija)\nid_partido PK · id_equipo FK → Equipos (equipo local) · id_jugador FK → Jugadores (MVP del partido) · fecha · marcador\n\n\n\n4.ª opcional (sube nota): Estadios. Campos: id_estadio PK · nombre · ciudad · aforo. Cada equipo tendría un id_estadio (FK) en lugar del campo estadio de texto.\nMini-conjunto sugerido.\nEquipos:\n  (1, 'Real Betis',         'Sevilla',   'Benito Villamarín',     1907)\n  (2, 'Sevilla FC',         'Sevilla',   'Sánchez-Pizjuán',       1890)\n  (3, 'Atlético de Madrid', 'Madrid',    'Cívitas Metropolitano', 1903)\n  (4, 'Real Madrid',        'Madrid',    'Santiago Bernabéu',     1902)\n  (5, 'FC Barcelona',       'Barcelona', 'Spotify Camp Nou',      1899)\n\nJugadores:\n  (1, 'Isco',     'Alarcón',          'Centrocampista', 33)\n  (2, 'Vinícius', 'Júnior',           'Delantero',      25)\n  (3, 'Lamine',   'Yamal',            'Extremo',        18)\n  (4, 'Antoine',  'Griezmann',        'Delantero',      34)\n  (5, 'Youssef',  'En-Nesyri',        'Delantero',      28)\n\nPartidos (id_equipo ∈ {1..5}, id_jugador ∈ {1..5}):\n  (1, 1, 1, '2026-04-12', '2-1')\n  (2, 2, 5, '2026-04-19', '3-0')\n  (3, 4, 2, '2026-04-26', '4-2')\n  (4, 5, 3, '2026-05-03', '2-2')\n  (5, 3, 4, '2026-05-10', '1-0')\n\n\n\nTema 5 — Estudio de tatuajes o peluquería\nDominio. Un estudio de tatuajes (o una peluquería) atiende clientes que se hacen trabajos realizados por sus empleados. Cada trabajo registra qué cliente lo encargó, qué empleado lo hizo, cuándo y cuánto costó. La BD permite responder: ¿qué empleado ha hecho más trabajos?, ¿qué clientes son habituales?, ¿cuál fue la facturación de cada empleado?.\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nClientes (padre 1)\nid_cliente PK · nombre · apellidos · telefono · email\n\n\nEmpleados (padre 2)\nid_empleado PK · nombre · apellidos · especialidad · anio_inicio\n\n\nTrabajos (hija)\nid_trabajo PK · id_cliente FK → Clientes · id_empleado FK → Empleados · fecha · descripcion · precio\n\n\n\n4.ª opcional (sube nota): Servicios. Campos: id_servicio PK · nombre · precio_base. Cada trabajo tendría un id_servicio (FK) y precio se calcularía como ajuste sobre precio_base.\nMini-conjunto sugerido.\nClientes:\n  (1, 'Lucía',  'Gómez Ruiz',     '600 111 222', 'lucia.gomez@iesmajuelo.com')\n  (2, 'Mario',  'Pérez Sánchez',  '622 333 444', 'mario.perez@iesmajuelo.com')\n  (3, 'Sofía',  'Ramírez Cruz',   '633 555 666', 'sofia.ramirez@iesmajuelo.com')\n  (4, 'Adrián', 'Moreno Díaz',    '644 777 888', 'adrian.moreno@iesmajuelo.com')\n  (5, 'Paula',  'Navarro Suárez', '655 999 000', 'paula.navarro@iesmajuelo.com')\n\nEmpleados:\n  (1, 'Carmen',  'Rodríguez Vera', 'Realismo',         2018)\n  (2, 'Javier',  'Martín Ortiz',   'Tradicional',      2015)\n  (3, 'Marta',   'López García',   'Geométrico',       2021)\n  (4, 'Andrés',  'Ruiz Jiménez',   'Color',            2019)\n  (5, 'Beatriz', 'Sánchez Mora',   'Microblading',     2022)\n\nTrabajos (id_cliente ∈ {1..5}, id_empleado ∈ {1..5}):\n  (1, 1, 1, '2026-04-05', 'Brazo realismo (4 h)',         220.00)\n  (2, 2, 3, '2026-04-12', 'Geométrico antebrazo',         140.00)\n  (3, 3, 2, '2026-04-20', 'Old school tobillo',            85.00)\n  (4, 4, 4, '2026-05-02', 'Acuarela espalda',             310.00)\n  (5, 5, 5, '2026-05-08', 'Microblading cejas',           180.00)\n\n\n\nTema 6 — Gimnasio\nDominio. Un gimnasio gestiona socios que se apuntan a clases dirigidas (yoga, spinning, body pump…). Cada asistencia registra qué socio fue a qué clase, en qué fecha y si finalmente acudió. La BD permite responder: ¿qué clases tienen más asistencia?, ¿qué socios faltan más a menudo?, ¿cuántas clases dio el monitor de spinning este mes?.\nTablas obligatorias.\n\n\n\n\n\n\n\nTabla\nCampos sugeridos\n\n\n\n\nSocios (padre 1)\nid_socio PK · nombre · apellidos · fecha_alta · plan\n\n\nClases (padre 2)\nid_clase PK · nombre · dia_semana · hora · aforo\n\n\nAsistencias (hija)\nid_asistencia PK · id_socio FK → Socios · id_clase FK → Clases · fecha · asistio (0/1)\n\n\n\n4.ª opcional (sube nota): Monitores. Campos: id_monitor PK · nombre · apellidos · especialidad. Cada clase tendría un id_monitor (FK).\nMini-conjunto sugerido.\nSocios:\n  (1, 'Lucía',  'Gómez Ruiz',     '2026-01-10', 'Premium')\n  (2, 'Mario',  'Pérez Sánchez',  '2025-09-15', 'Básico')\n  (3, 'Sofía',  'Ramírez Cruz',   '2025-10-20', 'Premium')\n  (4, 'Adrián', 'Moreno Díaz',    '2026-02-03', 'Estudiante')\n  (5, 'Paula',  'Navarro Suárez', '2025-11-05', 'Básico')\n\nClases:\n  (1, 'Yoga',         'Lunes',     '18:00', 20)\n  (2, 'Spinning',     'Martes',    '19:30', 25)\n  (3, 'Body Pump',    'Miércoles', '20:00', 30)\n  (4, 'Pilates',      'Jueves',    '17:30', 18)\n  (5, 'Zumba',        'Viernes',   '19:00', 35)\n\nAsistencias (id_socio ∈ {1..5}, id_clase ∈ {1..5}):\n  (1, 1, 1, '2026-04-07', 1)\n  (2, 2, 2, '2026-04-08', 1)\n  (3, 3, 4, '2026-04-09', 0)\n  (4, 4, 3, '2026-04-15', 1)\n  (5, 5, 5, '2026-04-17', 1)\n\n\n\nCómo se evalúa tu BD\nUna vez elegido el tema, recuerda que el proyecto se evalúa con 5 criterios (CE3.4): diseño de tablas, relaciones e integridad, datos poblados, consultas SQL y memoria. Los pesos exactos y los descriptores los tienes en la Rúbrica del proyecto.\nLa entrega final se hace en S7: el .odb con 3 consultas SQL guardadas, retos_sql.sql con las consultas reales y la memoria del proyecto (en formatos .odt y .pdf). Los detalles de la entrega y la plantilla de la memoria están en S7 · Cierre del proyecto y entrega.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Brief del proyecto</span>"
+    ]
+  },
+  {
+    "objectID": "rubrica_proyecto.html",
+    "href": "rubrica_proyecto.html",
+    "title": "Rúbrica del proyecto",
+    "section": "",
+    "text": "Cómo funciona la rúbrica\nTu proyecto de BD se evalúa con 5 criterios, todos del CE3.4 (“Diseñar, crear y manipular una base de datos relacional sencilla, utilizando comandos de SQL”). Cada criterio se valora en una escala de 0 a 4:\n\n4 — Excelente: cumple lo pedido y va más allá.\n3 — Logrado: cumple lo pedido con calidad.\n2 — En desarrollo: cumple parcialmente; faltan piezas o hay errores.\n1 — Iniciado: solo se aprecia un intento; el grueso falta o está mal.\n0 — No entregado: no hay evidencia para este criterio.\n\nLa nota de los 5 criterios se combina con sus pesos para dar la nota del proyecto (sobre 10). Esa nota representa el 60 % de la calificación final del CE3.4 en esta unidad; el otro 40 % es el mini-control SQL de S6.\n\n\nResumen de criterios y pesos\n\n\n\n#\nCriterio\nPeso\n\n\n\n\n1\nDiseño de tablas\n25 %\n\n\n2\nRelaciones 1:N e integridad referencial\n20 %\n\n\n3\nDatos poblados\n15 %\n\n\n4\nConsultas SQL en la memoria\n30 %\n\n\n5\nMemoria del proyecto\n10 %\n\n\n\n\n\nCriterio 1 — Diseño de tablas (25 %)\n\n\n\n\n\n\n\nNivel\nDescripción\n\n\n\n\n4 — Excelente\nLas 3 tablas obligatorias están creadas con nombres claros en singular o plural consistente. Todos los campos tienen tipo de dato apropiado (INTEGER, VARCHAR con longitud razonable, DATE, BOOLEAN). Cada tabla tiene una clave primaria correctamente definida y de tipo entero. No hay redundancia de datos entre tablas.\n\n\n3 — Logrado\nLas 3 tablas están creadas con tipos de dato razonables y todas tienen clave primaria, pero algún campo tiene un tipo o longitud poco apropiados (p. ej. VARCHAR(255) para todo). Sin redundancias graves.\n\n\n2 — En desarrollo\nLas 3 tablas existen pero faltan claves primarias en alguna, o los tipos de datos están mal elegidos en varios campos (p. ej. fechas como texto sin formato), o hay redundancia evidente entre tablas.\n\n\n1 — Iniciado\nSolo se han creado 1 o 2 tablas, o varias tablas carecen de clave primaria, o los tipos de dato son arbitrarios y la BD no se puede usar de forma fiable.\n\n\n0 — No entregado\nNo se ha presentado ninguna evidencia para este criterio.\n\n\n\n\n\nCriterio 2 — Relaciones 1:N e integridad referencial (20 %)\n\n\n\n\n\n\n\nNivel\nDescripción\n\n\n\n\n4 — Excelente\nHay al menos 2 relaciones 1:N declaradas en el diseñador de relaciones de Base, ambas con integridad referencial activa (actualizar/eliminar en cascada o restringir, decisión razonada en la memoria). Las claves foráneas tienen el mismo tipo que la clave primaria a la que apuntan.\n\n\n3 — Logrado\nHay al menos 2 relaciones 1:N declaradas, pero la integridad referencial no está activa o está activa solo en una de ellas. Las FK están bien tipadas.\n\n\n2 — En desarrollo\nSolo hay 1 relación declarada, o las relaciones existen pero las FK están mal tipadas (la línea no aparece como 1:N en el diseñador).\n\n\n1 — Iniciado\nLas relaciones no están declaradas en el diseñador (existen los campos id_X pero sin línea de unión). El alumnado no comprende el concepto de relación.\n\n\n0 — No entregado\nNo se ha presentado ninguna evidencia para este criterio.\n\n\n\n\n\nCriterio 3 — Datos poblados (15 %)\n\n\n\n\n\n\n\nNivel\nDescripción\n\n\n\n\n4 — Excelente\nCada tabla tiene 5 o más registros. Los datos son coherentes con el dominio elegido (nombres realistas, fechas plausibles, FKs que apuntan a registros existentes). No hay valores NULL en campos que deberían ser obligatorios.\n\n\n3 — Logrado\nCada tabla tiene 5 o más registros y los datos son razonablemente coherentes. Algunos NULL en campos opcionales o algún detalle inverosímil sin afectar al funcionamiento.\n\n\n2 — En desarrollo\nAlguna tabla tiene menos de 5 registros, o aparecen FKs que apuntan a registros inexistentes (rompen la integridad), o los datos son notoriamente inverosímiles (todos iguales, “asdf”, etc.).\n\n\n1 — Iniciado\nLas tablas están casi vacías (1–2 registros) o los datos son aleatorios sin relación con el dominio.\n\n\n0 — No entregado\nNo se ha presentado ninguna evidencia para este criterio.\n\n\n\n\n\n\n\n\n\nTipEn esta unidad vamos un paso más allá\n\n\n\nAunque la rúbrica habla de “5 o más registros”, el plan de la unidad pide ampliar a 15 registros por tabla en S6. Llegar a esos 15 (con FKs coherentes y datos plausibles) es lo esperado para alcanzar el nivel 4 — Excelente.\n\n\n\n\nCriterio 4 — Consultas SQL (30 %)\n\n\n\n\n\n\n\nNivel\nDescripción\n\n\n\n\n4 — Excelente\nLa memoria incluye las consultas SQL pedidas (al menos 3 consultas guardadas en el panel Consultas del .odb, una de ellas con JOIN). Todas son sintácticamente correctas, devuelven resultados coherentes y aparecen documentadas con su enunciado, código SQL y captura del resultado en Base.\n\n\n3 — Logrado\nLas 3 consultas están presentes y son correctas en sintaxis. Falta alguna captura de resultado o algún enunciado, pero la consulta funciona y resuelve lo que dice resolver.\n\n\n2 — En desarrollo\nHay solo 1–2 consultas, o alguna tiene errores de sintaxis (la prueba ejecutaría pero devuelve error o resultado distinto al pretendido). El JOIN puede estar mal planteado (producto cartesiano sin filtro).\n\n\n1 — Iniciado\nHay 1–2 consultas y todas son del mismo tipo (3 SELECT sin variedad). Errores graves: omisión de WHERE en UPDATE/DELETE, JOIN sin condición.\n\n\n0 — No entregado\nNo se ha presentado ninguna evidencia para este criterio.\n\n\n\n\n\nCriterio 5 — Memoria del proyecto (10 %)\n\n\n\n\n\n\n\nNivel\nDescripción\n\n\n\n\n4 — Excelente\nMemoria completa con todas las secciones de la plantilla: portada (tema, autor, grupo), descripción del dominio, esquema E-R capturado del diseñador, descripción de cada tabla con sus campos, las 3 consultas con código y captura, autoevaluación cumplimentada y reflexión final. Estructura clara y ortografía cuidada.\n\n\n3 — Logrado\nMemoria con todas las secciones esperadas. Capturas presentes pero alguna borrosa o mal recortada. Algún error ortográfico o de redacción.\n\n\n2 — En desarrollo\nMemoria incompleta: faltan capturas o el esquema E-R, o secciones enteras (descripción del dominio, reflexión). Las capturas que hay no muestran la BD propia sino la de ejemplo de clase.\n\n\n1 — Iniciado\nMemoria mínima: una página con la lista de tablas, sin capturas ni explicación. Apenas se entiende qué BD ha hecho el alumno.\n\n\n0 — No entregado\nNo se ha presentado ninguna evidencia para este criterio.\n\n\n\n\n\nLectura conjunta de los 5 criterios\nPara sacar un 10 en el proyecto necesitas un 4 en los cinco criterios: 3 tablas bien diseñadas, 2 relaciones con integridad referencial, 15 registros coherentes, 3 consultas SQL guardadas (al menos una con JOIN) bien documentadas, y una memoria completa con su autoevaluación.\nSi cumples lo pedido en cada apartado pero sin más (nivel 3), la nota del proyecto será un 7,5, que se combinará con el mini-control SQL para dar la nota final del CE3.4.\n\n\n\n\n\n\nTipCómo usar esta rúbrica antes de entregar\n\n\n\nCuando termines la memoria en S7, antes de pulsar Entregar tarea, vuelve a esta página y revisa los 5 criterios. Por cada criterio pregúntate: “¿en qué nivel me situaría yo?”. Si en alguno te ves en el 2, todavía estás a tiempo de subirlo. Esa es la lógica de la autoevaluación que rellenas dentro de la memoria.",
+    "crumbs": [
+      "Material del proyecto",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Rúbrica del proyecto</span>"
+    ]
+  }
+]
