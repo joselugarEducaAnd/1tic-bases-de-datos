@@ -377,19 +377,19 @@ background: #453f93;
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><strong>4 — Excelente</strong></td>
-<td>Cada tabla tiene 5 o más registros. Los datos son coherentes con el dominio elegido (nombres realistas, fechas plausibles, FKs que apuntan a registros existentes). No hay valores NULL en campos que deberían ser obligatorios.</td>
+<td>Cada tabla tiene <strong>15 o más registros</strong>. Los datos son coherentes con el dominio elegido (nombres realistas, fechas plausibles, FKs que apuntan a registros existentes). No hay valores NULL en campos que deberían ser obligatorios.</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>3 — Logrado</strong></td>
-<td>Cada tabla tiene 5 o más registros y los datos son razonablemente coherentes. Algunos NULL en campos opcionales o algún detalle inverosímil sin afectar al funcionamiento.</td>
+<td>Cada tabla tiene <strong>entre 10 y 14 registros</strong> y los datos son razonablemente coherentes. Algunos NULL en campos opcionales o algún detalle inverosímil sin afectar al funcionamiento.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><strong>2 — En desarrollo</strong></td>
-<td>Alguna tabla tiene menos de 5 registros, o aparecen FKs que apuntan a registros inexistentes (rompen la integridad), o los datos son notoriamente inverosímiles (todos iguales, “asdf”, etc.).</td>
+<td>Alguna tabla obligatoria tiene <strong>entre 5 y 9 registros</strong>, o aparecen FKs que apuntan a registros inexistentes (rompen la integridad), o los datos son notoriamente inverosímiles (todos iguales, “asdf”, etc.).</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><strong>1 — Iniciado</strong></td>
-<td>Las tablas están casi vacías (1–2 registros) o los datos son aleatorios sin relación con el dominio.</td>
+<td>Alguna tabla obligatoria tiene <strong>menos de 5 registros</strong> o los datos son aleatorios sin relación con el dominio.</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><strong>0 — No entregado</strong></td>
@@ -403,11 +403,11 @@ background: #453f93;
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>En esta unidad vamos un paso más allá
+<span class="screen-reader-only">Tip</span>Por qué se pide subir a 15
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Aunque la rúbrica habla de “5 o más registros”, el plan de la unidad pide ampliar a <strong>15 registros por tabla</strong> en S6. Llegar a esos 15 (con FKs coherentes y datos plausibles) es lo esperado para alcanzar el nivel <strong>4 — Excelente</strong>.</p>
+<p>En S6 ampliamos cada tabla a 15 registros (con FKs coherentes y datos plausibles). Esa cifra es la que marca el nivel <strong>4 — Excelente</strong>; con 10–14 registros bien hechos te quedas en el nivel 3 (Logrado), que sigue siendo una buena nota.</p>
 </div>
 </div>
 </section>
