@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE01">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S1 · Concepto y primera tabla | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE01" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li class="active"> <a href="../html/s1-concepto-y-primera-tabla.html" class="active no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE01" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S1 · Concepto y primera tabla</h1></div>
+</header><div id="page-content-20260706153902PAGE01" class="page-content">
+<article id="20260706153902BLK001" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV001" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV001&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Entender qué es una <strong>base de datos relacional</strong> y los conceptos básicos: tabla, registro, campo, clave primaria.</li>
+<li>Elegir el <strong>tema de tu proyecto</strong> (uno de los 6 del catálogo).</li>
+<li>Crear tu propia base de datos vacía en <strong>LibreOffice Base</strong>.</li>
+<li>Diseñar la <strong>primera tabla</strong> y meter <strong>5 registros</strong> con IDs del 1 al 5.</li>
+</ul>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaImportante: en esta unidadbibliotecaes solo el ejemplo del profesor</p>
+<p>A lo largo de las sesiones verás capturas de una base de datos llamada <code>biblioteca</code>. Esa base de datos es <strong>el ejemplo del profesor</strong>, no la tuya. Tú no la copias. Tú vas a construir <strong>tu propia base de datos</strong> sobre el tema que elijas en el catálogo (Streaming, Tienda de tecnología, Veterinaria, Liga deportiva, Tatuajes/peluquería o Gimnasio).</p>
+</div>
+</section>
+<section class="level2" id="qué-es-una-base-de-datos-relacional">
+<h2 class="">1. ¿Qué es una base de datos relacional?</h2>
+<p>Una <strong>base de datos</strong> es un sistema para guardar información de forma organizada y poder consultarla rápido. Una <strong>base de datos relacional</strong> organiza la información en <strong>tablas</strong> (parecidas a las hojas de una hoja de cálculo) que se pueden <strong>conectar entre sí</strong> mediante valores comunes.</p>
+<p>Tres conceptos que vas a usar todo el tiempo:</p>
+<ul>
+<li><strong>Tabla</strong>: una entidad del mundo real (Series, Productos, Mascotas…). Es como una hoja de cálculo con columnas y filas.</li>
+<li><strong>Registro</strong>: una fila de la tabla. Una serie concreta, un producto concreto, una mascota concreta.</li>
+<li><strong>Campo</strong>: una columna de la tabla. Un atributo de la entidad: el título de la serie, el precio del producto, la edad de la mascota.</li>
+</ul>
+<p>Y un concepto clave para que la base de datos no se vuelva loca:</p>
+<ul>
+<li><strong>Clave primaria</strong> (Primary Key): un campo cuyo valor <strong>identifica de forma única</strong> a cada registro. Suele ser un número entero que va 1, 2, 3, 4… Por convención lo llamaremos <code>id_loquesea</code> (<code>id_serie</code>, <code>id_producto</code>, <code>id_mascota</code>…).</li>
+</ul>
+</section>
+<section class="level2" id="elige-tu-tema">
+<h2 class="">2. Elige tu tema</h2>
+<p>En las próximas sesiones vas a construir una base de datos sobre <strong>uno</strong> de estos 6 temas. Elige ahora y manténlo durante toda la unidad. Hoy vas a crear la <strong>primera tabla</strong> de tu tema (la entidad principal). En S2 añadirás otras dos tablas y las conectarás.</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tema</th>
+<th>Primera tabla (la de hoy)</th>
+<th>5 campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Plataforma de streaming</td>
+<td><code>Series</code></td>
+<td><code>id_serie</code>, <code>titulo</code>, <code>anio</code>, <code>plataforma</code>, <code>valoracion</code></td>
+</tr>
+<tr class="even">
+<td>2. Tienda de tecnología</td>
+<td><code>Productos</code></td>
+<td><code>id_producto</code>, <code>nombre</code>, <code>marca</code>, <code>precio</code>, <code>stock</code></td>
+</tr>
+<tr class="odd">
+<td>3. Clínica veterinaria</td>
+<td><code>Mascotas</code></td>
+<td><code>id_mascota</code>, <code>nombre</code>, <code>especie</code>, <code>raza</code>, <code>edad</code></td>
+</tr>
+<tr class="even">
+<td>4. Liga deportiva</td>
+<td><code>Equipos</code></td>
+<td><code>id_equipo</code>, <code>nombre</code>, <code>ciudad</code>, <code>estadio</code>, <code>anio_fundacion</code></td>
+</tr>
+<tr class="odd">
+<td>5. Tatuajes / peluquería</td>
+<td><code>Clientes</code></td>
+<td><code>id_cliente</code>, <code>nombre</code>, <code>apellidos</code>, <code>telefono</code>, <code>email</code></td>
+</tr>
+<tr class="even">
+<td>6. Gimnasio</td>
+<td><code>Socios</code></td>
+<td><code>id_socio</code>, <code>nombre</code>, <code>apellidos</code>, <code>fecha_alta</code>, <code>plan</code></td>
+</tr>
+</tbody>
+</table>
+<div class="marco marco-nota"><p class="marco-titulo">TipAntes de seguir</p>
+<p>Si dudas entre dos temas, abre el <a href="el-proyecto-brief.html">Brief del proyecto</a> para ver con más detalle cómo será cada uno al completo. Una vez elegido, <strong>anota el tema</strong> en tu cuaderno: lo necesitarás cada sesión.</p>
+</div>
+</section>
+<section class="level2" id="crea-tu-base-de-datos-vacía">
+<h2 class="">3. Crea tu base de datos vacía</h2>
+<p>Abre <strong>LibreOffice Base</strong>. Ve a <strong>Archivo → Nueva → Base de datos…</strong>.</p>
+<p>Aparecerá un asistente. En el primer paso, marca <strong>“Crear una base de datos nueva”</strong> y, muy importante, elige el motor <strong>HSQLDB integrado</strong>, no Firebird.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C01_wizard_motor_hsqldb.png" style="width:65.0%"/></p>
+<figcaption>Asistente con HSQLDB integrado seleccionado.</figcaption>
+</figure>
+</div>
+<div class="marco marco-formula"><p class="marco-titulo">Warning¿Por qué HSQLDB y no Firebird?</p>
+<p>LibreOffice Base ofrece dos motores. En esta unidad usaremos <strong>HSQLDB integrado</strong> porque es el que tienen configurado los equipos del IES y el que coincide con todas las capturas del material. Si eliges Firebird por error, las pantallas no se parecerán a las de este sitio y te costará seguir los pasos.</p>
+</div>
+<p>Pulsa <em>Siguiente</em>. En el segundo paso deja marcadas las dos casillas por defecto (<strong>“Sí, registrar la base de datos”</strong> y <strong>“Abrir la base de datos para editarla”</strong>) → <em>Finalizar</em>.</p>
+<p>Aparecerá el diálogo <strong>Guardar como</strong>. Ponle un nombre que identifique tu tema, por ejemplo <code>streaming.odb</code>, <code>tienda_tecnologia.odb</code>, <code>veterinaria.odb</code>. Guárdalo en la carpeta que te haya indicado el profesor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C02_guardar_como_biblioteca.png" style="width:60.0%"/></p>
+<figcaption>Diálogo “Guardar como” con la ruta de tu carpeta de trabajo.</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><em>La captura muestra <code>biblioteca.odb</code> porque es el ejemplo del profesor. Tú guardarás tu propia base de datos con el nombre de tu tema.</em></p>
+</blockquote>
+<p>Tras guardar, se abre la ventana principal de Base con la barra lateral izquierda: <strong>Tablas, Consultas, Formularios, Informes</strong>. Esta es la pantalla con la que vas a trabajar las próximas tres sesiones.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C03_vista_principal_base.png" style="width:70.0%"/></p>
+<figcaption>Vista principal de Base. La barra lateral izquierda es tu zona de trabajo.</figcaption>
+</figure>
+</div>
+</section>
+<section class="level2" id="diseña-la-primera-tabla">
+<h2 class="">4. Diseña la primera tabla</h2>
+<p>En la barra lateral izquierda haz clic en <strong>Tablas</strong>. En el panel central pulsa <strong>“Crear tabla en vista Diseño…”</strong>.</p>
+<p>Se abre la <strong>vista Diseño</strong>, donde defines los campos de la tabla <strong>sin meter todavía ningún dato</strong>. Esto es importante: primero diseñas, después rellenas.</p>
+<p>Crea los <strong>5 campos</strong> de tu primera tabla siguiendo la fila de tu tema en la tabla de la sección 2. Para cada campo:</p>
+<ol type="1">
+<li>Escribe el <strong>nombre del campo</strong> (por ejemplo <code>id_serie</code>).</li>
+<li>Elige el <strong>tipo</strong>:
+<ul>
+<li><code>id_*</code> → <strong>Entero [INTEGER]</strong></li>
+<li>Texto (títulos, nombres, marcas, ciudades…) → <strong>Texto [VARCHAR]</strong>, longitud según necesites (50–200 caracteres).</li>
+<li>Año o edad → <strong>Entero pequeño [SMALLINT]</strong>.</li>
+<li>Precio o valoración con decimales → <strong>Decimal [DECIMAL]</strong>.</li>
+<li>Fecha (<code>fecha_alta</code>) → <strong>Fecha [DATE]</strong>.</li>
+</ul></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C04_diseno_tabla_libros.png" style="width:70.0%"/></p>
+<figcaption>Vista Diseño con los campos definidos. La tabla está vacía: no hay datos todavía.</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><em>La captura corresponde a la tabla <code>Libros</code> del ejemplo del profesor. La tuya tendrá los campos de tu tema, pero la pantalla se ve igual.</em></p>
+</blockquote>
+<p>Ahora marca tu campo <code>id_*</code> como <strong>clave primaria</strong>: haz clic con el botón derecho sobre la flecha verde a la izquierda del nombre del campo y elige <strong>“Llave primaria”</strong>. Aparecerá un icono de llave amarilla.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C05_marcar_clave_primaria.png" style="width:55.0%"/></p>
+<figcaption>Click derecho sobre la flecha verde → “Llave primaria”.</figcaption>
+</figure>
+</div>
+<p>Cierra la pestaña de diseño con <code>Ctrl+W</code>. Te preguntará por el nombre de la tabla: pon el nombre que aparece en la columna <em>“Primera tabla”</em> de tu fila (<code>Series</code>, <code>Productos</code>, <code>Mascotas</code>…).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C06_dialogo_guardar_tabla.png" style="width:45.0%"/></p>
+<figcaption>Diálogo “Guardar la tabla” con el nombre escrito.</figcaption>
+</figure>
+</div>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteTodavía no abras la tabla</p>
+<p>Has diseñado la estructura. Antes de meter datos, comprueba en la barra lateral que tu tabla aparece listada. Si está, sigue al paso 5.</p>
+</div>
+</section>
+<section class="level2" id="introduce-5-registros">
+<h2 class="">5. Introduce 5 registros</h2>
+<p>Ahora sí: doble clic en tu tabla en la barra lateral. Se abre la <strong>vista hoja de datos</strong>, donde introduces los registros.</p>
+<p>Mete <strong>5 registros</strong> con <code>id_*</code> del <strong>1 al 5</strong> correlativos. Es muy importante mantener esos IDs porque en S2 las <strong>otras tablas se conectarán</strong> con esta usando esos números.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C11_libros_primeros_registros.png" style="width:75.0%"/></p>
+<figcaption>Hoja de datos con los 5 primeros registros introducidos.</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><em>La captura es de <code>Libros</code> del ejemplo del profesor. La tuya tendrá tus propios títulos, marcas, mascotas o equipos.</em></p>
+</blockquote>
+<div class="marco marco-formula"><p class="marco-titulo">WarningCuida la ortografía de tus datos</p>
+<p>Los datos que metas en la base de datos son simultáneamente <em>ejemplo de campo de texto</em> y <em>ejemplo de buen español</em>. Escribe con <strong>tildes y mayúsculas reales</strong>: <em>Stranger Things</em>, <em>La Casa de Papel</em>, <em>Lucía Gómez</em>, <em>José Martínez</em>, <em>Pastor Alemán</em>, <em>Salmorejo cordobés</em>.</p>
+<p><strong>Excepción técnica:</strong> las direcciones de correo electrónico no llevan tildes ni eñes en la parte antes de la <code>@</code>, por convención del estándar SMTP. Si tu tema incluye un campo <code>email</code>, usa el dominio del centro: <code>nombre.apellido@iesmajuelo.com</code> (sin tildes en <code>nombre.apellido</code>).</p>
+</div>
+<p>Cuando termines, cierra la pestaña de la hoja de datos. Tu tabla queda guardada dentro del archivo <code>.odb</code>.</p>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte: sube tu archivo a Moodle</p>
+<p>Los ordenadores del IES <strong>borran todo al apagarse</strong>. Sube tu <code>.odb</code> a la tarea <strong>“TAREA - Bases de datos”</strong> del curso de Moodle, en estado <strong>borrador</strong> (no pulses “Entregar tarea”). Si no lo haces, mañana empiezas otra vez desde cero.</p>
+<p>El procedimiento completo está en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+</section>
+<section class="level2" id="producto-final-de-s1">
+<h2 class="">Producto final de S1</h2>
+<p>Al terminar la sesión debes tener:</p>
+<ul>
+<li>Tu archivo <code>.odb</code> con un nombre que identifique tu tema.</li>
+<li><strong>1 tabla</strong> diseñada (la entidad principal) con sus 5 campos y la clave primaria marcada.</li>
+<li><strong>5 registros</strong> con <code>id_*</code> correlativos del 1 al 5.</li>
+</ul>
+<p>En la siguiente sesión añadirás <strong>2 tablas más</strong> y aprenderás a <strong>conectarlas</strong> para que la base de datos sepa, por ejemplo, que el préstamo número 7 lo hizo el lector número 3 sobre el libro número 6.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problema</th>
+<th>Qué pasa</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>El asistente solo me ofrece Firebird</td>
+<td>Tu LibreOffice tiene HSQLDB desactivado</td>
+<td>Avisa al profesor: hay que activarlo en Preferencias.</td>
+</tr>
+<tr class="even">
+<td>He cerrado la pestaña sin guardar</td>
+<td>Has perdido el diseño de la tabla</td>
+<td>Vuelve a empezar el paso 4. No pasa nada, ahora vas más rápido.</td>
+</tr>
+<tr class="odd">
+<td>No me deja marcar clave primaria</td>
+<td>Puede que estés pulsando sobre el nombre del campo</td>
+<td>Click derecho sobre la <strong>flecha verde</strong> a la izquierda del nombre, no sobre el texto del nombre.</td>
+</tr>
+<tr class="even">
+<td>Mi tabla pone <em>(Sin nombre)</em> en la barra lateral</td>
+<td>No le pusiste nombre al guardarla</td>
+<td>Click derecho sobre la tabla → “Renombrar”.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../index.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/s2-relaciones-e-integridad.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

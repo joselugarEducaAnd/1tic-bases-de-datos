@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE02">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S2 · Relaciones e integridad | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE02" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li class="active"> <a href="../html/s2-relaciones-e-integridad.html" class="active no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE02" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S2 · Relaciones e integridad</h1></div>
+</header><div id="page-content-20260706153902PAGE02" class="page-content">
+<article id="20260706153902BLK002" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV002" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV002&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Entender qué es una <strong>clave foránea</strong> y por qué se llaman <em>bases de datos relacionales</em>.</li>
+<li>Crear las <strong>otras 2 tablas</strong> del proyecto, todavía vacías.</li>
+<li>Definir <strong>2 relaciones 1:N</strong> entre las 3 tablas con <strong>integridad referencial</strong>.</li>
+<li>Cargar los datos <strong>en el orden correcto</strong> para que la base de datos no proteste.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de empezar: descarga tu archivo de Moodle</p>
+<p>Abre la tarea <strong>“TAREA - Bases de datos”</strong> y descarga el <code>.odb</code> que subiste al final de S1. Trabaja sobre ese archivo descargado, no crees uno nuevo. Si no lo descargas, perderás todo lo de S1.</p>
+<p>El procedimiento completo está en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+</section>
+<section class="level2" id="por-qué-necesitamos-relaciones">
+<h2 class="">1. Por qué necesitamos relaciones</h2>
+<p>Mira la base de datos <code>biblioteca</code> del profesor (la que aparece en las capturas). Si solo tuvieras una tabla <code>Libros</code>, no habría forma decente de guardar quién toma prestado cada libro y cuándo, sin repetir información mil veces. La solución es <strong>separar en varias tablas</strong> y <strong>conectarlas</strong>: <code>Libros</code>, <code>Lectores</code> y <code>Prestamos</code>.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><p style="text-align:center"><img alt="Diagrama de la unidad" src="../content/resources/diagrama-s2-relaciones-e-integridad-1.svg" style="max-width:100%;height:auto"/></p><p></p>
+</div>
+</div>
+</div>
+<p>Un <strong>libro</strong> puede aparecer en <strong>muchos</strong> préstamos. Un <strong>lector</strong> puede tener <strong>muchos</strong> préstamos. Pero cada préstamo está asociado a <strong>un solo</strong> libro y a <strong>un solo</strong> lector. Eso es una <strong>relación 1:N</strong>.</p>
+<div class="marco marco-nota"><p class="marco-titulo">TipTu tema sigue la misma estructura</p>
+<p>Las imágenes y los ejemplos del cuerpo de esta sesión usan <code>biblioteca</code> porque es la base de datos que el profesor ha preparado para que veas el procedimiento completo. <strong>Tú trabajas con el tema que elegiste en S1.</strong> Tu base de datos tendrá exactamente la misma forma (2 tablas padre + 1 tabla hija con 2 relaciones 1:N), pero con los nombres y campos de tu tema. Mira la tabla maestra de §3 cuando necesites concretar.</p>
+</div>
+</section>
+<section class="level2" id="tres-conceptos-clave">
+<h2 class="">2. Tres conceptos clave</h2>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaClave foránea (FK)</p>
+<p>Un campo de una tabla que <strong>apunta a la clave primaria de otra</strong>. Por ejemplo, si en <code>Prestamos</code> tienes <code>id_libro = 3</code>, ese 3 significa “el registro número 3 de <code>Libros</code>”. Sin la clave foránea, el número 3 no querría decir nada.</p>
+</div>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaRelación 1:N</p>
+<p>Una fila en la tabla <strong>padre</strong> puede estar relacionada con <strong>muchas</strong> filas de la <strong>hija</strong>. Un libro aparece en muchos préstamos; un lector tiene muchos préstamos; pero cada préstamo pertenece a <strong>un solo</strong> libro y a <strong>un solo</strong> lector.</p>
+</div>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaIntegridad referencial</p>
+<p>Una “alarma” que la base de datos activa cuando defines una relación. A partir de entonces, <strong>te impide meter un valor en una FK que no exista en la tabla padre</strong>. Si en <code>Prestamos</code> intentas escribir <code>id_libro = 99</code> y no existe el registro 99 en <code>Libros</code>, la base de datos rechaza el <code>INSERT</code>. Te protege de la incoherencia.</p>
+</div>
+</section>
+<section class="level2" id="crea-las-otras-2-tablas-todavía-vacías">
+<h2 class="">3. Crea las otras 2 tablas (todavía vacías)</h2>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteNO metas datos todavía</p>
+<p>Hoy las tablas se quedan vacías. Primero las diseñas, luego defines las relaciones, y <strong>al final</strong> cargas los datos. Si lo haces al revés, las relaciones fallarán al crearse.</p>
+</div>
+<p>Busca tu tema en la siguiente tabla. La <strong>Tabla 2</strong> es la otra padre (junto a la que hiciste en S1) y la <strong>Tabla 3</strong> es la <strong>hija</strong>, que tendrá las dos claves foráneas.</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tema</th>
+<th>Tabla 2 (otra padre) — campos</th>
+<th>Tabla 3 (hija) — campos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Streaming</td>
+<td><code>Usuarios</code>: <code>id_usuario</code>, <code>nombre</code>, <code>apellidos</code>, <code>email</code></td>
+<td><code>Visualizaciones</code>: <code>id_visualizacion</code>, <code>id_serie</code>, <code>id_usuario</code>, <code>fecha</code>, <code>episodios</code></td>
+</tr>
+<tr class="even">
+<td>2. Tienda</td>
+<td><code>Clientes</code>: <code>id_cliente</code>, <code>nombre</code>, <code>apellidos</code>, <code>email</code>, <code>ciudad</code></td>
+<td><code>Pedidos</code>: <code>id_pedido</code>, <code>id_producto</code>, <code>id_cliente</code>, <code>fecha</code>, <code>cantidad</code></td>
+</tr>
+<tr class="odd">
+<td>3. Veterinaria</td>
+<td><code>Dueños</code>: <code>id_dueno</code>, <code>nombre</code>, <code>apellidos</code>, <code>telefono</code></td>
+<td><code>Visitas</code>: <code>id_visita</code>, <code>id_mascota</code>, <code>id_dueno</code>, <code>fecha</code>, <code>motivo</code></td>
+</tr>
+<tr class="even">
+<td>4. Liga</td>
+<td><code>Jugadores</code>: <code>id_jugador</code>, <code>nombre</code>, <code>apellidos</code>, <code>posicion</code>, <code>dorsal</code></td>
+<td><code>Partidos</code>: <code>id_partido</code>, <code>id_equipo</code>, <code>id_jugador</code>, <code>fecha</code>, <code>resultado</code></td>
+</tr>
+<tr class="odd">
+<td>5. Tatuajes</td>
+<td><code>Empleados</code>: <code>id_empleado</code>, <code>nombre</code>, <code>especialidad</code>, <code>anios_experiencia</code></td>
+<td><code>Trabajos</code>: <code>id_trabajo</code>, <code>id_cliente</code>, <code>id_empleado</code>, <code>fecha</code>, <code>precio</code></td>
+</tr>
+<tr class="even">
+<td>6. Gimnasio</td>
+<td><code>Clases</code>: <code>id_clase</code>, <code>nombre</code>, <code>dia_semana</code>, <code>hora</code>, <code>duracion_min</code></td>
+<td><code>Asistencias</code>: <code>id_asistencia</code>, <code>id_socio</code>, <code>id_clase</code>, <code>fecha</code></td>
+</tr>
+</tbody>
+</table>
+<p>Crea las dos tablas con el procedimiento de S1 (<strong>barra lateral → Tablas → Crear tabla en vista Diseño…</strong>). Para cada una:</p>
+<ol type="1">
+<li>Define los campos con sus tipos (mismas reglas que en S1: <code>id_*</code> → INTEGER, texto → VARCHAR, fechas → DATE).</li>
+<li>Marca como <strong>clave primaria</strong> el <code>id_*</code> propio de la tabla (el primer campo de cada fila en la tabla maestra de arriba; en <code>biblioteca</code>, sería <code>id_lector</code> para <code>Lectores</code> e <code>id_prestamo</code> para <code>Prestamos</code>).</li>
+<li>Guarda con el nombre exacto que aparece en la columna correspondiente.</li>
+</ol>
+<div class="marco marco-nota"><p class="marco-titulo">TipEn la tabla 3, las FKs son INTEGER normales,NOclaves primarias</p>
+<p>Por ejemplo, en <code>Prestamos</code> (la hija de <code>biblioteca</code>), la <strong>única</strong> clave primaria es <code>id_prestamo</code>. Los campos <code>id_libro</code> e <code>id_lector</code> son INTEGER sin más: serán claves foráneas, pero eso lo definirás en el siguiente paso (Herramientas → Relaciones), no marcando llaves.</p>
+</div>
+<p>Cuando termines, en tu barra lateral deben aparecer <strong>3 tablas</strong> listadas, todas vacías.</p>
+</section>
+<section class="level2" id="define-las-relaciones">
+<h2 class="">4. Define las relaciones</h2>
+<p>Abre el menú <strong>Herramientas → Relaciones…</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C07_menu_herramientas_relaciones.png" style="width:55.0%"/></p>
+<figcaption>Menú Herramientas con la opción “Relaciones…”.</figcaption>
+</figure>
+</div>
+<p>Se abre la ventana del <strong>diseñador de relaciones</strong> y, encima, el diálogo <strong>“Añadir tablas”</strong>. Selecciona <strong>las 3 tablas</strong> y pulsa <em>Añadir</em>. Después <em>Cerrar</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C08_dialogo_añadir_tablas.png" style="width:55.0%"/></p>
+<figcaption>Diálogo “Añadir tablas” con tus 3 tablas.</figcaption>
+</figure>
+</div>
+<p>Ya tienes las 3 tablas representadas como cajitas. Ahora <strong>arrastra</strong> desde el <code>id_*</code> de la <strong>padre</strong> hasta el campo equivalente en la <strong>hija</strong>. En el ejemplo de <code>biblioteca</code>:</p>
+<ul>
+<li>Arrastra <code>Libros.id_libro</code> → soltar sobre <code>Prestamos.id_libro</code>. Aparece una línea con un <strong>“1”</strong> en Libros y una <strong>“n”</strong> en Prestamos.</li>
+<li>Arrastra <code>Lectores.id_lector</code> → soltar sobre <code>Prestamos.id_lector</code>. Aparece otra línea 1:N.</li>
+</ul>
+<p><strong>Adapta los nombres a las tablas de tu tema</strong> (mira la columna “Tabla 3 (hija) — campos” de la tabla maestra de §3 para saber qué dos FKs tienes que arrastrar) y repite el procedimiento con tus dos relaciones.</p>
+</section>
+<section class="level2" id="configura-la-integridad-referencial">
+<h2 class="">5. Configura la integridad referencial</h2>
+<p>Haz <strong>doble click sobre cada línea</strong> que acabas de crear. Se abre el diálogo <strong>“Relaciones”</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C10_dialogo_integridad_referencial.png" style="width:60.0%"/></p>
+<figcaption>Diálogo de relaciones: cascada en actualización, “Sin acción” en eliminación.</figcaption>
+</figure>
+</div>
+<p>En cada relación, configura:</p>
+<ul>
+<li><strong>Opciones de actualización: “Actualizar en cascada”.</strong> Significa que si cambias el <code>id_*</code> de un padre, las FKs de los hijos se actualizan automáticamente.</li>
+<li><strong>Opciones de eliminación: “Sin acción”.</strong> Significa que <strong>no podrás borrar</strong> un padre que tenga hijos asociados, lo cual es exactamente lo que queremos: nada de fantasmas.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">WarningNUNCA selecciones “Predeterminar” en eliminación</p>
+<p>Si eliges <em>Opciones de eliminación → “Predeterminar”</em>, LibreOffice Base te devuelve el error <code>missing DEFAULT value on column id_X</code> y <strong>la relación no se crea</strong>. Es porque “Predeterminar” exige que la columna FK tenga un valor por defecto definido en la tabla, y aquí no lo hemos puesto.</p>
+<p>Usa siempre <strong>“Sin acción”</strong> o <strong>“Restringir”</strong>: en HSQLDB se comportan igual y te protegen de borrar padres con hijos.</p>
+</div>
+<p>Acepta el diálogo. Repite con la segunda relación.</p>
+<p>Cuando termines, <strong>Archivo → Guardar</strong> dentro de la ventana de relaciones, y ciérrala.</p>
+</section>
+<section class="level2" id="comprueba-tu-diagrama">
+<h2 class="">6. Comprueba tu diagrama</h2>
+<p>Reabre <strong>Herramientas → Relaciones…</strong> una última vez. Debes ver tus 3 tablas vacías con 2 líneas 1:N entre ellas. Esta es la <strong>forma</strong> de tu base de datos:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C09_diagrama_relaciones.png" style="width:80.0%"/></p>
+<figcaption>Diagrama de relaciones con 3 tablas vacías y 2 líneas 1:N. Este es el “mapa” de tu base de datos.</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><em>La captura corresponde al ejemplo <code>biblioteca</code> del profesor (Libros, Lectores, Préstamos). Tu diagrama tendrá las 3 tablas y los nombres de tu tema, pero la estructura será idéntica: 2 padres, 1 hija, 2 líneas 1:N.</em></p>
+</blockquote>
+</section>
+<section class="level2" id="ahora-sí-carga-los-datos-en-orden-topológico">
+<h2 class="">7. Ahora sí: carga los datos en orden topológico</h2>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteEl orden importa</p>
+<p>Carga los datos <strong>primero en las dos padres</strong>, después en la hija. Si metes datos en la hija antes que en las padres, la integridad referencial los rechazará.</p>
+</div>
+<ol type="1">
+<li><strong>Tabla 1</strong> (la de S1): ya tiene 5 registros con <code>id_*</code> 1–5. No tocar.</li>
+<li><strong>Tabla 2</strong> (la nueva padre): introduce <strong>5 registros</strong> con <code>id_*</code> correlativos del 1 al 5.</li>
+<li><strong>Tabla 3</strong> (la hija): introduce <strong>5 registros</strong>. En las FKs (<code>id_padre1</code>, <code>id_padre2</code>), pon <strong>únicamente</strong> valores entre 1 y 5: tienen que existir ya en las padres.</li>
+</ol>
+<p>Para meter los datos, doble click sobre cada tabla en la barra lateral y rellena la hoja de datos como en S1. Recuerda: los datos que escribes son <strong>los del tema que elegiste</strong>, no los de <code>biblioteca</code> del ejemplo.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningCuida ortografía y emails</p>
+<p>Vuelve a aplicar lo de S1: nombres con tildes y mayúsculas reales (<em>Lucía Gómez</em>, <em>Adrián Moreno</em>, <em>Pastor Alemán</em>, <em>Salmorejo cordobés</em>). Los emails sin tildes ni eñes en la parte antes de <code>@</code>, con dominio <code>@iesmajuelo.com</code>.</p>
+</div>
+<p>Si la base de datos rechaza algún <code>INSERT</code> con un error parecido a <code>Integrity constraint violation</code>, es que has puesto en una FK un número que no existe en la padre. Cambia ese valor a uno entre 1 y 5.</p>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte: sustituye tu archivo en Moodle</p>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong>: <strong>borra</strong> el <code>.odb</code> que tenías subido de S1 y <strong>sube</strong> el <code>.odb</code> actualizado de hoy. Mantenlo en estado <strong>borrador</strong> (no pulses “Entregar tarea”). Detalles en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+</section>
+<section class="level2" id="producto-final-de-s2">
+<h2 class="">Producto final de S2</h2>
+<p>Cuando termines, tu base de datos tiene:</p>
+<ul>
+<li><strong>3 tablas</strong>, cada una con su clave primaria y <strong>5 registros</strong>.</li>
+<li><strong>2 relaciones 1:N</strong> definidas con integridad referencial.</li>
+<li>Las FKs de la tabla hija son todas valores entre 1 y 5 (sin huérfanos).</li>
+</ul>
+<p>En S3 aprenderás a <strong>explotar</strong> esta base de datos: harás un formulario para que un usuario meta datos sin tocar las hojas, una consulta para responder preguntas concretas y un informe imprimible.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Integrity constraint violation - no parent X</code></td>
+<td>Hay datos en la hija que apuntan a un ID que no existe en la padre</td>
+<td>Vacía la hija (DELETE) o asegúrate de que cargas primero las padres con IDs 1–5</td>
+</tr>
+<tr class="even">
+<td><code>missing DEFAULT value on column id_X</code> al guardar relación</td>
+<td><em>Opciones de eliminación = “Predeterminar”</em></td>
+<td>Cambiar a “Sin acción” o “Restringir”</td>
+</tr>
+<tr class="odd">
+<td>La línea de relación no aparece como 1:N</td>
+<td>Los tipos de los dos campos no coinciden</td>
+<td>Comprueba que los dos <code>id_*</code> son INTEGER en ambas tablas</td>
+</tr>
+<tr class="even">
+<td>He cerrado la ventana de relaciones sin guardar</td>
+<td>El diagrama no se guardó</td>
+<td>Vuelve a <em>Herramientas → Relaciones…</em>; las tablas seguirán ahí, solo tienes que volver a arrastrar</td>
+</tr>
+<tr class="odd">
+<td>Doble click sobre la línea no abre el diálogo</td>
+<td>A veces hay que hacer click derecho sobre la línea</td>
+<td><em>Click derecho → Editar relación…</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s1-concepto-y-primera-tabla.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/s3-formularios-y-consultas.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

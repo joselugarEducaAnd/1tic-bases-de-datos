@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE08">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El proyecto (brief) | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE08" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li class="active"> <a href="../html/el-proyecto-brief.html" class="active no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE08" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">El proyecto (brief)</h1></div>
+</header><div id="page-content-20260706153902PAGE08" class="page-content">
+<article id="20260706153902BLK008" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV008" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV008&quot;}">
+<section class="level1" id="cómo-elegir-tema">
+<h1>Cómo elegir tema</h1>
+<p>Tu proyecto consiste en <strong>diseñar y construir una base de datos relacional</strong> sobre uno de los <strong>6 temas</strong> que aparecen abajo. El catálogo es <strong>cerrado</strong>: no se aceptan temas fuera de la lista. La razón es práctica: el profesor ha pensado las 6 estructuras y puede atender dudas con eficiencia; un tema improvisado multiplicaría el coste de tutoría individual.</p>
+<p>Para cada tema tienes:</p>
+<ul>
+<li>Una descripción del <strong>dominio</strong> (qué representa).</li>
+<li>Las <strong>3 tablas obligatorias</strong>, con sus campos sugeridos.</li>
+<li>Una <strong>4.ª tabla opcional</strong> que sube nota.</li>
+<li>Un <strong>mini-conjunto de datos sugerido</strong> (5 registros por tabla con tildes reales y FKs coherentes). Te servirá como punto de partida en S1, S2 y S3. En S6 lo amplías a 15 registros por tabla.</li>
+</ul>
+<div class="marco marco-nota"><p class="marco-titulo">TipEl mini-conjunto sugerido es un patrón, no una imposición</p>
+<p>Puedes inventarte otros datos siempre que respetes:</p>
+<ul>
+<li><strong>Tildes y mayúsculas reales</strong> en los datos literales (<code>Lucía</code>, no <code>Lucia</code>).</li>
+<li><strong>IDs correlativos</strong> del 1 al 5 en las dos tablas padre.</li>
+<li><strong>FKs válidas</strong> en la tabla hija: cada <code>id_padre</code> que aparezca en una fila de la hija tiene que existir en la tabla padre correspondiente.</li>
+<li><strong>Emails con dominio del IES</strong>: <code>nombre.apellido@iesmajuelo.com</code>.</li>
+</ul>
+</div>
+<hr/>
+</section>
+<section class="level1" id="tema-1-plataforma-de-streaming">
+<h1>Tema 1 — Plataforma de streaming</h1>
+<p><strong>Dominio.</strong> Una plataforma como Netflix gestiona series y los usuarios que las ven. Cada visualización registra qué usuario empezó qué serie, cuándo y si la completó. La BD permite responder: <em>¿qué series son las más vistas?</em>, <em>¿qué porcentaje de visualizaciones se completan?</em>, <em>¿qué usuarios son más activos?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Series</code> <em>(padre 1)</em></td>
+<td><code>id_serie</code> PK · <code>titulo</code> · <code>anio</code> · <code>plataforma</code> · <code>valoracion</code></td>
+</tr>
+<tr class="even">
+<td><code>Usuarios</code> <em>(padre 2)</em></td>
+<td><code>id_usuario</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>edad</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Visualizaciones</code> <em>(hija)</em></td>
+<td><code>id_visualizacion</code> PK · <code>id_serie</code> FK → Series · <code>id_usuario</code> FK → Usuarios · <code>fecha</code> · <code>completada</code> (0/1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Generos</code>.</strong> Campos: <code>id_genero</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada serie tendría un <code>id_genero</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Series:
+  (1, &#039;Stranger Things&#039;,         2016, &#039;Netflix&#039;, 4.5)
+  (2, &#039;La Casa de Papel&#039;,        2017, &#039;Netflix&#039;, 4.7)
+  (3, &#039;The Crown&#039;,               2016, &#039;Netflix&#039;, 4.3)
+  (4, &#039;Élite&#039;,                   2018, &#039;Netflix&#039;, 4.0)
+  (5, &#039;Sherlock&#039;,                2010, &#039;HBO&#039;,     4.8)
+
+Usuarios:
+  (1, &#039;Lucía&#039;,  &#039;Gómez Ruiz&#039;,     17, &#039;lucia.gomez@iesmajuelo.com&#039;)
+  (2, &#039;Mario&#039;,  &#039;Pérez Sánchez&#039;,  16, &#039;mario.perez@iesmajuelo.com&#039;)
+  (3, &#039;Sofía&#039;,  &#039;Ramírez Cruz&#039;,   18, &#039;sofia.ramirez@iesmajuelo.com&#039;)
+  (4, &#039;Adrián&#039;, &#039;Moreno Díaz&#039;,    17, &#039;adrian.moreno@iesmajuelo.com&#039;)
+  (5, &#039;Paula&#039;,  &#039;Navarro Suárez&#039;, 16, &#039;paula.navarro@iesmajuelo.com&#039;)
+
+Visualizaciones (id_serie ∈ {1..5}, id_usuario ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-15&#039;, 1)
+  (2, 2, 3, &#039;2026-04-20&#039;, 1)
+  (3, 4, 2, &#039;2026-05-01&#039;, 0)
+  (4, 1, 4, &#039;2026-05-03&#039;, 1)
+  (5, 5, 5, &#039;2026-05-08&#039;, 0)</code></pre>
+<hr/>
+</section>
+<section class="level1" id="tema-2-tienda-de-tecnología">
+<h1>Tema 2 — Tienda de tecnología</h1>
+<p><strong>Dominio.</strong> Una tienda de informática y electrónica vende productos a clientes. Cada pedido registra qué cliente compró qué producto, cuándo y en qué cantidad. La BD permite responder: <em>¿qué productos se venden más?</em>, <em>¿qué clientes han comprado más de un producto?</em>, <em>¿qué facturación generó cada marca el mes pasado?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Productos</code> <em>(padre 1)</em></td>
+<td><code>id_producto</code> PK · <code>nombre</code> · <code>marca</code> · <code>precio</code> · <code>stock</code></td>
+</tr>
+<tr class="even">
+<td><code>Clientes</code> <em>(padre 2)</em></td>
+<td><code>id_cliente</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Pedidos</code> <em>(hija)</em></td>
+<td><code>id_pedido</code> PK · <code>id_producto</code> FK → Productos · <code>id_cliente</code> FK → Clientes · <code>fecha</code> · <code>cantidad</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Categorias</code>.</strong> Campos: <code>id_categoria</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada producto tendría una <code>id_categoria</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Productos:
+  (1, &#039;iPad Air 11&quot;&#039;,                 &#039;Apple&#039;,    599.00, 12)
+  (2, &#039;Galaxy Tab S9&#039;,                &#039;Samsung&#039;,  729.00,  8)
+  (3, &#039;MacBook Air M3&#039;,               &#039;Apple&#039;,   1199.00,  5)
+  (4, &#039;Logitech MX Master 3S&#039;,        &#039;Logitech&#039;,  99.00, 25)
+  (5, &#039;Auriculares Sony WH-1000XM5&#039;,  &#039;Sony&#039;,     359.00, 15)
+
+Clientes:
+  (1, &#039;Lucía&#039;,  &#039;Gómez Ruiz&#039;,     &#039;600 111 222&#039;, &#039;lucia.gomez@iesmajuelo.com&#039;)
+  (2, &#039;Mario&#039;,  &#039;Pérez Sánchez&#039;,  &#039;622 333 444&#039;, &#039;mario.perez@iesmajuelo.com&#039;)
+  (3, &#039;Sofía&#039;,  &#039;Ramírez Cruz&#039;,   &#039;633 555 666&#039;, &#039;sofia.ramirez@iesmajuelo.com&#039;)
+  (4, &#039;Adrián&#039;, &#039;Moreno Díaz&#039;,    &#039;644 777 888&#039;, &#039;adrian.moreno@iesmajuelo.com&#039;)
+  (5, &#039;Paula&#039;,  &#039;Navarro Suárez&#039;, &#039;655 999 000&#039;, &#039;paula.navarro@iesmajuelo.com&#039;)
+
+Pedidos (id_producto ∈ {1..5}, id_cliente ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-10&#039;, 1)
+  (2, 4, 2, &#039;2026-04-12&#039;, 2)
+  (3, 3, 3, &#039;2026-04-18&#039;, 1)
+  (4, 5, 4, &#039;2026-05-02&#039;, 1)
+  (5, 2, 5, &#039;2026-05-06&#039;, 1)</code></pre>
+<hr/>
+</section>
+<section class="level1" id="tema-3-clínica-veterinaria">
+<h1>Tema 3 — Clínica veterinaria</h1>
+<p><strong>Dominio.</strong> Una clínica veterinaria atiende mascotas que pertenecen a sus dueños. Cada visita registra qué mascota acudió, traída por qué dueño, cuándo y por qué motivo. La BD permite responder: <em>¿qué mascotas vienen más a menudo?</em>, <em>¿qué dueños han traído a sus animales este mes?</em>, <em>¿qué motivos de consulta son más frecuentes?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Mascotas</code> <em>(padre 1)</em></td>
+<td><code>id_mascota</code> PK · <code>nombre</code> · <code>especie</code> · <code>raza</code> · <code>edad</code></td>
+</tr>
+<tr class="even">
+<td><code>Duenos</code> <em>(padre 2)</em></td>
+<td><code>id_dueno</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="odd">
+<td><code>Visitas</code> <em>(hija)</em></td>
+<td><code>id_visita</code> PK · <code>id_mascota</code> FK → Mascotas · <code>id_dueno</code> FK → Duenos · <code>fecha</code> · <code>motivo</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Especies</code>.</strong> Campos: <code>id_especie</code> PK · <code>nombre</code> · <code>descripcion</code>. Cada mascota tendría una <code>id_especie</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Mascotas:
+  (1, &#039;Toby&#039;,  &#039;Perro&#039;,   &#039;Labrador&#039;,         4)
+  (2, &#039;Luna&#039;,  &#039;Gato&#039;,    &#039;Siamés&#039;,           2)
+  (3, &#039;Coco&#039;,  &#039;Perro&#039;,   &#039;Bulldog Francés&#039;,  6)
+  (4, &#039;Mía&#039;,   &#039;Gato&#039;,    &#039;Común europeo&#039;,    3)
+  (5, &#039;Rocky&#039;, &#039;Conejo&#039;,  &#039;Belier&#039;,           1)
+
+Duenos:
+  (1, &#039;Lucía&#039;,  &#039;Gómez Ruiz&#039;,     &#039;600 111 222&#039;, &#039;lucia.gomez@iesmajuelo.com&#039;)
+  (2, &#039;Mario&#039;,  &#039;Pérez Sánchez&#039;,  &#039;622 333 444&#039;, &#039;mario.perez@iesmajuelo.com&#039;)
+  (3, &#039;Sofía&#039;,  &#039;Ramírez Cruz&#039;,   &#039;633 555 666&#039;, &#039;sofia.ramirez@iesmajuelo.com&#039;)
+  (4, &#039;Adrián&#039;, &#039;Moreno Díaz&#039;,    &#039;644 777 888&#039;, &#039;adrian.moreno@iesmajuelo.com&#039;)
+  (5, &#039;Paula&#039;,  &#039;Navarro Suárez&#039;, &#039;655 999 000&#039;, &#039;paula.navarro@iesmajuelo.com&#039;)
+
+Visitas (id_mascota ∈ {1..5}, id_dueno ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-08&#039;, &#039;Vacuna anual&#039;)
+  (2, 2, 2, &#039;2026-04-15&#039;, &#039;Revisión rutinaria&#039;)
+  (3, 3, 3, &#039;2026-04-22&#039;, &#039;Otitis&#039;)
+  (4, 5, 4, &#039;2026-05-04&#039;, &#039;Corte de uñas&#039;)
+  (5, 1, 1, &#039;2026-05-09&#039;, &#039;Desparasitación&#039;)</code></pre>
+<div class="marco marco-nota"><p class="marco-titulo">Tip¿Por quéDuenossin tilde?</p>
+<p><code>Duenos</code> es el <strong>nombre técnico</strong> de la tabla, no un dato. Los nombres de tabla suelen escribirse sin tildes ni eñes para evitar problemas con motores o herramientas que no soportan UTF-8 fuera de cadenas. Los <strong>datos</strong> dentro de la tabla, en cambio, sí llevan tildes reales: el nombre del dueño es <code>'Lucía'</code>, no <code>'Lucia'</code>.</p>
+</div>
+<hr/>
+</section>
+<section class="level1" id="tema-4-liga-deportiva">
+<h1>Tema 4 — Liga deportiva</h1>
+<p><strong>Dominio.</strong> Una liga (de fútbol o baloncesto) gestiona equipos, jugadores y los partidos que se disputan entre ellos. Cada partido tiene un equipo local y un jugador destacado (MVP). La BD permite responder: <em>¿qué equipo ha sido local más veces?</em>, <em>¿qué jugadores han sido MVP en más de un partido?</em>, <em>¿qué partidos se jugaron en el último mes?</em>.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningDecisión de modelado simplificada</p>
+<p>En la realidad un jugador pertenece a un equipo. Para que las 3 tablas encajen en el patrón “padre 1 + padre 2 + hija con dos FKs” que estamos practicando en la unidad, simplificamos: <strong><code>Jugadores</code> y <code>Equipos</code> son entidades independientes</strong>, y se relacionan a través de <code>Partidos</code> (el equipo local del partido y el jugador destacado del partido). Es un modelo pedagógico, no la BD que usaría una liga real.</p>
+</div>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Equipos</code> <em>(padre 1)</em></td>
+<td><code>id_equipo</code> PK · <code>nombre</code> · <code>ciudad</code> · <code>estadio</code> · <code>anio_fundacion</code></td>
+</tr>
+<tr class="even">
+<td><code>Jugadores</code> <em>(padre 2)</em></td>
+<td><code>id_jugador</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>posicion</code> · <code>edad</code></td>
+</tr>
+<tr class="odd">
+<td><code>Partidos</code> <em>(hija)</em></td>
+<td><code>id_partido</code> PK · <code>id_equipo</code> FK → Equipos <em>(equipo local)</em> · <code>id_jugador</code> FK → Jugadores <em>(MVP del partido)</em> · <code>fecha</code> · <code>marcador</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Estadios</code>.</strong> Campos: <code>id_estadio</code> PK · <code>nombre</code> · <code>ciudad</code> · <code>aforo</code>. Cada equipo tendría un <code>id_estadio</code> (FK) en lugar del campo <code>estadio</code> de texto.</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Equipos:
+  (1, &#039;Real Betis&#039;,         &#039;Sevilla&#039;,   &#039;Benito Villamarín&#039;,     1907)
+  (2, &#039;Sevilla FC&#039;,         &#039;Sevilla&#039;,   &#039;Sánchez-Pizjuán&#039;,       1890)
+  (3, &#039;Atlético de Madrid&#039;, &#039;Madrid&#039;,    &#039;Cívitas Metropolitano&#039;, 1903)
+  (4, &#039;Real Madrid&#039;,        &#039;Madrid&#039;,    &#039;Santiago Bernabéu&#039;,     1902)
+  (5, &#039;FC Barcelona&#039;,       &#039;Barcelona&#039;, &#039;Spotify Camp Nou&#039;,      1899)
+
+Jugadores:
+  (1, &#039;Isco&#039;,     &#039;Alarcón&#039;,          &#039;Centrocampista&#039;, 33)
+  (2, &#039;Vinícius&#039;, &#039;Júnior&#039;,           &#039;Delantero&#039;,      25)
+  (3, &#039;Lamine&#039;,   &#039;Yamal&#039;,            &#039;Extremo&#039;,        18)
+  (4, &#039;Antoine&#039;,  &#039;Griezmann&#039;,        &#039;Delantero&#039;,      34)
+  (5, &#039;Youssef&#039;,  &#039;En-Nesyri&#039;,        &#039;Delantero&#039;,      28)
+
+Partidos (id_equipo ∈ {1..5}, id_jugador ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-12&#039;, &#039;2-1&#039;)
+  (2, 2, 5, &#039;2026-04-19&#039;, &#039;3-0&#039;)
+  (3, 4, 2, &#039;2026-04-26&#039;, &#039;4-2&#039;)
+  (4, 5, 3, &#039;2026-05-03&#039;, &#039;2-2&#039;)
+  (5, 3, 4, &#039;2026-05-10&#039;, &#039;1-0&#039;)</code></pre>
+<hr/>
+</section>
+<section class="level1" id="tema-5-estudio-de-tatuajes-o-peluquería">
+<h1>Tema 5 — Estudio de tatuajes o peluquería</h1>
+<p><strong>Dominio.</strong> Un estudio de tatuajes (o una peluquería) atiende clientes que se hacen trabajos realizados por sus empleados. Cada trabajo registra qué cliente lo encargó, qué empleado lo hizo, cuándo y cuánto costó. La BD permite responder: <em>¿qué empleado ha hecho más trabajos?</em>, <em>¿qué clientes son habituales?</em>, <em>¿cuál fue la facturación de cada empleado?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Clientes</code> <em>(padre 1)</em></td>
+<td><code>id_cliente</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>telefono</code> · <code>email</code></td>
+</tr>
+<tr class="even">
+<td><code>Empleados</code> <em>(padre 2)</em></td>
+<td><code>id_empleado</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>especialidad</code> · <code>anio_inicio</code></td>
+</tr>
+<tr class="odd">
+<td><code>Trabajos</code> <em>(hija)</em></td>
+<td><code>id_trabajo</code> PK · <code>id_cliente</code> FK → Clientes · <code>id_empleado</code> FK → Empleados · <code>fecha</code> · <code>descripcion</code> · <code>precio</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Servicios</code>.</strong> Campos: <code>id_servicio</code> PK · <code>nombre</code> · <code>precio_base</code>. Cada trabajo tendría un <code>id_servicio</code> (FK) y <code>precio</code> se calcularía como ajuste sobre <code>precio_base</code>.</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Clientes:
+  (1, &#039;Lucía&#039;,  &#039;Gómez Ruiz&#039;,     &#039;600 111 222&#039;, &#039;lucia.gomez@iesmajuelo.com&#039;)
+  (2, &#039;Mario&#039;,  &#039;Pérez Sánchez&#039;,  &#039;622 333 444&#039;, &#039;mario.perez@iesmajuelo.com&#039;)
+  (3, &#039;Sofía&#039;,  &#039;Ramírez Cruz&#039;,   &#039;633 555 666&#039;, &#039;sofia.ramirez@iesmajuelo.com&#039;)
+  (4, &#039;Adrián&#039;, &#039;Moreno Díaz&#039;,    &#039;644 777 888&#039;, &#039;adrian.moreno@iesmajuelo.com&#039;)
+  (5, &#039;Paula&#039;,  &#039;Navarro Suárez&#039;, &#039;655 999 000&#039;, &#039;paula.navarro@iesmajuelo.com&#039;)
+
+Empleados:
+  (1, &#039;Carmen&#039;,  &#039;Rodríguez Vera&#039;, &#039;Realismo&#039;,         2018)
+  (2, &#039;Javier&#039;,  &#039;Martín Ortiz&#039;,   &#039;Tradicional&#039;,      2015)
+  (3, &#039;Marta&#039;,   &#039;López García&#039;,   &#039;Geométrico&#039;,       2021)
+  (4, &#039;Andrés&#039;,  &#039;Ruiz Jiménez&#039;,   &#039;Color&#039;,            2019)
+  (5, &#039;Beatriz&#039;, &#039;Sánchez Mora&#039;,   &#039;Microblading&#039;,     2022)
+
+Trabajos (id_cliente ∈ {1..5}, id_empleado ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-05&#039;, &#039;Brazo realismo (4 h)&#039;,         220.00)
+  (2, 2, 3, &#039;2026-04-12&#039;, &#039;Geométrico antebrazo&#039;,         140.00)
+  (3, 3, 2, &#039;2026-04-20&#039;, &#039;Old school tobillo&#039;,            85.00)
+  (4, 4, 4, &#039;2026-05-02&#039;, &#039;Acuarela espalda&#039;,             310.00)
+  (5, 5, 5, &#039;2026-05-08&#039;, &#039;Microblading cejas&#039;,           180.00)</code></pre>
+<hr/>
+</section>
+<section class="level1" id="tema-6-gimnasio">
+<h1>Tema 6 — Gimnasio</h1>
+<p><strong>Dominio.</strong> Un gimnasio gestiona socios que se apuntan a clases dirigidas (yoga, spinning, body pump…). Cada asistencia registra qué socio fue a qué clase, en qué fecha y si finalmente acudió. La BD permite responder: <em>¿qué clases tienen más asistencia?</em>, <em>¿qué socios faltan más a menudo?</em>, <em>¿cuántas clases dio el monitor de spinning este mes?</em>.</p>
+<p><strong>Tablas obligatorias.</strong></p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tabla</th>
+<th>Campos sugeridos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Socios</code> <em>(padre 1)</em></td>
+<td><code>id_socio</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>fecha_alta</code> · <code>plan</code></td>
+</tr>
+<tr class="even">
+<td><code>Clases</code> <em>(padre 2)</em></td>
+<td><code>id_clase</code> PK · <code>nombre</code> · <code>dia_semana</code> · <code>hora</code> · <code>aforo</code></td>
+</tr>
+<tr class="odd">
+<td><code>Asistencias</code> <em>(hija)</em></td>
+<td><code>id_asistencia</code> PK · <code>id_socio</code> FK → Socios · <code>id_clase</code> FK → Clases · <code>fecha</code> · <code>asistio</code> (0/1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.ª opcional (sube nota): <code>Monitores</code>.</strong> Campos: <code>id_monitor</code> PK · <code>nombre</code> · <code>apellidos</code> · <code>especialidad</code>. Cada clase tendría un <code>id_monitor</code> (FK).</p>
+<p><strong>Mini-conjunto sugerido.</strong></p>
+<pre><code>Socios:
+  (1, &#039;Lucía&#039;,  &#039;Gómez Ruiz&#039;,     &#039;2026-01-10&#039;, &#039;Premium&#039;)
+  (2, &#039;Mario&#039;,  &#039;Pérez Sánchez&#039;,  &#039;2025-09-15&#039;, &#039;Básico&#039;)
+  (3, &#039;Sofía&#039;,  &#039;Ramírez Cruz&#039;,   &#039;2025-10-20&#039;, &#039;Premium&#039;)
+  (4, &#039;Adrián&#039;, &#039;Moreno Díaz&#039;,    &#039;2026-02-03&#039;, &#039;Estudiante&#039;)
+  (5, &#039;Paula&#039;,  &#039;Navarro Suárez&#039;, &#039;2025-11-05&#039;, &#039;Básico&#039;)
+
+Clases:
+  (1, &#039;Yoga&#039;,         &#039;Lunes&#039;,     &#039;18:00&#039;, 20)
+  (2, &#039;Spinning&#039;,     &#039;Martes&#039;,    &#039;19:30&#039;, 25)
+  (3, &#039;Body Pump&#039;,    &#039;Miércoles&#039;, &#039;20:00&#039;, 30)
+  (4, &#039;Pilates&#039;,      &#039;Jueves&#039;,    &#039;17:30&#039;, 18)
+  (5, &#039;Zumba&#039;,        &#039;Viernes&#039;,   &#039;19:00&#039;, 35)
+
+Asistencias (id_socio ∈ {1..5}, id_clase ∈ {1..5}):
+  (1, 1, 1, &#039;2026-04-07&#039;, 1)
+  (2, 2, 2, &#039;2026-04-08&#039;, 1)
+  (3, 3, 4, &#039;2026-04-09&#039;, 0)
+  (4, 4, 3, &#039;2026-04-15&#039;, 1)
+  (5, 5, 5, &#039;2026-04-17&#039;, 1)</code></pre>
+<hr/>
+</section>
+<section class="level1" id="cómo-se-evalúa-tu-bd">
+<h1>Cómo se evalúa tu BD</h1>
+<p>Una vez elegido el tema, recuerda que el proyecto se evalúa con <strong>5 criterios</strong> (CE3.4): diseño de tablas, relaciones e integridad, datos poblados, consultas SQL y memoria. Los pesos exactos y los descriptores los tienes en la <a href="rubrica-del-proyecto.html">Rúbrica del proyecto</a>.</p>
+<p>La entrega final se hace en <strong>S7</strong>: el <code>.odb</code> con 3 consultas SQL guardadas, <code>retos_sql.sql</code> con las consultas reales y la <strong>memoria</strong> del proyecto (en formatos <code>.odt</code> y <code>.pdf</code>). Los detalles de la entrega y la plantilla de la memoria están en <a href="s7-cierre-y-entrega.html">S7 · Cierre del proyecto y entrega</a>.</p>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s7-cierre-y-entrega.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/rubrica-del-proyecto.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE04">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S4 · SQL: SELECT | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE04" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li class="active"> <a href="../html/s4-sql-select.html" class="active no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE04" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S4 · SQL: SELECT</h1></div>
+</header><div id="page-content-20260706153902PAGE04" class="page-content">
+<article id="20260706153902BLK004" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV004" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV004&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Cargar <code>biblioteca.db</code> en <strong>SQLime</strong>, una herramienta web para escribir SQL sin instalar nada.</li>
+<li>Aprender los <strong>5 ladrillos</strong> del SQL para preguntar: <code>SELECT</code>, <code>WHERE</code>, <code>ORDER BY</code>, <code>LIKE</code>, <code>BETWEEN</code> (más <code>IS NULL</code> para campos vacíos).</li>
+<li>Resolver <strong>10 retos</strong> sobre <code>biblioteca.db</code> que cubren todo lo anterior.</li>
+<li>Empezar a usar la <strong>Chuleta SQL</strong> que llevarás impresa al mini-control de S6.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de empezar</p>
+<p>Hoy <strong>no vas a tocar tu <code>.odb</code></strong>: trabajarás sobre <code>biblioteca.db</code> (la base de datos del profesor) directamente en el navegador. Tu proyecto vuelve a aparecer en S5.</p>
+<p>Lo único que tienes que descargar hoy es <code>biblioteca.db</code>. Lo encontrarás en el siguiente apartado.</p>
+</div>
+</section>
+<section class="level2" id="hoy-cambian-dos-cosas-a-la-vez">
+<h2 class="">Hoy cambian dos cosas a la vez</h2>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteLa herramienta y el idioma</p>
+<p>Hasta S3 trabajabas con <strong>LibreOffice Base</strong> sobre <strong>tu</strong> base de datos del proyecto. A partir de hoy y hasta S6 cambian dos cosas:</p>
+<ol type="1">
+<li><strong>La herramienta</strong>: SQLime, en el navegador, sobre <code>biblioteca.db</code> (la base de datos del profesor).</li>
+<li><strong>El idioma</strong>: SQL puro, escrito por ti. Adiós al editor gráfico de consultas.</li>
+</ol>
+<p>Tu propio proyecto vuelve a aparecer en S5, cuando le lleves SQL. Y se cierra en S7, con la entrega final.</p>
+</div>
+<div class="marco marco-nota"><p class="marco-titulo">TipTres diferencias prácticas con Base que vas a notar enseguida</p>
+<ul>
+<li><strong>Identificadores sin comillas dobles</strong>: en SQL puro escribes <code>SELECT titulo FROM Libros</code>, no <code>"Libros"</code>.</li>
+<li><strong>Fechas como TEXT en formato ISO</strong> entre comillas simples: <code>'2025-10-02'</code>.</li>
+<li>Lo que en S3 escribías como <code>IS EMPTY</code> en el editor gráfico de Base, en SQL puro se escribe <strong><code>IS NULL</code></strong>. Mismo concepto, sintaxis distinta.</li>
+</ul>
+</div>
+</section>
+<section class="level2" id="abrir-sqlime-y-cargar-biblioteca.db">
+<h2 class="">1. Abrir SQLime y cargar <code>biblioteca.db</code></h2>
+<p><a href="recursos/biblioteca.db"><strong>Descarga aquí <code>biblioteca.db</code></strong></a>. Por defecto se guardará en la carpeta <strong>Descargas</strong> del equipo. Hoy te basta con eso (se borrará cuando se apague el equipo, pero hoy te llega).</p>
+<p>Abre el navegador y ve a <a href="https://sqlime.org/">https://sqlime.org/</a>. Verás la pantalla inicial:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C16_sqlime_inicio.png" style="width:80.0%"/></p>
+<figcaption>SQLime al abrirlo: editor vacío con <code>select * from ...</code> como pista, barra superior con <code>open file</code> / <code>open url</code> / <code>settings</code>, y bajo el editor los botones <code>run</code> / <code>share</code> / <code>tables</code> / <code>ask AI</code>. Todo en minúsculas.</figcaption>
+</figure>
+</div>
+<div class="marco marco-nota"><p class="marco-titulo">TipDetalles del interfaz que conviene fijar</p>
+<ul>
+<li>Arriba a la izquierda, junto al limón, pone <strong>SQLite Playground // new.db</strong>. Cuando cargues tu archivo, ahí leerás <strong>biblioteca.db</strong>.</li>
+<li>Arriba a la derecha tienes <strong>open file</strong> (abrir un <code>.db</code> desde tu disco) y <strong>open url</strong> (abrir uno desde una dirección web).</li>
+<li>El <strong>editor</strong> es la caja blanca grande del centro, con la pista en gris <code>select * from ...</code>.</li>
+<li>Bajo el editor, <strong>run ▶</strong> ejecuta lo que tengas escrito. Atajo: <code>Ctrl+Enter</code>.</li>
+<li><strong>tables</strong> te muestra qué tablas tiene cargada la base de datos en este momento.</li>
+<li><strong>No hay panel lateral</strong>: todo lo que necesitas está en esta única pantalla.</li>
+</ul>
+</div>
+<p>Para cargar <code>biblioteca.db</code>:</p>
+<ol type="1">
+<li>Pulsa <strong>open file</strong> arriba a la derecha.</li>
+<li>Selecciona el archivo <code>biblioteca.db</code> desde la carpeta <strong>Descargas</strong>.</li>
+<li>La barra superior cambiará de <strong>new.db</strong> a <strong>biblioteca.db</strong>: ya está cargada.</li>
+</ol>
+<p>Para comprobar que las 3 tablas están donde tienen que estar, pulsa <strong>tables</strong> bajo el editor. Debes ver:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C17_sqlime_biblioteca_cargada.png" style="width:80.0%"/></p>
+<figcaption>Tras pulsar <code>tables</code> aparece la lista “3 tables:” con <code>Libros</code>, <code>Lectores</code> y <code>Prestamos</code>. Si ves esas tres, has cargado bien.</figcaption>
+</figure>
+</div>
+<p>Si solo te aparece <code>new.db</code> y ninguna tabla, vuelve al paso 1: la BD no se cargó.</p>
+</section>
+<section class="level2" id="select-pedir-columnas-de-una-tabla">
+<h2 class="">2. SELECT — pedir columnas de una tabla</h2>
+<p>La instrucción más básica del SQL pide <strong>columnas concretas</strong> (o todas) de una <strong>tabla</strong>. La forma general:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb1-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; columna1, columna2, &lt;span class=&quot;op&quot;&gt;..&lt;/span&gt;.&lt;/span&gt;
+&lt;span id=&quot;cb1-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; tabla;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Para pedir <strong>todas</strong> las columnas se usa el comodín <code>*</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb2-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Cada instrucción SQL termina en <strong>punto y coma</strong> (<code>;</code>). En SQLime puedes omitirlo si solo escribes una, pero acostúmbrate: en otras herramientas es obligatorio.</p>
+<section class="level3" id="pruébalo-pide-título-y-autor">
+<h3 class="">Pruébalo: pide título y autor</h3>
+<p>Borra lo que haya en el editor y escribe:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb3-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb3-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo, autor&lt;/span&gt;
+&lt;span id=&quot;cb3-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb3-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Pulsa <strong>run ▶</strong> (o <code>Ctrl+Enter</code>). Aparece debajo una tabla con 12 filas, una por libro. Arriba de la tabla, SQLime te dice cuántas filas devolvió y cuánto tardó: algo como <strong>“12 rows, took 7 ms”</strong>.</p>
+<div class="marco marco-nota"><p class="marco-titulo">Tip¿Qué pasa si pongoSELECT *?</p>
+<p><code>SELECT * FROM Libros;</code> devuelve <strong>todas las columnas</strong>: id, título, autor, género, año y ejemplares. Útil para echar un vistazo, pero en consultas serias se piden solo las columnas que interesan, para que el resultado sea más legible.</p>
+</div>
+</section>
+</section>
+<section class="level2" id="where-filtrar-las-filas">
+<h2 class="">3. WHERE — filtrar las filas</h2>
+<p>Con <code>SELECT</code> solo, te llevas <strong>toda</strong> la tabla. Para quedarte con las filas que cumplen una condición se añade <code>WHERE</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb4-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; columnas&lt;/span&gt;
+&lt;span id=&quot;cb4-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; tabla&lt;/span&gt;
+&lt;span id=&quot;cb4-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; condicion;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Operadores que vas a usar a diario:</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operador</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>=</code></td>
+<td>igual a</td>
+<td><code>genero = 'Fantasía'</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;&gt;</code></td>
+<td>distinto de</td>
+<td><code>genero &lt;&gt; 'Novela'</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
+<td>menor/mayor que (incluye igual)</td>
+<td><code>anio &lt; 1950</code></td>
+</tr>
+<tr class="even">
+<td><code>AND</code></td>
+<td>y a la vez</td>
+<td><code>genero = 'Novela' AND anio &gt; 2000</code></td>
+</tr>
+<tr class="odd">
+<td><code>OR</code></td>
+<td>una de las dos</td>
+<td><code>genero = 'Novela' OR genero = 'Fantasía'</code></td>
+</tr>
+<tr class="even">
+<td><code>NOT</code></td>
+<td>niega la condición</td>
+<td><code>NOT (anio &lt; 2000)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Las <strong>cadenas de texto</strong> van entre comillas simples: <code>'Fantasía'</code>, <code>'Lucía'</code>. Los <strong>números</strong>, sin comillas: <code>1950</code>, <code>3</code>.</p>
+<section class="level3" id="pruébalo">
+<h3 class="">Pruébalo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb5-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo, genero&lt;/span&gt;
+&lt;span id=&quot;cb5-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros&lt;/span&gt;
+&lt;span id=&quot;cb5-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; genero &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&#039;Fantasía&#039;&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Debe devolverte 3 filas: <em>Harry Potter…</em>, <em>El señor de los anillos</em> y <em>El nombre del viento</em>.</p>
+</section>
+</section>
+<section class="level2" id="order-by-ordenar-el-resultado">
+<h2 class="">4. ORDER BY — ordenar el resultado</h2>
+<p><code>ORDER BY</code> se pone al final de la consulta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb6-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; columnas&lt;/span&gt;
+&lt;span id=&quot;cb6-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; tabla&lt;/span&gt;
+&lt;span id=&quot;cb6-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; condicion&lt;/span&gt;
+&lt;span id=&quot;cb6-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; campo &lt;span class=&quot;kw&quot;&gt;ASC&lt;/span&gt;;   &lt;span class=&quot;co&quot;&gt;-- ASC = ascendente (por defecto)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb6-5&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-5&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; campo &lt;span class=&quot;kw&quot;&gt;DESC&lt;/span&gt;;  &lt;span class=&quot;co&quot;&gt;-- DESC = descendente&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>También puedes ordenar por <strong>varios campos</strong> a la vez: <code>ORDER BY genero, anio DESC</code> ordena primero por género (alfabéticamente) y, dentro de cada género, por año descendente.</p>
+<section class="level3" id="pruébalo-1">
+<h3 class="">Pruébalo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb7-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb7-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo, autor, anio&lt;/span&gt;
+&lt;span id=&quot;cb7-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb7-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros&lt;/span&gt;
+&lt;span id=&quot;cb7-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb7-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; anio &lt;span class=&quot;kw&quot;&gt;DESC&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>El resultado son los 12 libros, los más recientes primero (<em>Breves respuestas a grandes preguntas</em>, 2018) y al final el más antiguo (<em>El Quijote</em>, 1605):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C18_sqlime_select_resultado.png" style="width:80.0%"/></p>
+<figcaption>Resultado de la consulta <code>SELECT titulo, autor, anio FROM Libros ORDER BY anio DESC;</code> en SQLime. La cabecera del resultado pone “12 rows, took 7 ms”.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section class="level2" id="like-buscar-texto-por-patrón">
+<h2 class="">5. LIKE — buscar texto por patrón</h2>
+<p>Cuando no buscas un valor exacto sino <strong>algo que contenga</strong> una palabra, usa <code>LIKE</code> con dos comodines:</p>
+<table class="caption-top table tabla-datos">
+<thead>
+<tr class="header">
+<th>Comodín</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%</code></td>
+<td>cualquier secuencia de caracteres (incluida vacía)</td>
+</tr>
+<tr class="even">
+<td><code>_</code></td>
+<td>exactamente un carácter</td>
+</tr>
+</tbody>
+</table>
+<p>Patrones típicos:</p>
+<table class="caption-top table tabla-datos">
+<thead>
+<tr class="header">
+<th>Patrón</th>
+<th>Encuentra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>'García%'</code></td>
+<td>empieza por <em>García</em></td>
+</tr>
+<tr class="even">
+<td><code>'%viento%'</code></td>
+<td>contiene <em>viento</em> en cualquier posición</td>
+</tr>
+<tr class="odd">
+<td><code>'%a'</code></td>
+<td>termina en <em>a</em></td>
+</tr>
+<tr class="even">
+<td><code>'_a%'</code></td>
+<td>la segunda letra es una <em>a</em></td>
+</tr>
+</tbody>
+</table>
+<div class="marco marco-formula"><p class="marco-titulo">WarningLas tildes cuentan</p>
+<p>En SQLite, <code>LIKE</code> ignora mayúsculas/minúsculas para letras ASCII (<code>'fantasia'</code> ≈ <code>'FANTASIA'</code>), <strong>pero las tildes son letras distintas</strong>: <code>'fantasia'</code> no encuentra <code>'Fantasía'</code>. Si la palabra del dato lleva tilde, escribe la tilde en el patrón. La regla práctica es: <strong>copia el patrón con tildes y mayúsculas reales</strong>.</p>
+</div>
+<section class="level3" id="pruébalo-2">
+<h3 class="">Pruébalo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb8-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb8-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo&lt;/span&gt;
+&lt;span id=&quot;cb8-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb8-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros&lt;/span&gt;
+&lt;span id=&quot;cb8-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb8-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; titulo &lt;span class=&quot;kw&quot;&gt;LIKE&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&#039;%viento%&#039;&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Debe devolver 2 filas: <em>La sombra del viento</em> y <em>El nombre del viento</em>.</p>
+</section>
+</section>
+<section class="level2" id="between-rangos-de-números-o-fechas">
+<h2 class="">6. BETWEEN — rangos de números o fechas</h2>
+<p>Para filtrar por un intervalo (incluyendo los dos extremos), <code>BETWEEN x AND y</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb9-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb9-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; anio &lt;span class=&quot;kw&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1950&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;2000&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb9-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb9-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- equivale a:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb9-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb9-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; anio &lt;span class=&quot;op&quot;&gt;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1950&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AND&lt;/span&gt; anio &lt;span class=&quot;op&quot;&gt;&lt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;2000&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Funciona también con <strong>fechas</strong>, que en SQLite se guardan como TEXT en formato <code>'aaaa-mm-dd'</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb10-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb10-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; fecha_prestamo &lt;span class=&quot;kw&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&#039;2025-10-01&#039;&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&#039;2025-10-31&#039;&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<section class="level3" id="pruébalo-3">
+<h3 class="">Pruébalo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb11-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo, anio&lt;/span&gt;
+&lt;span id=&quot;cb11-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros&lt;/span&gt;
+&lt;span id=&quot;cb11-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; anio &lt;span class=&quot;kw&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1950&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;2000&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb11-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; anio;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Devuelve <strong>4 filas</strong>, los libros publicados entre 1950 y 2000 (ambos incluidos): <em>El señor de los anillos</em> (1954), <em>Cien años de soledad</em> (1967), <em>Crónica de una muerte anunciada</em> (1981) y <em>Harry Potter y la piedra filosofal</em> (1997). <em>La sombra del viento</em> (2001) queda fuera por un año, y <em>1984</em> (1949) también.</p>
+</section>
+</section>
+<section class="level2" id="is-null-filas-con-un-campo-vacío">
+<h2 class="">7. IS NULL — filas con un campo vacío</h2>
+<p>Cuando un campo no tiene valor, en SQL se llama <strong>NULL</strong>. Para preguntar por filas con un campo vacío:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb12-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb12-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; campo &lt;span class=&quot;kw&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;NULL&lt;/span&gt;       &lt;span class=&quot;co&quot;&gt;-- el campo está vacío&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb12-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb12-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; campo &lt;span class=&quot;kw&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;NULL&lt;/span&gt;   &lt;span class=&quot;co&quot;&gt;-- el campo tiene algún valor&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<div class="marco marco-nota"><p class="marco-titulo">TipPuente con S3</p>
+<p>En S3, en el editor gráfico de Base, escribías <code>IS EMPTY</code> para lo mismo. Es la misma idea: <strong>NULL = sin valor</strong>. Solo cambia la sintaxis: en SQL puro siempre <code>IS NULL</code> (estándar mundial); el <code>IS EMPTY</code> era una rareza del editor visual de LibreOffice.</p>
+</div>
+<section class="level3" id="pruébalo-4">
+<h3 class="">Pruébalo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb13-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb13-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; id_prestamo, id_libro, fecha_prestamo&lt;/span&gt;
+&lt;span id=&quot;cb13-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb13-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Prestamos&lt;/span&gt;
+&lt;span id=&quot;cb13-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb13-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; fecha_devolucion &lt;span class=&quot;kw&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;NULL&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Devuelve los préstamos cuyo libro <strong>aún no se ha devuelto</strong>: 4 filas (los préstamos 6, 9, 12 y 14).</p>
+</section>
+</section>
+<section class="level2" id="los-10-retos-de-s4">
+<h2 class="">8. Los 10 retos de S4</h2>
+<p>Ahora te toca a ti. Resuelve los 10 retos siguientes sobre <code>biblioteca.db</code>. Cada reto te dice <strong>cuántas filas debe devolver tu consulta</strong> (y, si el orden importa, cuál es la primera). Si tu resultado coincide, está bien.</p>
+<p>Conserva tus consultas en un archivo de texto llamado <code>retos_sql.sql</code>. Para crearlo, abre el editor de texto <strong>Pluma</strong> (lo tienes en el menú de aplicaciones del IES, en <em>Accesorios</em>). Pega cada consulta funcionando precedida de un comentario <code>-- Reto N</code>. Ese archivo lo subirás a Moodle al final de la sesión y lo seguirás usando en S5.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningCuida el nombre Y la extensión al guardar</p>
+<p>En Pluma → <em>Guardar como…</em>:</p>
+<ul>
+<li><strong>Nombre del archivo</strong>: escribe <code>retos_sql.sql</code> exactamente. Sin espacios, todo en minúsculas.</li>
+<li><strong>Extensión</strong>: debe ser <code>.sql</code>, no <code>.txt</code>. Si Pluma te añade <code>.txt</code> automáticamente, en el desplegable de tipo de archivo elige <em>“Todos los archivos”</em> o equivalente, y escribe la extensión <code>.sql</code> tú mismo.</li>
+<li>Comprueba al final que el archivo aparece en <em>Descargas</em> (o donde lo hayas guardado) como <code>retos_sql.sql</code>. Si pone <code>retos_sql.sql.txt</code> o <code>retos_sql.txt</code>, <strong>renómbralo</strong> (clic derecho → <em>Renombrar</em>).</li>
+</ul>
+<p>Esto importa: si subes a Moodle un <code>.txt</code>, en S5 abrirás un archivo que no se identifica como SQL y empiezas el día con un problema técnico evitable.</p>
+</div>
+<div class="marco marco-nota"><p class="marco-titulo">TipSi un reto no te sale</p>
+<p>Salta al siguiente. No te quedes bloqueado: en clase los corregimos todos juntos. Lo importante es que <strong>lo hayas intentado</strong> y tengas claro qué cláusula te faltaba.</p>
+</div>
+<section class="level3" id="reto-1-lista-título-y-autor-de-todos-los-libros">
+<h3 class="">Reto 1 — Lista título y autor de todos los libros</h3>
+<p><strong>Tu consulta debe devolver</strong>: 12 filas, con dos columnas (<code>titulo</code>, <code>autor</code>).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>SELECT</code> con dos columnas, <code>FROM</code> la tabla <code>Libros</code>. Sin <code>WHERE</code>, sin <code>ORDER BY</code>. Termina la sentencia con <code>;</code>.</p>
+</div>
+</section>
+<section class="level3" id="reto-2-lista-todos-los-datos-de-todos-los-lectores">
+<h3 class="">Reto 2 — Lista todos los datos de todos los lectores</h3>
+<p><strong>Tu consulta debe devolver</strong>: 8 filas, con 5 columnas (<code>id_lector</code>, <code>nombre</code>, <code>apellidos</code>, <code>curso</code>, <code>email</code>).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Para “todos los datos” tienes el comodín <code>*</code> después de <code>SELECT</code>. Tabla: <code>Lectores</code>.</p>
+</div>
+</section>
+<section class="level3" id="reto-3-lista-los-libros-ordenados-por-año-del-más-antiguo-al-más-reciente">
+<h3 class="">Reto 3 — Lista los libros ordenados por año, del más antiguo al más reciente</h3>
+<p><strong>Tu consulta debe devolver</strong>: 12 filas. La <strong>primera</strong> debe ser <em>El Quijote</em> (1605); la <strong>última</strong>, <em>Breves respuestas a grandes preguntas</em> (2018).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>SELECT</code> + <code>FROM</code> + <code>ORDER BY</code> por la columna del año. Para “del más antiguo al más reciente” piensa: del valor más pequeño al más grande. ¿Eso es <code>ASC</code> o <code>DESC</code>? (Pista de la pista: <code>ASC</code> es el por defecto, así que puedes omitirlo.)</p>
+</div>
+</section>
+<section class="level3" id="reto-4-lectores-del-curso-1bach-a">
+<h3 class="">Reto 4 — Lectores del curso 1BACH-A</h3>
+<p><strong>Tu consulta debe devolver</strong>: 2 filas. Son Lucía Gómez y Mario Pérez.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>WHERE</code> con <code>=</code>. Cuidado: <code>1BACH-A</code> es texto, así que va entre <strong>comillas simples</strong>. Si pones comillas dobles o lo dejas sin comillas, fallará.</p>
+</div>
+</section>
+<section class="level3" id="reto-5-libros-publicados-antes-de-1950">
+<h3 class="">Reto 5 — Libros publicados antes de 1950</h3>
+<p><strong>Tu consulta debe devolver</strong>: 4 filas. Los más antiguos de la base de datos. La primera (sin orden, según el orden natural de la tabla) será <em>El Quijote</em>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>WHERE</code> con <code>&lt;</code>. El año es un <strong>número</strong>, así que va sin comillas: <code>WHERE anio &lt; 1950</code>.</p>
+</div>
+</section>
+<section class="level3" id="reto-6-libros-del-género-novela-ordenados-por-título">
+<h3 class="">Reto 6 — Libros del género Novela ordenados por título</h3>
+<p><strong>Tu consulta debe devolver</strong>: 3 filas, en este orden:</p>
+<ol type="1">
+<li><em>Cien años de soledad</em></li>
+<li><em>Crónica de una muerte anunciada</em></li>
+<li><em>La sombra del viento</em></li>
+</ol>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>WHERE</code> para filtrar por género + <code>ORDER BY</code> para ordenar. El género <code>'Novela'</code> va con comillas simples (es texto). El orden alfabético es <code>ASC</code> (por defecto).</p>
+</div>
+</section>
+<section class="level3" id="reto-7-libros-cuyo-título-contiene-viento">
+<h3 class="">Reto 7 — Libros cuyo título contiene “viento”</h3>
+<p><strong>Tu consulta debe devolver</strong>: 2 filas. Son <em>La sombra del viento</em> y <em>El nombre del viento</em>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>WHERE</code> con <code>LIKE</code> y dos comodines <code>%</code>. Recuerda: <code>%palabra%</code> significa “contiene la palabra en cualquier posición”. La palabra <code>viento</code> no lleva tilde, así que el patrón tampoco.</p>
+</div>
+</section>
+<section class="level3" id="reto-8-libros-publicados-entre-1950-y-2000-ordenados-por-año-descendente">
+<h3 class="">Reto 8 — Libros publicados entre 1950 y 2000, ordenados por año descendente</h3>
+<p><strong>Tu consulta debe devolver</strong>: 4 filas, en este orden:</p>
+<ol type="1">
+<li><em>Harry Potter y la piedra filosofal</em> (1997)</li>
+<li><em>Crónica de una muerte anunciada</em> (1981)</li>
+<li><em>Cien años de soledad</em> (1967)</li>
+<li><em>El señor de los anillos</em> (1954)</li>
+</ol>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>WHERE</code> con <code>BETWEEN ... AND ...</code> (es inclusivo: 1950 y 2000 entran) + <code>ORDER BY anio DESC</code>. Recuerda: el año es número, sin comillas.</p>
+</div>
+</section>
+<section class="level3" id="reto-9-préstamos-hechos-en-octubre-de-2025">
+<h3 class="">Reto 9 — Préstamos hechos en octubre de 2025</h3>
+<p><strong>Tu consulta debe devolver</strong>: 4 filas (los préstamos 1, 2, 3 y 4).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>BETWEEN</code> también funciona con fechas, pero las fechas son TEXT. Las escribes entre <strong>comillas simples</strong> y en formato <code>'aaaa-mm-dd'</code>. ¿Cuál es el primer día de octubre de 2025? ¿Y el último?</p>
+</div>
+</section>
+<section class="level3" id="reto-10-lectores-que-no-tienen-email-registrado">
+<h3 class="">Reto 10 — Lectores que no tienen email registrado</h3>
+<p><strong>Tu consulta debe devolver</strong>: 1 fila. Es Paula Navarro Suárez.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Para campos vacíos, en SQL puro: <code>WHERE email IS NULL</code>. Recuerda: ya no estamos en Base, así que <strong>no</strong> es <code>IS EMPTY</code>.</p>
+</div>
+</section>
+</section>
+<section class="level2" id="producto-final-de-s4">
+<h2 class="">Producto final de S4</h2>
+<p>Cuando termines, debes tener:</p>
+<ul>
+<li><strong><code>biblioteca.db</code></strong> cargada en SQLime y funcionando.</li>
+<li><strong>Un archivo <code>retos_sql.sql</code></strong> con las 10 consultas resueltas, cada una precedida de <code>-- Reto N</code>.</li>
+</ul>
+<p>Plantilla del archivo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb14-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- retos_sql.sql · TICO 1.º Bach · IES El Majuelo&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Alumno: &lt;tu nombre&gt;     Tema: &lt;tu tema&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Reto 1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-5&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-5&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; titulo, autor &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros;&lt;/span&gt;
+&lt;span id=&quot;cb14-6&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-6&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-7&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-7&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Reto 2&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-8&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-8&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Lectores;&lt;/span&gt;
+&lt;span id=&quot;cb14-9&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-9&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb14-10&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-10&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- ... (etcétera hasta el Reto 10)&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte: suberetos_sql.sqly crea una copia de seguridad-s4</p>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong> harás dos cosas:</p>
+<ol type="1">
+<li><strong>Sube</strong> tu <code>retos_sql.sql</code> con las 10 consultas (archivo nuevo).</li>
+<li><strong>Crea una copia <code>-s4.odb</code> como foto del estado pre-SQL</strong>:
+<ul>
+<li>Descarga el <code>&lt;tu_tema&gt;.odb</code> que tenías subido de S3.</li>
+<li>Ábrelo en LibreOffice Base con doble clic.</li>
+<li><strong>Archivo → Guardar como…</strong> → escribe el nombre <code>&lt;tu_tema&gt;-s4.odb</code>. Guárdalo en <em>Descargas</em>, junto al <code>&lt;tu_tema&gt;.odb</code> original.</li>
+<li><strong>Sube <code>&lt;tu_tema&gt;-s4.odb</code> a Moodle</strong>. <strong>NO borres</strong> el <code>&lt;tu_tema&gt;.odb</code> que ya tenías subido: tiene que quedarse ahí para que en S5 lo descargues y sigas trabajando con él.</li>
+</ul></li>
+</ol>
+<p>Al terminar S4 deben quedar <strong>tres archivos</strong> en Moodle: <code>&lt;tu_tema&gt;.odb</code> (intacto desde S3), <code>&lt;tu_tema&gt;-s4.odb</code> (copia idéntica con sello pre-SQL) y <code>retos_sql.sql</code>.</p>
+<p>Hoy no has modificado el contenido del <code>.odb</code>, pero hacemos una foto con el sello <code>-s4</code> para guardar el estado anterior a tocar SQL. A partir de S5 seguirás trabajando sobre el <code>&lt;tu_tema&gt;.odb</code> (sin sufijo) durante el resto de la unidad; el <code>-s4.odb</code> se queda en Moodle como referencia y no se vuelve a tocar.</p>
+<p>Mantén la entrega en estado <strong>borrador</strong> (no pulses “Entregar tarea”). Detalles en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+<p>En S5 vas a aprender a <strong>combinar tablas</strong> con <code>JOIN</code> y a <strong>modificar</strong> datos con <code>INSERT</code>, <code>UPDATE</code> y <code>DELETE</code>. Después llevarás esos comandos a tu propio <code>.odb</code>. Y para repasar en cualquier momento, tienes la <a download="chuleta_sql.pdf" href="../content/resources/chuleta_sql.pdf" target="_blank">Chuleta SQL</a>.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>no such table: Libros</code></td>
+<td>No has cargado <code>biblioteca.db</code>, o lo has cargado pero estás en otra pestaña</td>
+<td>Pulsa <strong>open file</strong> → selecciona <code>biblioteca.db</code> otra vez. La barra superior debe poner <code>biblioteca.db</code>.</td>
+</tr>
+<tr class="even">
+<td><code>no such column: titulo</code></td>
+<td>Has escrito mal el nombre del campo o de la tabla (mayúsculas/minúsculas en el nombre de tabla SÍ importan en SQLite)</td>
+<td>Comprueba el nombre exacto. Pulsa <strong>tables</strong> y haz clic en el nombre de la tabla para ver sus columnas.</td>
+</tr>
+<tr class="odd">
+<td>Mi <code>WHERE</code> con texto no devuelve nada</td>
+<td>Has usado comillas dobles <code>"Novela"</code> en vez de comillas simples <code>'Novela'</code></td>
+<td>Cambia a comillas simples. En SQLite, las comillas dobles son para identificadores con espacios, no para texto.</td>
+</tr>
+<tr class="even">
+<td><code>LIKE 'fantasia%'</code> no devuelve nada y debería</td>
+<td>El dato lleva tilde (<em>Fantasía</em>) y el patrón no</td>
+<td>Escribe el patrón con tilde: <code>LIKE 'Fantasía%'</code> o <code>LIKE '%fantasía%'</code>.</td>
+</tr>
+<tr class="odd">
+<td><code>IS EMPTY</code> me da error</td>
+<td><code>IS EMPTY</code> solo existe en el editor gráfico de Base</td>
+<td>Aquí, en SQL puro, escribe <code>IS NULL</code>.</td>
+</tr>
+<tr class="even">
+<td>Pulso <code>run</code> y no pasa nada</td>
+<td>El editor está vacío o solo tiene comentarios <code>--</code></td>
+<td>Asegúrate de que hay al menos una sentencia SELECT.</td>
+</tr>
+<tr class="odd">
+<td>Mi <code>BETWEEN</code> con fechas no devuelve nada</td>
+<td>Te has olvidado de las comillas simples o has puesto formato <code>dd/mm/aaaa</code></td>
+<td>Usa formato <code>'aaaa-mm-dd'</code> con comillas simples: <code>BETWEEN '2025-10-01' AND '2025-10-31'</code>.</td>
+</tr>
+<tr class="even">
+<td>Cierro el navegador y pierdo todo</td>
+<td>SQLime corre en el navegador: si cierras la pestaña, se pierde lo que tengas escrito en el editor</td>
+<td>Por eso guardas tus consultas en <code>retos_sql.sql</code> en local. La BD <code>biblioteca.db</code> la vuelves a cargar al día siguiente.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s3-formularios-y-consultas.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/s5-sql-join-y-modificacion.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

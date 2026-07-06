@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE06">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S6 · Mini-control y proyecto | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE06" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li class="active"> <a href="../html/s6-mini-control-y-proyecto.html" class="active no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE06" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S6 · Mini-control y proyecto</h1></div>
+</header><div id="page-content-20260706153902PAGE06" class="page-content">
+<article id="20260706153902BLK006" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV006" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV006&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Hacer el <strong>mini-control SQL en papel</strong> (40 minutos, individual, con la chuleta de 1 cara).</li>
+<li>Reabrir tu base de datos del proyecto (<code>&lt;tu_tema&gt;.odb</code>) en LibreOffice Base.</li>
+<li><strong>Ampliar tus 3 tablas hasta 15 registros cada una</strong>, respetando la integridad referencial.</li>
+<li>Anotar <strong>3 ideas de consultas</strong> que te gustaría poder responder en S7, dejándolas comentadas en <code>retos_sql.sql</code>.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de empezar</p>
+<p>Hoy es un día con dos ritmos. Lee esto antes de sentarte:</p>
+<ul>
+<li><strong>Trae la chuleta SQL impresa de 1 cara.</strong> Es la única ayuda permitida en el examen.</li>
+<li><strong>Bolígrafo (azul o negro).</strong> Móvil y mochila al fondo del aula.</li>
+<li><strong>NO descargues nada de Moodle todavía.</strong> El examen es en papel y en silencio. Solo cuando lo entregues abrirás el ordenador para el bloque 2; entonces sí descargarás tu <code>.odb</code>.</li>
+</ul>
+</div>
+</section>
+<section class="level2" id="hoy-son-dos-bloques">
+<h2 class="">Hoy son dos bloques</h2>
+<p>La hora se reparte así:</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bloque</th>
+<th>Tiempo</th>
+<th>Herramienta</th>
+<th>Producto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Mini-control SQL</strong></td>
+<td>40 min</td>
+<td>Papel + chuleta SQL</td>
+<td>Examen entregado en mano al profesor</td>
+</tr>
+<tr class="even">
+<td><strong>2. Arranque del proyecto</strong></td>
+<td>20 min</td>
+<td>LibreOffice Base + Pluma</td>
+<td>Tu <code>.odb</code> ampliado a 15 registros por tabla <strong>+</strong> 3 ideas anotadas para S7</td>
+</tr>
+</tbody>
+</table>
+<p>No esperes a que terminen los demás: en cuanto entregues el examen al profesor, pasas a tu ordenador y empiezas el bloque 2 por tu cuenta.</p>
+</section>
+<section class="level2" id="mini-control-sql-40-min-papel">
+<h2 class="">1. Mini-control SQL (40 min, papel)</h2>
+<p>El profesor te entrega dos hojas:</p>
+<ul>
+<li>La <strong>hoja del examen</strong> (versión A o B; la asigna el profesor).</li>
+<li>Una hoja aparte con el <strong>esquema E-R de una base de datos nueva</strong>, que verás por primera vez al recibir el examen.</li>
+</ul>
+<p>Sobre la mesa, solo: el examen, el esquema, la chuleta SQL impresa y el bolígrafo. Nada de ordenador, móvil, apuntes ni la base de datos <code>biblioteca</code> que has usado en S4 y S5.</p>
+<p>El examen tiene <strong>9 cuestiones</strong>, todas del tipo “escribe la consulta SQL que…”, con un total de <strong>10 puntos</strong> repartidos así: 1 + 1 + 1 + 1 + 1,5 + 1,5 + 1,5 + 0,75 + 0,75. Es individual y silencioso.</p>
+<div class="marco marco-nota"><p class="marco-titulo">TipLee primero el esquema E-R</p>
+<p>Antes de escribir nada, dedica 2 minutos a mirar el esquema: identifica las tablas, sus claves primarias y, sobre todo, <strong>qué claves foráneas conectan qué tablas</strong>. Saber por qué columna se enlazan dos tablas te ahorra la mitad de los errores en los <code>JOIN</code>. Es el tropiezo que más se repitió en los retos de S5.</p>
+</div>
+<p>Cuando termines, <strong>entrega el examen en mano al profesor</strong>. No se sube a Moodle: la corrección la hace el profesor sobre el papel.</p>
+</section>
+<section class="level2" id="pasamos-al-ordenador">
+<h2 class="">2. Pasamos al ordenador</h2>
+<p>Una vez entregado el examen, abres tu equipo y arrancas el segundo bloque. Te quedan unos 20 minutos. El objetivo de hoy <strong>no es terminar el proyecto</strong> (eso es S7): es dejar tu base de datos <strong>cargada de datos suficientes</strong> para que en S7 puedas escribir consultas con sentido sobre ella.</p>
+</section>
+<section class="level2" id="reabre-tu-tu_tema.odb">
+<h2 class="">3. Reabre tu <code>&lt;tu_tema&gt;.odb</code></h2>
+<ol type="1">
+<li>Abre Moodle → curso de TICO → tarea <strong>“TAREA - Bases de datos”</strong>.</li>
+<li>Descarga <strong><code>&lt;tu_tema&gt;.odb</code></strong> (el archivo sin sufijo, el que vienes usando desde S5). Por defecto se guarda en la carpeta <strong>Descargas</strong>.</li>
+<li>Ábrelo con doble clic. Se abre en LibreOffice Base.</li>
+</ol>
+<div class="marco marco-nota"><p class="marco-titulo">TipHoy NO creas ninguna copia nueva</p>
+<p>Sigues trabajando directamente sobre <strong><code>&lt;tu_tema&gt;.odb</code></strong>, igual que en S5. Las modificaciones de S6 son solo acumulativas (más datos, sin riesgo de perder nada): no hace falta copia de seguridad. Al final del día subes el <code>&lt;tu_tema&gt;.odb</code> actualizado y reemplaza al de Moodle. El <strong><code>&lt;tu_tema&gt;-s4.odb</code></strong> sigue intacto en Moodle como referencia del estado pre-SQL: no lo toques.</p>
+</div>
+</section>
+<section class="level2" id="amplía-los-datos-a-15-registros-por-tabla">
+<h2 class="">4. Amplía los datos a 15 registros por tabla</h2>
+<p>Tu objetivo es que cada una de tus <strong>3 tablas tenga 15 registros</strong>. Como en S5 tenías 5 o 6 por tabla, te tocará añadir entre 9 y 10 filas en cada una.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningOrden defensivo: padres primero, hija después</p>
+<p>La integridad referencial está activa en tu BD desde S2. Si añades una fila a la tabla hija que apunte a un <code>id</code> que aún no existe en la tabla padre correspondiente, Base te lo rechaza con un mensaje en pantalla. No se rompe nada, pero pierdes tiempo.</p>
+<p>Para evitarlo: <strong>llena primero las dos tablas padre</strong> hasta sus 15 registros, y solo después la tabla hija. Así, cuando teclees una FK en la hija, su <code>id</code> ya existe en la padre.</p>
+</div>
+<p>Cómo introducir los datos:</p>
+<ol type="1">
+<li>En la barra lateral de Base, doble clic sobre una tabla padre. Se abre la vista de datos.</li>
+<li>En la fila vacía (la marcada con un asterisco a la izquierda), teclea los valores. Tabulador para pasar de un campo al siguiente.</li>
+<li>Repite hasta tener 15 filas. Cierra la pestaña de la tabla con la X.</li>
+<li>Pasa a la otra tabla padre y, por último, a la hija.</li>
+<li>Cuando hayas terminado, vuelve a la ventana principal de Base (la que lista <em>Tablas, Consultas, Formularios, Informes</em>) y guarda con <code>Ctrl+S</code>.</li>
+</ol>
+<div class="marco marco-nota"><p class="marco-titulo">TipDatos coherentes, no inventados al azar</p>
+<ul>
+<li><strong>Tildes reales</strong> en nombres y campos de texto: <code>Lucía</code>, <code>García</code>, <code>Sofía</code>, <code>Clásico</code>, <code>Fantasía</code>.</li>
+<li><strong>Si tu tema lleva emails</strong>, usa el dominio del IES: <code>nombre.apellido@iesmajuelo.com</code>.</li>
+<li>En la <strong>tabla hija</strong>, antes de teclear una FK, comprueba en las tablas padre qué <code>id</code> existen. Cada FK que escribas debe apuntar a un <code>id</code> que ya esté arriba.</li>
+<li>Si te quedas sin ideas para los datos, mira el mini-conjunto sugerido para tu tema en el <a href="el-proyecto-brief.html">Brief del proyecto</a> y amplíalo siguiendo el mismo patrón.</li>
+</ul>
+</div>
+</section>
+<section class="level2" id="anota-3-ideas-de-consultas-para-s7">
+<h2 class="">5. Anota 3 ideas de consultas para S7</h2>
+<p>En S7 escribirás SQL real sobre tu BD. Para no llegar en blanco, hoy dejas anotadas <strong>3 preguntas</strong> que querrías que tu base de datos pudiera responder. En S7 las convertirás en consultas SQL.</p>
+<ol type="1">
+<li>Abre <strong>Pluma</strong> (Aplicaciones → Accesorios → Pluma).</li>
+<li>Abre tu <code>retos_sql.sql</code> desde la carpeta <strong>Descargas</strong>. Si no está ahí, descárgalo primero de Moodle (lo subiste al final de S5 con los 20 retos).</li>
+<li>Baja al final del archivo y añade tres líneas comentadas con tus ideas, una por línea, con este formato:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb1-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 1: ...&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb1-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 2: ...&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb1-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 3: ...&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Las preguntas tienen que ser cosas que tu BD pueda responder con lo aprendido en S4 y S5: filtros con <code>WHERE</code>, ordenaciones con <code>ORDER BY</code>, búsquedas parciales con <code>LIKE</code>, cruces de dos tablas con <code>JOIN</code>. Ejemplos del estilo, adaptados a algunos temas:</p>
+<ul>
+<li>“¿Qué clientes han hecho más de un pedido?”</li>
+<li>“¿Cuál es el equipo con más partidos jugados como local?”</li>
+<li>“¿Qué socios se inscribieron antes de 2025?”</li>
+</ul>
+<p>Guarda con <code>Ctrl+S</code>.</p>
+</section>
+<section class="level2" id="producto-final-de-s6">
+<h2 class="">Producto final de S6</h2>
+<p>Cuando termines la sesión debes tener:</p>
+<ul>
+<li>El <strong>examen del mini-control entregado en mano</strong> al profesor (no se sube a Moodle).</li>
+<li>Tu <strong><code>&lt;tu_tema&gt;.odb</code> ampliado</strong>: 15 registros en cada una de las 3 tablas, con la integridad referencial respetada.</li>
+<li>Tu <strong><code>retos_sql.sql</code></strong> con las 20 consultas de S5 <strong>+ 3 ideas comentadas</strong> al final, listas para convertirlas en SQL en S7.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte: sube todo a Moodle</p>
+<p>Los ordenadores del IES borran todo al apagarse. Si dejas tu trabajo en <em>Descargas</em>, mañana ya no estará. Sube siempre todo a Moodle antes de irte.</p>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong>:</p>
+<ol type="1">
+<li><strong><code>&lt;tu_tema&gt;.odb</code></strong> (versión ampliada de hoy): borra el <code>&lt;tu_tema&gt;.odb</code> que tenías subido y sube el actualizado. <strong>Mantén el mismo nombre, sin sufijo</strong> (no le añadas <code>-s6</code>).</li>
+<li><strong><code>retos_sql.sql</code></strong> (con las 3 ideas añadidas): borra el de S5 y sube esta versión.</li>
+<li><strong><code>&lt;tu_tema&gt;-s4.odb</code></strong>: <strong>no lo toques</strong>. Sigue como referencia del estado pre-SQL.</li>
+</ol>
+<p>Al terminar S6 deben quedar <strong>tres archivos</strong> en Moodle: <code>&lt;tu_tema&gt;.odb</code> (actualizado hoy), <code>&lt;tu_tema&gt;-s4.odb</code> (intacto desde S4) y <code>retos_sql.sql</code>.</p>
+<p>Mantén la entrega en estado <strong>borrador</strong>. <strong>NO pulses “Entregar tarea”</strong> todavía: eso es en S7.</p>
+</div>
+<p>En <strong>S7</strong> cerrarás el proyecto: convertirás las 3 ideas que has anotado hoy en SQL real, escribirás la memoria del proyecto y harás la <strong>entrega definitiva</strong> pulsando <em>Entregar tarea</em>.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base me dice <em>“Integrity constraint violation”</em> al añadir una fila a la tabla hija</td>
+<td>La FK apunta a un <code>id</code> que no existe en la tabla padre</td>
+<td>Comprueba que el <code>id</code> que estás escribiendo en la hija aparece arriba en la padre correspondiente. Si no, primero añade ese registro a la padre y vuelve a la hija.</td>
+</tr>
+<tr class="even">
+<td>He añadido datos pero al volver a abrir el <code>.odb</code> no aparecen</td>
+<td>No has guardado el <code>.odb</code> desde la ventana principal</td>
+<td>Vuelve a la ventana principal de Base (la que lista <em>Tablas, Consultas, Formularios, Informes</em>) y pulsa <code>Ctrl+S</code>. Después vuelve a probar.</td>
+</tr>
+<tr class="odd">
+<td>No encuentro Pluma</td>
+<td>Está en Aplicaciones → Accesorios → Pluma</td>
+<td>Si tampoco aparece ahí, abre el gestor de archivos, ve a <em>Descargas</em>, clic derecho sobre <code>retos_sql.sql</code> → <em>Abrir con… → Pluma</em>.</td>
+</tr>
+<tr class="even">
+<td>He subido un archivo equivocado a Moodle</td>
+<td>Pasa a menudo</td>
+<td>En tu entrega, borra el archivo erróneo y sube el correcto. Mientras estés en estado <em>borrador</em> puedes hacerlo cuantas veces quieras.</td>
+</tr>
+<tr class="odd">
+<td>Se me olvidó traer la chuleta SQL impresa</td>
+<td>Pasa</td>
+<td>El profesor lleva copias en clase y grapa una al examen al entregártelo. No te quedes sin examen por esto.</td>
+</tr>
+<tr class="even">
+<td>Me sobra tiempo en el bloque 2</td>
+<td>Has ido rápido con la ampliación de datos</td>
+<td>Empieza a adelantar S7: traduce alguna de tus 3 ideas a SQL real en <code>retos_sql.sql</code> comentándola con <code>-- S7 borrador</code>. En S7 la refinas.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s5-sql-join-y-modificacion.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/s7-cierre-y-entrega.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

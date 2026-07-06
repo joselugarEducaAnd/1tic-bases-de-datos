@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE07">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S7 · Cierre y entrega | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE07" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li> <a href="../html/s5-sql-join-y-modificacion.html" class="no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li class="active"> <a href="../html/s7-cierre-y-entrega.html" class="active no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE07" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S7 · Cierre y entrega</h1></div>
+</header><div id="page-content-20260706153902PAGE07" class="page-content">
+<article id="20260706153902BLK007" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV007" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV007&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Convertir las <strong>3 ideas</strong> que dejaste anotadas en <code>retos_sql.sql</code> en <strong>3 consultas SQL reales</strong> sobre tu propia base de datos, guardadas en el panel <em>Consultas</em> de tu <code>.odb</code>.</li>
+<li>Rellenar la <strong>memoria del proyecto</strong> sobre una plantilla <code>.odt</code> de LibreOffice Writer, con tu esquema E-R, tus 3 tablas, tus 3 consultas y una breve reflexión.</li>
+<li>Hacer la <strong>autoevaluación</strong> dentro de la propia memoria.</li>
+<li><strong>Subir</strong> los archivos finales a Moodle y, por primera y única vez en toda la unidad, <strong>pulsar “Entregar tarea”</strong>.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de empezar</p>
+<p>Hoy es el día de cierre. Lee esto antes de tocar el teclado:</p>
+<ul>
+<li><strong>Trae a clase tus 3 ideas claras</strong>: las que anotaste al final de S6 en <code>retos_sql.sql</code> con el formato <code>-- Idea S7 N</code>. Si no te acuerdas, repásalas en cuanto descargues el archivo.</li>
+<li>Vas a usar <strong>dos programas a la vez</strong>: LibreOffice <strong>Base</strong> (para las 3 consultas y el <code>.odb</code>) y LibreOffice <strong>Writer</strong> (para la memoria).</li>
+<li>Fecha límite: la que el profesor indique en Moodle. Si no te da tiempo a terminar la memoria en clase, la terminas en casa antes de esa fecha.</li>
+</ul>
+</div>
+</section>
+<section class="level2" id="descarga-tus-archivos-de-moodle">
+<h2 class="">1. Descarga tus archivos de Moodle</h2>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong> de Moodle tienes ahora mismo tres archivos del trabajo de las sesiones anteriores. Descárgalos los tres a la carpeta <strong>Descargas</strong>:</p>
+<ol type="1">
+<li><strong><code>&lt;tu_tema&gt;.odb</code></strong> (sin sufijo): tu base de datos al completo, con 15 registros por tabla y los cambios SQL de S5 ya aplicados. Es la que vas a usar hoy.</li>
+<li><strong><code>retos_sql.sql</code></strong>: con tus 20 retos resueltos y, al final, las 3 ideas comentadas que anotaste en S6 (<code>-- Idea S7 1: …</code> y siguientes).</li>
+<li><strong><code>&lt;tu_tema&gt;-s4.odb</code></strong>: la foto pre-SQL. Hoy <strong>no la tocas</strong>; sigue ahí como referencia.</li>
+</ol>
+<p>Ábrelos para tenerlos listos:</p>
+<ul>
+<li>Doble clic sobre <strong><code>&lt;tu_tema&gt;.odb</code></strong> → se abre en LibreOffice Base.</li>
+<li>Doble clic sobre <strong><code>retos_sql.sql</code></strong> → se abre en Pluma (si no, clic derecho → <em>Abrir con… → Pluma</em>).</li>
+</ul>
+</section>
+<section class="level2" id="convierte-tus-3-ideas-en-sql-real">
+<h2 class="">2. Convierte tus 3 ideas en SQL real</h2>
+<p>Las 3 ideas que anotaste en S6 eran preguntas en castellano del estilo <em>“¿qué clientes han hecho más de un pedido?”</em>. Hoy las traduces a <strong>SQL</strong> y las guardas como <strong>consultas dentro del propio <code>.odb</code></strong>, igual que las consultas gráficas que creaste en S3, pero ahora escritas en SQL.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningRecordatorio rápido: en Base se escribe SQL distinto</p>
+<p>LibreOffice Base usa el motor <strong>HSQLDB</strong>, no SQLite. La diferencia que más te va a afectar hoy:</p>
+<ul>
+<li><strong>Identificadores entre comillas dobles</strong>: nombres de tabla y de columna. Ejemplo: <code>"Series"</code>, <code>"titulo"</code>. Si te las dejas, HSQLDB convierte el nombre a mayúsculas internamente y no lo encuentra.</li>
+<li><strong>Cadenas de texto entre comillas simples</strong>, igual que en SQLite: <code>'Fantasía'</code>, <code>'Lucía'</code>.</li>
+</ul>
+<p>Por lo demás, todo lo que aprendiste en S4 y S5 funciona igual: <code>SELECT</code>, <code>WHERE</code>, <code>ORDER BY</code>, <code>LIKE</code>, <code>BETWEEN</code>, <code>IS NULL</code>, <code>JOIN</code>. Lo que estás haciendo es lo mismo de siempre, solo que con comillas dobles en los identificadores.</p>
+<p>Tienes el resumen completo en el bloque “Llevar SQL a Base” de la <a download="chuleta_sql.pdf" href="../content/resources/chuleta_sql.pdf" target="_blank">Chuleta SQL</a>.</p>
+</div>
+<section class="level3" id="dónde-se-crean-las-consultas-guardadas">
+<h3 class="">2.1 Dónde se crean las consultas guardadas</h3>
+<p>Con <code>&lt;tu_tema&gt;.odb</code> abierto en LibreOffice Base, fíjate en la barra lateral izquierda: lista cuatro categorías en este orden vertical: <strong>Tablas, Consultas, Formularios, Informes</strong>. Hoy trabajas en <strong>Consultas</strong>.</p>
+<ol type="1">
+<li>Haz clic en <strong>Consultas</strong> (segunda categoría).</li>
+<li>En el panel central pulsa <strong>Crear consulta en vista SQL…</strong>.</li>
+<li>Se abre una ventana con un editor SQL grande. Es muy parecido a SQLime, pero corre dentro de Base y consulta <strong>tu</strong> BD.</li>
+</ol>
+</section>
+<section class="level3" id="para-cada-una-de-tus-3-ideas">
+<h3 class="">2.2 Para cada una de tus 3 ideas</h3>
+<p>Para la <strong>Idea 1</strong>, vuelve a Pluma y mira qué escribiste como <code>-- Idea S7 1</code>. Tradúcela a SQL siguiendo este flujo:</p>
+<ol type="1">
+<li><strong>Escribe la consulta SQL</strong> en el editor de la ventana <em>Crear consulta en vista SQL…</em>. Recuerda las comillas dobles en los identificadores.</li>
+<li><strong>Ejecútala</strong>: en la barra superior de la ventana hay un icono <em>Ejecutar consulta SQL</em> (también funciona la tecla <code>F5</code>). Si la consulta es correcta, <strong>arriba</strong> aparece la tabla con el resultado. Si falla, abajo verás el mensaje de error.</li>
+<li><strong>Si falla</strong>: corrige y vuelve a ejecutar. Errores típicos: comillas dobles olvidadas, nombre de columna mal escrito, <code>JOIN</code> sin <code>ON</code>. Mira la sección <a href="#si-te-atascas">Si te atascas</a> si te bloqueas.</li>
+<li><strong>Cuando funcione</strong>, <strong>guarda la consulta</strong>: pulsa <em>Archivo → Guardar</em> (o <code>Ctrl+S</code>). Base te pregunta el nombre. Llámala <strong><code>Consulta_1</code></strong> (o algo más descriptivo, como <code>libros_más_prestados</code>). Cierra la ventana de la consulta con la X.</li>
+<li>De vuelta a la ventana principal de Base, en el panel central de <strong>Consultas</strong> debe aparecer ahora <strong><code>Consulta_1</code></strong> en la lista. Doble clic sobre ella te muestra el resultado tantas veces como quieras.</li>
+</ol>
+<p>Repite los pasos 1–5 con la <strong>Idea 2</strong> (llámala <code>Consulta_2</code>) y con la <strong>Idea 3</strong> (llámala <code>Consulta_3</code>).</p>
+<div class="marco marco-nota"><p class="marco-titulo">TipQué piden las 3 consultas como mínimo</p>
+<ul>
+<li>Que <strong>se ejecuten sin error</strong> (no aparece mensaje rojo abajo).</li>
+<li>Que <strong>devuelvan resultado coherente</strong> con tu pregunta original (no necesariamente muchas filas: a veces 0 filas es la respuesta correcta, si nadie cumple la condición que preguntaste).</li>
+<li>Al menos una de las tres tiene que <strong>cruzar dos tablas con <code>JOIN</code></strong>, para que se note que aprovechas la estructura relacional. Las otras dos pueden ser <code>SELECT</code> con <code>WHERE</code>, <code>LIKE</code> o <code>ORDER BY</code>.</li>
+</ul>
+<p>Si tus 3 ideas eran las tres de tabla única, modifica una de ellas para que pase a usar <code>JOIN</code>. Por ejemplo: en lugar de <em>“¿qué pedidos son del cliente con id_cliente = 3?”</em>, formúlala como <em>“¿qué pedidos ha hecho la clienta Lucía García?”</em> — eso ya exige cruzar <code>Pedidos</code> con <code>Clientes</code>.</p>
+</div>
+</section>
+<section class="level3" id="pega-las-consultas-en-retos_sql.sql">
+<h3 class="">2.3 Pega las consultas en <code>retos_sql.sql</code></h3>
+<p>Las consultas guardadas viven en el <code>.odb</code> y son la evidencia oficial. Pero también las queremos en <code>retos_sql.sql</code> como texto plano, para que sean fáciles de leer en la corrección.</p>
+<p>En <strong>Pluma</strong>, abre <code>retos_sql.sql</code>. Al final del archivo verás las 3 ideas comentadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb1-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 1: ¿qué clientes han hecho más de un pedido?&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb1-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 2: ¿cuál es el equipo con más partidos como local?&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb1-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Idea S7 3: ¿qué socios se inscribieron antes de 2025?&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p><strong>Sustituye</strong> cada idea por la consulta SQL real, manteniendo el comentario justo encima. Queda así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb2-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Consulta S7 1: ¿qué clientes han hecho más de un pedido?&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;nombre&quot;&lt;/span&gt;, &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;apellidos&quot;&lt;/span&gt;, &lt;span class=&quot;fu&quot;&gt;COUNT&lt;/span&gt;(&lt;span class=&quot;ot&quot;&gt;&quot;P&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;id_pedido&quot;&lt;/span&gt;) &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;n_pedidos&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;Clientes&quot;&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;Pedidos&quot;&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;P&quot;&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;id_cliente&quot;&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;P&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;id_cliente&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-5&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-5&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;id_cliente&quot;&lt;/span&gt;, &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;nombre&quot;&lt;/span&gt;, &lt;span class=&quot;ot&quot;&gt;&quot;C&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;apellidos&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-6&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-6&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;HAVING&lt;/span&gt; &lt;span class=&quot;fu&quot;&gt;COUNT&lt;/span&gt;(&lt;span class=&quot;ot&quot;&gt;&quot;P&quot;&lt;/span&gt;.&lt;span class=&quot;ot&quot;&gt;&quot;id_pedido&quot;&lt;/span&gt;) &lt;span class=&quot;op&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;
+&lt;span id=&quot;cb2-7&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-7&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-8&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-8&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Consulta S7 2: …&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb2-9&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-9&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Consulta S7 3: …&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Si tu consulta no usa <code>GROUP BY</code> ni <code>HAVING</code> (cosas que no hemos visto en clase), no pasa nada: lo importante es que aparezca la SQL real, con las comillas dobles HSQLDB tal cual la pegaste en Base.</p>
+<p>Guarda el archivo con <code>Ctrl+S</code>.</p>
+</section>
+</section>
+<section class="level2" id="descarga-la-plantilla-de-la-memoria">
+<h2 class="">3. Descarga la plantilla de la memoria</h2>
+<p><a href="recursos/plantilla_memoria.odt"><strong>Descarga aquí <code>plantilla_memoria.odt</code></strong></a>. Se guarda en <em>Descargas</em>. Doble clic la abre en LibreOffice Writer.</p>
+<p>Lo primero, antes de escribir nada: <strong>Archivo → Guardar como…</strong> → ponle el nombre <strong><code>memoria.odt</code></strong> y guárdalo en <em>Descargas</em>. Así la plantilla queda intacta por si necesitas volver a empezar.</p>
+<div class="marco marco-nota"><p class="marco-titulo">TipComprobación rápida</p>
+<p>En la barra de título de Writer ahora pone <strong><code>memoria.odt</code></strong>, no <code>plantilla_memoria.odt</code>. Si sigue poniendo <code>plantilla_memoria</code>, repite el <em>Guardar como</em>.</p>
+</div>
+</section>
+<section class="level2" id="rellena-la-memoria-sección-a-sección">
+<h2 class="">4. Rellena la memoria sección a sección</h2>
+<p>La plantilla ya tiene la estructura hecha. Tu trabajo es ir reemplazando los huecos marcados (<code>[…]</code>) por tu información real. Estas son las secciones, de arriba abajo:</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sección</th>
+<th>Qué pones</th>
+<th>Cuánto te lleva</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Portada</strong></td>
+<td>Tema elegido, tu nombre y apellidos, grupo (1.º TIC o 1.º BTOPA), fecha.</td>
+<td>1 min</td>
+</tr>
+<tr class="even">
+<td><strong>Descripción del dominio</strong></td>
+<td>4–6 líneas explicando qué representa tu BD: qué entidades hay, qué relación tienen entre sí, para qué serviría.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Esquema E-R</strong></td>
+<td>Captura del diseñador de relaciones de Base. Ábrelo con <em>Herramientas → Relaciones</em>, organiza las 3 cajas y haz captura con la tecla <strong>Impr Pant</strong> o con <em>Captura de pantalla</em> del menú de aplicaciones. Pega la imagen en el hueco de la plantilla.</td>
+<td>5 min</td>
+</tr>
+<tr class="even">
+<td><strong>Las 3 tablas</strong></td>
+<td>Una tabla por cada una de tus 3 tablas, listando sus campos: nombre, tipo, si es PK o FK, si admite NULL. La plantilla ya lleva una cabecera de ejemplo: solo tienes que rellenar las filas.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Las 3 consultas SQL</strong></td>
+<td>Para cada consulta: enunciado en castellano, código SQL (copia-pega de <code>retos_sql.sql</code>), captura del resultado en Base, y 2 líneas explicando qué te dice ese resultado.</td>
+<td>8 min</td>
+</tr>
+<tr class="even">
+<td><strong>Autoevaluación</strong></td>
+<td>Marca con <strong>X</strong> la casilla que mejor describa tu trabajo en cada uno de los 5 criterios + 4–6 líneas de reflexión final.</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Qué he aprendido</strong></td>
+<td>3–5 líneas en formato libre. Lo más sincero que puedas: qué se te dio bien, qué se te resistió, qué cambiarías si volvieras a empezar.</td>
+<td>3 min</td>
+</tr>
+</tbody>
+</table>
+<div class="marco marco-nota"><p class="marco-titulo">TipCómo capturar bien una pantalla</p>
+<ul>
+<li>En los equipos del IES, la tecla <strong>Impr Pant</strong> copia la pantalla al portapapeles. Pegas en Writer con <code>Ctrl+V</code>.</li>
+<li>Si solo quieres una zona, en <em>Aplicaciones → Accesorios → Captura de pantalla</em> puedes seleccionar un rectángulo. Guárdalo como PNG en <em>Descargas</em> y arrástralo a Writer.</li>
+<li>En la imagen pegada en Writer, clic derecho → <em>Tamaño y posición</em> te deja redimensionarla. Que se vea legible (ni minúscula ni que ocupe una página entera).</li>
+</ul>
+</div>
+</section>
+<section class="level2" id="autoevaluación">
+<h2 class="">5. Autoevaluación</h2>
+<p>La sección de autoevaluación ya está dentro de la memoria, justo antes de la reflexión. Funciona en dos partes.</p>
+<section class="level3" id="casillas-de-la-rúbrica-simplificada">
+<h3 class="">Casillas de la rúbrica simplificada</h3>
+<p>Para cada uno de los 5 criterios, marca con <strong>X</strong> la casilla que mejor describa tu trabajo. Sé honesto: la autoevaluación no afecta a la nota final (la pone el profesor), pero sí ayuda a que aprendas a juzgar tu propio trabajo con criterio.</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 13%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th style="text-align: center;">4 — Excelente</th>
+<th style="text-align: center;">3 — Logrado</th>
+<th style="text-align: center;">2 — En desarrollo</th>
+<th style="text-align: center;">1 — Iniciado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diseño de tablas</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="even">
+<td>Relaciones e integridad</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="odd">
+<td>Datos poblados</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="even">
+<td>Consultas SQL</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+<tr class="odd">
+<td>Memoria</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+<td style="text-align: center;">☐</td>
+</tr>
+</tbody>
+</table>
+<p>Para conocer al detalle qué pide cada nivel, mira la <a href="rubrica-del-proyecto.html">Rúbrica del proyecto</a>.</p>
+</section>
+<section class="level3" id="reflexión-final">
+<h3 class="">Reflexión final</h3>
+<p>4–6 líneas en las que respondas a estas tres preguntas:</p>
+<ol type="1">
+<li>¿Qué parte del trabajo me ha salido mejor y por qué?</li>
+<li>¿En qué parte he tenido que pedir ayuda o repetir varias veces? ¿Qué hice para resolverlo?</li>
+<li>Si volviera a hacer este proyecto, ¿qué cambiaría?</li>
+</ol>
+</section>
+</section>
+<section class="level2" id="exporta-la-memoria-a-pdf">
+<h2 class="">6. Exporta la memoria a PDF</h2>
+<p>Cuando tengas la memoria completa y guardada como <code>memoria.odt</code>, vamos a <strong>exportar también una versión en PDF</strong>. Te servirá para dejar el formato congelado y para practicar la exportación, una habilidad útil más allá de esta unidad.</p>
+<ol type="1">
+<li>En Writer, con <code>memoria.odt</code> abierto: <strong>Archivo → Exportar como → Exportar como PDF…</strong>.</li>
+<li>En el cuadro que sale, deja las opciones por defecto y pulsa <em>Exportar</em>.</li>
+<li>Dale el nombre <strong><code>memoria.pdf</code></strong> y guarda en <em>Descargas</em>, junto al <code>memoria.odt</code>.</li>
+<li>Comprueba que se ha creado: en <em>Descargas</em> deben aparecer ahora <code>memoria.odt</code> Y <code>memoria.pdf</code>. Ábrelo con doble clic para verificar que se ve igual que en Writer.</li>
+</ol>
+</section>
+<section class="level2" id="entrega-definitiva-en-moodle">
+<h2 class="">7. Entrega definitiva en Moodle</h2>
+<p>Llegó el momento. Vas a sustituir los archivos antiguos en Moodle por los finales y, después, pulsar <strong>“Entregar tarea”</strong>.</p>
+<section class="level3" id="sube-los-archivos-finales">
+<h3 class="">7.1 Sube los archivos finales</h3>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong>, en tu entrega:</p>
+<ol type="1">
+<li><strong>Borra</strong> el <code>&lt;tu_tema&gt;.odb</code> antiguo (el que estaba subido al final de S6) y <strong>sube</strong> el <code>&lt;tu_tema&gt;.odb</code> actualizado de hoy, con las 3 consultas guardadas en el panel <em>Consultas</em>.</li>
+<li><strong>Borra</strong> el <code>retos_sql.sql</code> antiguo y <strong>sube</strong> el actualizado, con las 3 consultas SQL reales (no solo las ideas comentadas).</li>
+<li><strong>Sube</strong> <code>memoria.odt</code> y <code>memoria.pdf</code> (archivos nuevos).</li>
+<li><strong>NO toques</strong> <code>&lt;tu_tema&gt;-s4.odb</code>. Tiene que quedarse ahí como referencia del estado pre-SQL.</li>
+</ol>
+<p>Al final deben aparecer <strong>5 archivos</strong> en tu entrega:</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Archivo</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;tu_tema&gt;.odb</code></td>
+<td>BD final, con 15 registros por tabla, INSERT/UPDATE/DELETE de S5 aplicados y 3 consultas guardadas en panel <em>Consultas</em></td>
+</tr>
+<tr class="even">
+<td><code>&lt;tu_tema&gt;-s4.odb</code></td>
+<td>Foto pre-SQL (intacta desde S4)</td>
+</tr>
+<tr class="odd">
+<td><code>retos_sql.sql</code></td>
+<td>20 retos sobre <code>biblioteca</code> + 3 consultas SQL reales sobre tu BD</td>
+</tr>
+<tr class="even">
+<td><code>memoria.odt</code></td>
+<td>Memoria editable</td>
+</tr>
+<tr class="odd">
+<td><code>memoria.pdf</code></td>
+<td>Memoria con formato congelado</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="level3" id="pulsa-entregar-tarea">
+<h3 class="">7.2 Pulsa “Entregar tarea”</h3>
+<div class="marco marco-formula"><p class="marco-titulo">WarningEsto es la entrega DEFINITIVA</p>
+<p>Hasta hoy, tu entrega estaba en estado <strong>borrador</strong>: podías subir, borrar, volver a subir tantas veces como quisieras. Cuando pulses <strong>“Entregar tarea”</strong>, el estado pasa a <strong>Enviado</strong> y ya no podrás modificar los archivos sin pedir al profesor que reabra tu intento.</p>
+<p>Antes de pulsar, <strong>revisa una última vez</strong> que están los 5 archivos que toca y que abres <code>memoria.pdf</code> y se ve bien.</p>
+</div>
+<ol type="1">
+<li>En tu entrega, pulsa el botón <strong>“Entregar tarea”</strong>.</li>
+<li>Moodle te pedirá confirmación con un mensaje del tipo <em>“Una vez que envíe esta entrega, ya no podrá realizar más cambios”</em>. Pulsa <strong>Continuar</strong>.</li>
+<li>El estado de tu entrega cambia a <strong>Enviado</strong>. Comprúebalo: en la página de la tarea debe aparecer ahora <em>“Estado de la entrega: Enviado para calificar”</em> en lugar de <em>“Borrador (no entregado)”</em>.</li>
+</ol>
+<p>Si por accidente pulsaste <em>Entregar</em> antes de subir un archivo, avisa al profesor: puede reabrir tu intento para que termines.</p>
+</section>
+</section>
+<section class="level2" id="producto-final-de-s7">
+<h2 class="">Producto final de S7</h2>
+<p>Cuando termines la sesión debes tener:</p>
+<ul>
+<li>Tu <strong><code>&lt;tu_tema&gt;.odb</code> final</strong> con 3 consultas guardadas en el panel <em>Consultas</em>.</li>
+<li>Tu <strong><code>retos_sql.sql</code></strong> con 20 retos + 3 consultas SQL reales.</li>
+<li>Tu <strong><code>memoria.odt</code></strong> y tu <strong><code>memoria.pdf</code></strong> completos.</li>
+<li>En Moodle, los 5 archivos subidos y la entrega en estado <strong>Enviado</strong>.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte</p>
+<ul>
+<li><strong>Comprueba el estado</strong>: en Moodle, en la tarea, debe aparecer <strong>“Enviado para calificar”</strong>, no <strong>“Borrador”</strong>. Si pone borrador, no has pulsado <em>Entregar tarea</em> o el navegador no llegó a confirmar la acción.</li>
+<li><strong>Si te falta tiempo</strong>: si no terminas la memoria en clase, NO pulses <em>Entregar tarea</em> todavía. Sube lo que tengas en estado borrador, termina la memoria en casa antes de la fecha límite, y entonces sí pulsas <em>Entregar</em>.</li>
+<li><strong>Una vez entregado, no se puede deshacer</strong> salvo que el profesor reabra tu intento. Pídelo solo si es necesario.</li>
+</ul>
+</div>
+<p>¡Y con esto se cierra la unidad! Has diseñado una BD relacional de cero, la has poblado, le has hablado en SQL y has dejado consultas guardadas dentro del archivo. Es exactamente lo que hace cualquier desarrollador que trabaja con datos en el mundo real, solo que con herramientas más sofisticadas.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mi consulta da <em>“Column not found: TITULO”</em></td>
+<td>Te has olvidado las comillas dobles en una columna</td>
+<td>Pon comillas dobles alrededor de <strong>todos</strong> los identificadores: <code>"titulo"</code>, <code>"Libros"</code>, etc.</td>
+</tr>
+<tr class="even">
+<td>Mi consulta da <em>“User lacks privilege or object not found: LIBROS”</em></td>
+<td>Comillas dobles olvidadas en el nombre de la tabla</td>
+<td>Igual: <code>"Libros"</code>, no <code>Libros</code>.</td>
+</tr>
+<tr class="odd">
+<td>Mi <code>JOIN</code> da error de sintaxis</td>
+<td>Te has dejado el <code>ON</code> o el <code>=</code></td>
+<td>Patrón fijo: <code>JOIN "tabla_b" AS "B" ON "A"."columna" = "B"."columna"</code>. Cada lado del <code>=</code> debe ser una columna, no un valor.</td>
+</tr>
+<tr class="even">
+<td>Guardé la consulta y al reabrir el <code>.odb</code> no aparece en panel <em>Consultas</em></td>
+<td>No has guardado el <code>.odb</code> desde la ventana principal de Base</td>
+<td><code>Ctrl+S</code> desde la ventana principal de Base (no desde la ventana de la consulta). Las consultas se persisten en el archivo <code>.odb</code> solo cuando guardas el <code>.odb</code> entero.</td>
+</tr>
+<tr class="odd">
+<td>Al exportar a PDF, las imágenes salen cortadas</td>
+<td>La imagen se sale del margen de la página</td>
+<td>Clic derecho sobre la imagen en Writer → <em>Tamaño y posición</em> → reduce el ancho. Vuelve a exportar.</td>
+</tr>
+<tr class="even">
+<td>No encuentro <em>Captura de pantalla</em> en el menú</td>
+<td>Está en <em>Aplicaciones → Accesorios → Captura de pantalla</em></td>
+<td>Si tampoco aparece ahí, usa la tecla <strong>Impr Pant</strong>: copia la pantalla al portapapeles y luego en Writer pulsas <code>Ctrl+V</code>.</td>
+</tr>
+<tr class="odd">
+<td>Pulsé <em>Entregar tarea</em> y me falta un archivo</td>
+<td>Pasa a veces</td>
+<td>Avisa al profesor para que reabra tu intento. Cuando vuelva al estado borrador podrás añadir el archivo y volver a pulsar <em>Entregar</em>.</td>
+</tr>
+<tr class="even">
+<td>Subo <code>memoria.odt</code> y Moodle me lo rechaza por tamaño</td>
+<td>El archivo pesa demasiado</td>
+<td>Suele ser por imágenes muy grandes. En Writer, <em>Herramientas → Reducir tamaño de las imágenes</em> o exporta y sube solo el <code>memoria.pdf</code> (suele pesar menos).</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s6-mini-control-y-proyecto.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/el-proyecto-brief.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>

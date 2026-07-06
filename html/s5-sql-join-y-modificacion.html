@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es" id="exe-20260706153902PAGE05">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="eXeLearning v4.0.1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S5 · SQL: JOIN y modificación | Bases de datos y SQL</title>
+<link rel="icon" type="image/x-icon" href="../libs/favicon.ico">
+<meta name="description" content="Unidad de Bases de Datos y SQL. TICO 1 Bach.">
+<script>document.querySelector("html").classList.add("js");</script><script src="../libs/jquery/jquery.min.js"> </script><script src="../libs/common_i18n.js"> </script><script src="../libs/common.js"> </script><script src="../libs/exe_export.js"> </script><script src="../libs/bootstrap/bootstrap.bundle.min.js"> </script><link rel="stylesheet" href="../libs/bootstrap/bootstrap.min.css">
+<script src="../idevices/text/text.js"></script><link rel="stylesheet" href="../idevices/text/text.css">
+<link rel="stylesheet" href="../content/css/base.css"><script src="../theme/style.js"> </script><link rel="stylesheet" href="../theme/style.css"><link rel="stylesheet" href="../theme/zzz-majuelo.css">
+</head>
+<body class="exe-export exe-web-site">
+<script>document.body.className+=" js"</script>
+<div class="exe-content exe-export pre-js siteNav-hidden"><a href="#20260706153902PAGE05" id="skipNav">Skip to content</a> <nav id="siteNav">
+<ul>
+<li> <a href="../index.html" class="main-node no-ch">Bienvenida</a>
+</li>
+<li> <a href="../html/s1-concepto-y-primera-tabla.html" class="no-ch">S1 · Concepto y primera tabla</a>
+</li>
+<li> <a href="../html/s2-relaciones-e-integridad.html" class="no-ch">S2 · Relaciones e integridad</a>
+</li>
+<li> <a href="../html/s3-formularios-y-consultas.html" class="no-ch">S3 · Formularios y consultas</a>
+</li>
+<li> <a href="../html/s4-sql-select.html" class="no-ch">S4 · SQL: SELECT</a>
+</li>
+<li class="active"> <a href="../html/s5-sql-join-y-modificacion.html" class="active no-ch">S5 · SQL: JOIN y modificación</a>
+</li>
+<li> <a href="../html/s6-mini-control-y-proyecto.html" class="no-ch">S6 · Mini-control y proyecto</a>
+</li>
+<li> <a href="../html/s7-cierre-y-entrega.html" class="no-ch">S7 · Cierre y entrega</a>
+</li>
+<li> <a href="../html/el-proyecto-brief.html" class="no-ch">El proyecto (brief)</a>
+</li>
+<li> <a href="../html/rubrica-del-proyecto.html" class="no-ch">Rúbrica del proyecto</a>
+</li>
+</ul>
+</nav><main id="20260706153902PAGE05" class="page"> 
+<header class="main-header">
+<div class="package-header"><p class="package-title">Bases de datos y SQL</p></div>
+<div class="page-header"><h1 class="page-title">S5 · SQL: JOIN y modificación</h1></div>
+</header><div id="page-content-20260706153902PAGE05" class="page-content">
+<article id="20260706153902BLK005" class="box">
+<header class="box-head no-icon">
+<h1 class="box-title">Contenido</h1>
+<button class="box-toggle box-toggle-on" title="Toggle content">
+<span>Toggle content</span>
+</button></header>
+<div class="box-content">
+<div id="20260706153902IDEV005" class="idevice_node text" data-idevice-path="../idevices/text/" data-idevice-type="text" data-idevice-component-type="json" data-idevice-json-data="{&quot;ideviceId&quot;:&quot;20260706153902IDEV005&quot;}">
+<section class="level2" id="lo-que-vas-a-hacer-hoy">
+<h2 class="">Lo que vas a hacer hoy</h2>
+<ul>
+<li>Aprender a <strong>combinar varias tablas</strong> con <code>JOIN</code> para responder preguntas que cruzan datos.</li>
+<li>Aprender a <strong>crear, modificar y borrar filas</strong> con <code>INSERT</code>, <code>UPDATE</code> y <code>DELETE</code>.</li>
+<li>Aplicar al menos <strong>1 INSERT, 1 UPDATE y 1 DELETE en TU propia base de datos</strong> desde LibreOffice Base, vía <em>Herramientas → SQL…</em>.</li>
+<li>Resolver los <strong>10 retos de S5</strong> sobre <code>biblioteca.db</code> y dejar tu archivo <code>retos_sql.sql</code> ampliado a 20 consultas.</li>
+</ul>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de empezar: descarga tus archivos de Moodle</p>
+<p>Hoy descargas <strong>dos archivos</strong> de la tarea <strong>“TAREA - Bases de datos”</strong>:</p>
+<ol type="1">
+<li>Tu <strong><code>&lt;tu_tema&gt;.odb</code></strong> (el archivo sin sufijo). Este es el que vas a modificar hoy y el que seguirás usando hasta el final de la unidad.</li>
+<li>Tu <strong><code>retos_sql.sql</code></strong> (con los 10 retos de S4 resueltos).</li>
+</ol>
+<p>El <strong><code>&lt;tu_tema&gt;-s4.odb</code></strong> (la copia de seguridad pre-SQL que dejaste en Moodle al cerrar S4) <strong>se queda en Moodle y no lo tocas</strong>. Es la “foto” del antes; no la necesitas hoy.</p>
+<p>A lo largo de la sesión añadirás 1 INSERT, 1 UPDATE y 1 DELETE a <code>&lt;tu_tema&gt;.odb</code> desde <em>Herramientas → SQL…</em>, y al final lo subirás reemplazando el de Moodle. El <code>retos_sql.sql</code> lo abrirás con <strong>Pluma</strong> y le añadirás los 10 retos nuevos.</p>
+<p>Detalles en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+</section>
+<section class="level2" id="hoy-trabajas-en-dos-herramientas-a-la-vez">
+<h2 class="">Hoy trabajas en dos herramientas a la vez</h2>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteSQLime y LibreOffice Base, en paralelo</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Herramienta</th>
+<th>Para qué la usas hoy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>SQLime</strong> sobre <code>biblioteca.db</code></td>
+<td>Aprender JOIN, practicar INSERT/UPDATE/DELETE y resolver los 10 retos</td>
+</tr>
+<tr class="even">
+<td><strong>LibreOffice Base</strong> sobre tu <code>.odb</code></td>
+<td>Aplicar 1 INSERT + 1 UPDATE + 1 DELETE en tu <strong>propia</strong> BD del proyecto, vía <em>Herramientas → SQL…</em></td>
+</tr>
+</tbody>
+</table>
+<p>La mayor parte del tiempo estarás en SQLime. Al final de la sesión, abres tu <code>.odb</code> en Base y le llevas tres modificaciones.</p>
+</div>
+</section>
+<section class="level2" id="refresco-rápido-vuelve-a-cargar-biblioteca.db-en-sqlime">
+<h2 class="">1. Refresco rápido: vuelve a cargar <code>biblioteca.db</code> en SQLime</h2>
+<p>Como los equipos del IES se reinician cada noche, <code>biblioteca.db</code> ya no está en tu carpeta <strong>Descargas</strong> del día anterior. <a href="recursos/biblioteca.db">Descárgala de nuevo aquí</a>.</p>
+<p>Abre después <a href="https://sqlime.org/">https://sqlime.org/</a>, pulsa <strong>open file</strong> y selecciona el archivo desde <strong>Descargas</strong>.</p>
+<p>Comprueba que la barra superior pone <strong>biblioteca.db</strong> y que al pulsar <strong>tables</strong> ves las 3 tablas: <code>Libros</code>, <code>Lectores</code>, <code>Prestamos</code>. Si algo no encaja, repasa el <a href="s4-sql-select.html#abrir-sqlime-y-cargar-biblioteca.db">apartado 1 de S4</a>.</p>
+</section>
+<section class="level2" id="join-combinar-datos-de-varias-tablas">
+<h2 class="">2. JOIN — combinar datos de varias tablas</h2>
+<p>Hasta ahora todas tus consultas iban a una sola tabla. Pero muchas preguntas reales <strong>cruzan tablas</strong>: la fecha de un préstamo está en <code>Prestamos</code>, el título del libro en <code>Libros</code> y el nombre del lector en <code>Lectores</code>. Con <code>SELECT</code> solo ya no llegas: necesitas <code>JOIN</code>.</p>
+<section class="level3" id="inner-join-la-combinación-más-habitual">
+<h3 class="">2.1 INNER JOIN — la combinación más habitual</h3>
+<p><code>JOIN</code> (que también puedes escribir como <code>INNER JOIN</code>, equivalente) une dos tablas a través de una columna que tienen en común — normalmente la <strong>clave primaria</strong> de la padre y la <strong>clave foránea</strong> de la hija. Sintaxis general:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb1-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; columnas&lt;/span&gt;
+&lt;span id=&quot;cb1-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   tabla_a&lt;/span&gt;
+&lt;span id=&quot;cb1-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb1-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   tabla_b &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; tabla_a.columna_comun &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; tabla_b.columna_comun;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>En <code>biblioteca</code>, <code>Prestamos.id_libro</code> apunta a <code>Libros.id_libro</code>. Si los unimos por ahí, podemos pedir la fecha del préstamo y el título del libro en la misma fila:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb2-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; Prestamos.fecha_prestamo, Libros.titulo&lt;/span&gt;
+&lt;span id=&quot;cb2-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Prestamos&lt;/span&gt;
+&lt;span id=&quot;cb2-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb2-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   Libros &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; Prestamos.id_libro &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; Libros.id_libro;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Devuelve <strong>15 filas</strong>, una por cada préstamo, con la fecha y el título correspondientes mezclados en una sola tabla.</p>
+</section>
+<section class="level3" id="alias-con-as-escritura-más-corta">
+<h3 class="">2.2 Alias con <code>AS</code> — escritura más corta</h3>
+<p>Escribir <code>Prestamos.fecha_prestamo</code> y <code>Libros.titulo</code> cada vez es largo. Para acortar puedes darle un <strong>alias</strong> a cada tabla con <code>AS</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb3-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb3-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; P.fecha_prestamo, L.titulo&lt;/span&gt;
+&lt;span id=&quot;cb3-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb3-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Prestamos &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; P&lt;/span&gt;
+&lt;span id=&quot;cb3-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb3-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   Libros    &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; L &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; P.id_libro &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; L.id_libro;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Mismo resultado, menos texto. A partir de aquí usaremos alias.</p>
+<div class="marco marco-nota"><p class="marco-titulo">Tip¿Y si dos tablas tienen una columna del mismo nombre?</p>
+<p>Si en una consulta intervienen <code>Prestamos</code> y <code>Libros</code>, las dos tienen una columna <code>id_libro</code>. Si pides solo <code>id_libro</code> sin prefijar, SQLite te da error <code>ambiguous column: id_libro</code>. Soluciónalo prefijando con el alias: <code>P.id_libro</code> o <code>L.id_libro</code>.</p>
+</div>
+</section>
+<section class="level3" id="pruébalo-une-tres-tablas-a-la-vez">
+<h3 class="">Pruébalo: une tres tablas a la vez</h3>
+<p>Puedes encadenar varios <code>JOIN</code> en la misma consulta. Aquí cruzamos <code>Prestamos</code> con <code>Libros</code> (para el título) y con <code>Lectores</code> (para el nombre):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb4-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; P.fecha_prestamo, L.titulo, R.nombre, R.apellidos&lt;/span&gt;
+&lt;span id=&quot;cb4-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Prestamos &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; P&lt;/span&gt;
+&lt;span id=&quot;cb4-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   Libros    &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; L &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; P.id_libro  &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; L.id_libro&lt;/span&gt;
+&lt;span id=&quot;cb4-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb4-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   Lectores  &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; R &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; P.id_lector &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; R.id_lector;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Pulsa <strong>run ▶</strong> (<code>Ctrl+Enter</code>). Te devuelve <strong>15 filas</strong> y 4 columnas: la fecha del préstamo, el título del libro, y el nombre y apellidos del lector. Es la consulta más completa que has escrito hasta ahora:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C19_sqlime_join_3_tablas.png" style="width:85.0%"/></p>
+<figcaption>Resultado del JOIN de 3 tablas en SQLime: la cabecera marca <em>“15 rows, took N ms”</em> y se ve cómo columnas de <code>Prestamos</code>, <code>Libros</code> y <code>Lectores</code> aparecen mezcladas en una única tabla resultado.</figcaption>
+</figure>
+</div>
+</section>
+<section class="level3" id="left-join-incluir-lo-que-no-cruza">
+<h3 class="">2.3 LEFT JOIN — incluir lo que NO cruza</h3>
+<p><code>INNER JOIN</code> solo devuelve filas que tienen pareja en ambas tablas. Eso significa que <strong>se pierden</strong> los lectores que nunca han pedido un libro o los libros que nadie ha pedido nunca.</p>
+<p>Para incluir también lo “huérfano” se usa <code>LEFT JOIN</code>: trae <strong>todas</strong> las filas de la tabla de la izquierda, y rellena con <code>NULL</code> las columnas de la derecha cuando no hay pareja.</p>
+<p>Ejemplo: lista todos los lectores con su préstamo asociado, <strong>incluyendo los que no han pedido nunca</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb5-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; R.nombre, R.apellidos, P.fecha_prestamo&lt;/span&gt;
+&lt;span id=&quot;cb5-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Lectores  &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; R&lt;/span&gt;
+&lt;span id=&quot;cb5-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt; Prestamos &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; P &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; R.id_lector &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; P.id_lector&lt;/span&gt;
+&lt;span id=&quot;cb5-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb5-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;BY&lt;/span&gt; R.id_lector;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Para los lectores que sí tienen préstamos aparecen sus fechas. Para los que <strong>no</strong> tienen ninguno aparece <strong>NULL</strong> en la columna <code>fecha_prestamo</code>.</p>
+<div class="marco marco-nota"><p class="marco-titulo">Tip“Quiero solo los lectores SIN préstamos”</p>
+<p>Combinando <code>LEFT JOIN</code> con <code>WHERE columna_de_la_derecha IS NULL</code> se filtra justo eso:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb6-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; R.nombre, R.apellidos&lt;/span&gt;
+&lt;span id=&quot;cb6-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Lectores  &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; R&lt;/span&gt;
+&lt;span id=&quot;cb6-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt; Prestamos &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; P &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; R.id_lector &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; P.id_lector&lt;/span&gt;
+&lt;span id=&quot;cb6-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb6-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  P.id_prestamo &lt;span class=&quot;kw&quot;&gt;IS&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;NULL&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>El resultado son <strong>solo</strong> los lectores que no aparecen en <code>Prestamos</code>. Te tocará usar este patrón en uno de los retos de hoy.</p>
+</div>
+</section>
+</section>
+<section class="level2" id="aviso-importante-antes-de-tocar-datos">
+<h2 class="">3. Aviso importante antes de tocar datos</h2>
+<p>Hasta ahora solo has hecho <code>SELECT</code>: pediste información, la base de datos te respondió, no cambió nada. Ahora vas a aprender a <strong>modificar</strong> datos: añadir libros, cambiar campos, borrar filas. Esto requiere un aviso.</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningLos cambios en SQLime NO PERSISTEN</p>
+<p><code>biblioteca.db</code> está cargada en la <strong>memoria del navegador</strong>. Cualquier <code>INSERT</code>, <code>UPDATE</code> o <code>DELETE</code> que ejecutes funciona <strong>mientras la pestaña esté abierta</strong>, pero <strong>se pierde</strong>:</p>
+<ul>
+<li>Si <strong>recargas</strong> la página.</li>
+<li>Si <strong>cargas otra BD</strong> con <em>open file</em>.</li>
+<li>Si <strong>cierras</strong> la pestaña.</li>
+</ul>
+<p>Por eso los Pruébalos y los retos de modificación de hoy son <strong>para practicar la sintaxis</strong>, no para “modificar la biblioteca de verdad”. Para que tus cambios se queden, al final de la sesión los llevarás a <strong>tu propio <code>.odb</code></strong> en LibreOffice Base, donde sí persisten en el archivo.</p>
+</div>
+</section>
+<section class="level2" id="insert-añadir-filas">
+<h2 class="">4. INSERT — añadir filas</h2>
+<p><code>INSERT</code> añade una nueva fila a una tabla. Sintaxis:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb7-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb7-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;INTO&lt;/span&gt; tabla (columna1, columna2, &lt;span class=&quot;op&quot;&gt;..&lt;/span&gt;.)&lt;/span&gt;
+&lt;span id=&quot;cb7-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb7-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;VALUES&lt;/span&gt; (valor1, valor2, &lt;span class=&quot;op&quot;&gt;..&lt;/span&gt;.);&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Las columnas que listas tras el nombre de la tabla deben coincidir, en <strong>orden</strong> y en <strong>número</strong>, con los valores que pones en <code>VALUES</code>.</p>
+<section class="level3" id="pruébalo-añade-un-libro">
+<h3 class="">Pruébalo: añade un libro</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb8-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb8-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;INTO&lt;/span&gt; Libros (titulo, autor, genero, anio, ejemplares)&lt;/span&gt;
+&lt;span id=&quot;cb8-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb8-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;VALUES&lt;/span&gt; (&lt;span class=&quot;st&quot;&gt;&#039;Pedro Páramo&#039;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&#039;Juan Rulfo&#039;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&#039;Novela&#039;&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;1955&lt;/span&gt;, &lt;span class=&quot;dv&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Pulsa <strong>run ▶</strong>. Verás algo extraño:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C21_sqlime_insert_0_rows.png" style="width:80.0%"/></p>
+<figcaption>Tras un INSERT, SQLime muestra <em>“0 rows, took N ms”</em> bajo el editor. El INSERT ha funcionado: lo que pasa es que las sentencias de modificación no devuelven filas.</figcaption>
+</figure>
+</div>
+<div class="marco marco-formula"><p class="marco-titulo">Warning“0 rows” tras un INSERT NO es un error</p>
+<p>SQLime muestra <strong>“0 rows”</strong> después de un <code>INSERT</code>, <code>UPDATE</code> o <code>DELETE</code>. No es un fallo: simplemente esas sentencias no devuelven filas (no son consultas). Para <strong>comprobar</strong> que el cambio se ha aplicado, ejecuta a continuación un <code>SELECT</code> que busque el dato.</p>
+</div>
+<p>Lo verificamos con un <code>SELECT</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb9-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb9-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Libros &lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; titulo &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;st&quot;&gt;&#039;Pedro Páramo&#039;&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Ahora sí: 1 fila con todas las columnas del libro recién insertado.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C22_sqlime_insert_verificacion.png" style="width:80.0%"/></p>
+<figcaption>SELECT de verificación tras el INSERT: aparece la fila de <em>Pedro Páramo</em> con todas sus columnas. Cabecera <em>“1 row, took N ms”</em>.</figcaption>
+</figure>
+</div>
+<div class="marco marco-nota"><p class="marco-titulo">TipElid_librose autoasignó solo</p>
+<p>Fíjate: en el <code>INSERT</code> no especificaste el <code>id_libro</code>, y aun así la fila tiene un id (en este caso, el 13). En SQLite, cuando una columna se declara como <code>INTEGER PRIMARY KEY</code>, <strong>se autoincrementa automáticamente</strong> al insertar. Más adelante verás que en LibreOffice Base esto <strong>no funciona igual</strong> y hay que dar el id a mano.</p>
+</div>
+</section>
+</section>
+<section class="level2" id="update-modificar-filas-existentes">
+<h2 class="">5. UPDATE — modificar filas existentes</h2>
+<p><code>UPDATE</code> cambia el valor de una o varias columnas en filas que cumplan una condición:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb10-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb10-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;UPDATE&lt;/span&gt; tabla&lt;/span&gt;
+&lt;span id=&quot;cb10-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb10-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SET&lt;/span&gt;    columna1 &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; valor1, columna2 &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; valor2, &lt;span class=&quot;op&quot;&gt;..&lt;/span&gt;.&lt;/span&gt;
+&lt;span id=&quot;cb10-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb10-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  condicion;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<div class="marco marco-formula"><p class="marco-titulo">WarningSinWHERE,UPDATEmodifica TODAS las filas</p>
+<p><code>UPDATE Libros SET ejemplares = 0</code> (sin <code>WHERE</code>) pondría <strong>todos</strong> los libros con cero ejemplares. Casi nunca es lo que quieres. Acostúmbrate a escribir el <code>WHERE</code> antes que el <code>SET</code> para no olvidarlo.</p>
+</div>
+<section class="level3" id="pruébalo-cambia-los-ejemplares-de-un-libro">
+<h3 class="">Pruébalo: cambia los ejemplares de un libro</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb11-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;UPDATE&lt;/span&gt; Libros&lt;/span&gt;
+&lt;span id=&quot;cb11-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SET&lt;/span&gt;    ejemplares &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;6&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb11-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb11-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  id_libro &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p><code>run ▶</code> te dirá <em>“0 rows, took N ms”</em> (recuerda: no es error). Verifica con un <code>SELECT</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb12-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb12-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; id_libro, titulo, ejemplares&lt;/span&gt;
+&lt;span id=&quot;cb12-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb12-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Libros&lt;/span&gt;
+&lt;span id=&quot;cb12-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb12-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  id_libro &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;3&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Debe devolver una fila con <em>La sombra del viento</em> y <code>ejemplares = 6</code>.</p>
+</section>
+</section>
+<section class="level2" id="delete-borrar-filas">
+<h2 class="">6. DELETE — borrar filas</h2>
+<p><code>DELETE</code> elimina filas de una tabla:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb13-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb13-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; tabla&lt;/span&gt;
+&lt;span id=&quot;cb13-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb13-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  condicion;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<div class="marco marco-formula"><p class="marco-titulo">WarningSinWHERE,DELETEborra TODAS las filas</p>
+<p><code>DELETE FROM Prestamos</code> (sin <code>WHERE</code>) deja la tabla <strong>vacía</strong>. Igual que con <code>UPDATE</code>: nunca escribas un <code>DELETE</code> sin un <code>WHERE</code> que lo acote.</p>
+</div>
+<section class="level3" id="pruébalo-borra-un-préstamo">
+<h3 class="">Pruébalo: borra un préstamo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb14-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;DELETE&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Prestamos&lt;/span&gt;
+&lt;span id=&quot;cb14-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb14-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt;  id_prestamo &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;15&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Verifica con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb15-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb15-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;op&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt; Prestamos &lt;span class=&quot;kw&quot;&gt;WHERE&lt;/span&gt; id_prestamo &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dv&quot;&gt;15&lt;/span&gt;;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p>Debe devolver <strong>0 filas</strong> (la consulta no encuentra el préstamo, porque ya lo borraste).</p>
+</section>
+</section>
+<section class="level2" id="llevar-sql-a-tu-propio-.odb">
+<h2 class="">7. Llevar SQL a tu propio <code>.odb</code></h2>
+<p>Hasta aquí has practicado con <code>biblioteca.db</code> en SQLime. Ahora vas a hacer lo mismo, pero <strong>de verdad</strong>, sobre tu <strong>propia</strong> base de datos en LibreOffice Base, donde los cambios sí se quedan grabados en el archivo <code>.odb</code>.</p>
+<div class="marco marco-nota"><p class="marco-titulo">TipLa copia de seguridad ya la tienes</p>
+<p>No tienes que crear ninguna copia hoy: el <strong><code>&lt;tu_tema&gt;-s4.odb</code></strong> que dejaste en Moodle al final de S4 es la foto del estado pre-SQL. Si algo saliera muy mal, siempre puedes descargarla de Moodle y empezar de cero.</p>
+<p>Hoy trabajas directamente sobre <strong><code>&lt;tu_tema&gt;.odb</code></strong> (el archivo sin sufijo que descargaste al empezar la sesión).</p>
+</div>
+<section class="level3" id="el-sitio-donde-se-ejecuta-sql-en-base">
+<h3 class="">El sitio donde se ejecuta SQL en Base</h3>
+<p>Con <code>&lt;tu_tema&gt;.odb</code> abierto, ve a la barra superior: menú <strong>Herramientas → SQL…</strong>. Se abre un cuadro con dos zonas:</p>
+<ul>
+<li><strong>Arriba</strong>: el editor donde pegas la sentencia SQL.</li>
+<li><strong>Abajo</strong>: el panel de <strong>Estado</strong>, donde Base te dice si el comando se ejecutó o falló.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img class="img-fluid figure-img" src="../content/resources/C20_base_herramientas_sql.png" style="width:85.0%"/></p>
+<figcaption>Diálogo <em>Herramientas → SQL</em> de LibreOffice Base con un INSERT pegado arriba y el mensaje <em>“1: Comando ejecutado correctamente”</em> en el panel de estado abajo.</figcaption>
+</figure>
+</div>
+<div class="marco marco-formula"><p class="marco-titulo">WarningDos diferencias muy importantes con SQLime</p>
+<p>LibreOffice Base usa internamente un motor distinto a SQLite (se llama HSQLDB). Eso obliga a <strong>dos cambios obligatorios</strong> en cada sentencia que pases de SQLime a Base:</p>
+<p><strong>1. Los nombres de tabla y de columna van entre comillas dobles.</strong></p>
+<p>En SQLite escribes <code>Libros</code> y <code>titulo</code> sin comillas. En Base, si te las dejas, HSQLDB convierte el nombre a mayúsculas internamente (<code>TITULO</code>) y no lo encuentra. Tienes que escribir <code>"Libros"</code> y <code>"titulo"</code> con comillas dobles.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb16-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb16-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- En SQLime (SQLite):&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb16-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb16-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;INTO&lt;/span&gt; Libros (titulo, autor) &lt;span class=&quot;kw&quot;&gt;VALUES&lt;/span&gt; (&lt;span class=&quot;st&quot;&gt;&#039;X&#039;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&#039;Y&#039;&lt;/span&gt;);&lt;/span&gt;
+&lt;span id=&quot;cb16-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb16-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb16-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb16-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- En Base (HSQLDB):&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb16-5&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb16-5&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;INSERT&lt;/span&gt; &lt;span class=&quot;kw&quot;&gt;INTO&lt;/span&gt; &lt;span class=&quot;ot&quot;&gt;&quot;Libros&quot;&lt;/span&gt; (&lt;span class=&quot;ot&quot;&gt;&quot;titulo&quot;&lt;/span&gt;, &lt;span class=&quot;ot&quot;&gt;&quot;autor&quot;&lt;/span&gt;) &lt;span class=&quot;kw&quot;&gt;VALUES&lt;/span&gt; (&lt;span class=&quot;st&quot;&gt;&#039;X&#039;&lt;/span&gt;, &lt;span class=&quot;st&quot;&gt;&#039;Y&#039;&lt;/span&gt;);&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<p><strong>2. La clave primaria <code>id_X</code> NO se autoincrementa.</strong></p>
+<p>En SQLite podías omitir el id en un <code>INSERT</code> y se rellenaba solo. En Base <strong>tienes que dar el <code>id_X</code> a mano</strong>, eligiendo un número que no exista todavía en la tabla.</p>
+<p>Si te olvidas, Base te devuelve <em>“Attempt to insert null into a non-nullable column: column: id_X”</em> y la fila no se inserta.</p>
+</div>
+</section>
+<section class="level3" id="tus-3-modificaciones-obligatorias">
+<h3 class="">Tus 3 modificaciones obligatorias</h3>
+<p>Sobre tu <code>.odb</code>, ejecuta <strong>3 sentencias</strong> desde <em>Herramientas → SQL…</em>. Adáptalas a tu tema:</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operación</th>
+<th>Qué hacer</th>
+<th>Tabla recomendada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>INSERT</strong></td>
+<td>Añade un <strong>6.º registro</strong> a una de tus tablas padre. Acuérdate del id manual y de las comillas dobles.</td>
+<td>Tu padre 1 (la de S1) o tu padre 2 (la de S2)</td>
+</tr>
+<tr class="even">
+<td><strong>UPDATE</strong></td>
+<td>Cambia el valor de <strong>un campo no clave</strong> en un registro existente.</td>
+<td>Cualquier tabla</td>
+</tr>
+<tr class="odd">
+<td><strong>DELETE</strong></td>
+<td>Borra <strong>un registro de la tabla hija</strong>. (No borres en una padre con hijos: la integridad referencial te lo va a impedir, y eso es justo lo que tiene que pasar.)</td>
+<td>Tu hija (la de S2)</td>
+</tr>
+</tbody>
+</table>
+<div class="marco marco-nota"><p class="marco-titulo">TipPlantilla guía adaptada a cada tema</p>
+<p>Punto de partida con los nombres exactos. <strong>Cambia los <code>'??'</code> y los números por los que tengan sentido en tu BD.</strong> Recuerda: comillas dobles en los identificadores, comillas simples en las cadenas.</p>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tema</th>
+<th>INSERT (padre)</th>
+<th>UPDATE</th>
+<th>DELETE (hija)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Streaming</td>
+<td><code>INSERT INTO "Series" ("id_serie","titulo","anio","plataforma","valoracion") VALUES (6,'??',????,'??',??);</code></td>
+<td><code>UPDATE "Series" SET "valoracion" = ?? WHERE "id_serie" = 1;</code></td>
+<td><code>DELETE FROM "Visualizaciones" WHERE "id_visualizacion" = 5;</code></td>
+</tr>
+<tr class="even">
+<td>2. Tienda</td>
+<td><code>INSERT INTO "Productos" ("id_producto","nombre","marca","precio","stock") VALUES (6,'??','??',??,??);</code></td>
+<td><code>UPDATE "Productos" SET "precio" = ?? WHERE "id_producto" = 1;</code></td>
+<td><code>DELETE FROM "Pedidos" WHERE "id_pedido" = 5;</code></td>
+</tr>
+<tr class="odd">
+<td>3. Veterinaria</td>
+<td><code>INSERT INTO "Mascotas" ("id_mascota","nombre","especie","raza","edad") VALUES (6,'??','??','??',??);</code></td>
+<td><code>UPDATE "Mascotas" SET "edad" = ?? WHERE "id_mascota" = 1;</code></td>
+<td><code>DELETE FROM "Visitas" WHERE "id_visita" = 5;</code></td>
+</tr>
+<tr class="even">
+<td>4. Liga</td>
+<td><code>INSERT INTO "Equipos" ("id_equipo","nombre","ciudad","estadio","anio_fundacion") VALUES (6,'??','??','??',????);</code></td>
+<td><code>UPDATE "Equipos" SET "estadio" = '??' WHERE "id_equipo" = 1;</code></td>
+<td><code>DELETE FROM "Partidos" WHERE "id_partido" = 5;</code></td>
+</tr>
+<tr class="odd">
+<td>5. Tatuajes</td>
+<td><code>INSERT INTO "Clientes" ("id_cliente","nombre","apellidos","telefono","email") VALUES (6,'??','??','??','??');</code></td>
+<td><code>UPDATE "Clientes" SET "telefono" = '??' WHERE "id_cliente" = 1;</code></td>
+<td><code>DELETE FROM "Trabajos" WHERE "id_trabajo" = 5;</code></td>
+</tr>
+<tr class="even">
+<td>6. Gimnasio</td>
+<td><code>INSERT INTO "Socios" ("id_socio","nombre","apellidos","fecha_alta","plan") VALUES (6,'??','??','????-??-??','??');</code></td>
+<td><code>UPDATE "Socios" SET "plan" = '??' WHERE "id_socio" = 1;</code></td>
+<td><code>DELETE FROM "Asistencias" WHERE "id_asistencia" = 5;</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Después de cada ejecución correcta, Base te dirá <em>“Comando ejecutado correctamente”</em> en el panel de Estado. <strong>Cierra el diálogo y guarda el archivo</strong> (<code>Ctrl+S</code> desde la ventana principal de Base) para que los cambios queden grabados en <code>&lt;tu_tema&gt;.odb</code>.</p>
+<p>Para <strong>comprobar</strong> que las modificaciones se aplicaron, abre la tabla afectada con doble clic en la barra lateral: deberías ver el nuevo registro, el valor cambiado y la fila desaparecida.</p>
+</section>
+</section>
+<section class="level2" id="los-10-retos-de-s5">
+<h2 class="">8. Los 10 retos de S5</h2>
+<p>Igual que en S4: cada reto te dice <strong>cuántas filas debe devolver tu consulta</strong> y, cuando importa, qué primera/última fila o qué dato concreto debe aparecer. Si tu resultado coincide, está bien.</p>
+<p>Conserva tus consultas en el mismo archivo <code>retos_sql.sql</code> que abriste al empezar la sesión, <strong>continuando</strong> desde el Reto 11. Al final del día tendrás 20 retos numerados (10 de S4 + 10 de S5).</p>
+<div class="marco marco-formula"><p class="marco-titulo">WarningVuelve a SQLime y recargabiblioteca.db</p>
+<p>Los retos se hacen de nuevo en <strong>SQLime sobre <code>biblioteca.db</code></strong>, no en LibreOffice Base. Si vienes del apartado anterior con Base abierto, guarda tu <code>.odb</code> (<code>Ctrl+S</code>), ciérralo y vuelve a la pestaña de SQLime.</p>
+<p>Una vez en SQLime, <strong>recarga la página</strong> (<code>Ctrl+R</code>) y vuelve a cargar <code>biblioteca.db</code> con <strong>open file</strong>. Esto borra las huellas que dejaron los Pruébalos de los apartados 4, 5 y 6 (un libro de más, ejemplares cambiados, un préstamo borrado) y deja la BD en su estado original, para que las validaciones de los retos cuadren con tu resultado.</p>
+</div>
+<div class="marco marco-nota"><p class="marco-titulo">TipSi un reto no te sale</p>
+<p>Salta al siguiente. En clase los corregimos todos juntos. Lo importante es <strong>que lo intentes</strong> y tengas claro qué cláusula te faltaba.</p>
+</div>
+<section class="level3" id="reto-11-para-cada-préstamo-lista-la-fecha-y-el-título-del-libro">
+<h3 class="">Reto 11 — Para cada préstamo, lista la fecha y el título del libro</h3>
+<p><strong>Tu consulta debe devolver</strong>: 15 filas, con dos columnas (<code>fecha_prestamo</code>, <code>titulo</code>).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>SELECT</code> con dos columnas + <code>FROM Prestamos</code> + <code>JOIN Libros ON ...</code>. Une las dos tablas por la columna que tienen en común. Si dudas cuál es, mira <a href="#inner-join-la-combinación-más-habitual">§ 2.1</a>.</p>
+</div>
+</section>
+<section class="level3" id="reto-12-libros-que-ha-pedido-prestados-lucía-gómez-id_lector-1">
+<h3 class="">Reto 12 — Libros que ha pedido prestados Lucía Gómez (id_lector = 1)</h3>
+<p><strong>Tu consulta debe devolver</strong>: 2 filas, con <code>titulo</code> y <code>fecha_prestamo</code>. Los libros son <em>Harry Potter y la piedra filosofal</em> y <em>La sombra del viento</em>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>JOIN</code> entre <code>Prestamos</code> y <code>Libros</code>, más un <code>WHERE</code> que filtre por <code>id_lector = 1</code>. Cuidado: <code>id_lector</code> está en <code>Prestamos</code>, no en <code>Libros</code>.</p>
+</div>
+</section>
+<section class="level3" id="reto-13-para-cada-préstamo-lista-fecha-título-del-libro-nombre-y-apellidos-del-lector">
+<h3 class="">Reto 13 — Para cada préstamo, lista fecha + título del libro + nombre y apellidos del lector</h3>
+<p><strong>Tu consulta debe devolver</strong>: 15 filas, con 4 columnas (<code>fecha_prestamo</code>, <code>titulo</code>, <code>nombre</code>, <code>apellidos</code>).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Dos <code>JOIN</code> encadenados, como en el ejemplo del cuerpo de <a href="#alias-con-as-escritura-más-corta">§ 2.2</a>. Une <code>Prestamos</code> con <code>Libros</code> por <code>id_libro</code> y con <code>Lectores</code> por <code>id_lector</code>. Usa alias para no tener que escribir el nombre completo de cada tabla.</p>
+</div>
+</section>
+<section class="level3" id="reto-14-préstamos-hechos-en-octubre-de-2025-con-el-título-del-libro">
+<h3 class="">Reto 14 — Préstamos hechos en octubre de 2025, con el título del libro</h3>
+<p><strong>Tu consulta debe devolver</strong>: 4 filas, con <code>fecha_prestamo</code> y <code>titulo</code>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Es como el Reto 9 de S4 (préstamos de octubre con <code>BETWEEN</code>), pero añadiendo un <code>JOIN</code> con <code>Libros</code> para sacar el título.</p>
+</div>
+</section>
+<section class="level3" id="reto-15-préstamos-de-libros-de-fantasía-con-título-del-libro-y-nombre-del-lector">
+<h3 class="">Reto 15 — Préstamos de libros de Fantasía con título del libro y nombre del lector</h3>
+<p><strong>Tu consulta debe devolver</strong>: 5 filas, con <code>titulo</code>, <code>nombre</code> y <code>apellidos</code>. Aparecerán préstamos de Lucía Gómez, Mario Pérez, Adrián Moreno, Paula Navarro y Álvaro Rodríguez.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Tres tablas en juego: <code>Prestamos</code>, <code>Libros</code> (para filtrar por género) y <code>Lectores</code> (para sacar el nombre). Encadena dos <code>JOIN</code> y añade un <code>WHERE genero = 'Fantasía'</code>. Recuerda: el género lleva tilde, copia el patrón con tilde.</p>
+</div>
+</section>
+<section class="level3" id="reto-16-libros-que-nadie-ha-pedido-nunca">
+<h3 class="">Reto 16 — Libros que NADIE ha pedido nunca</h3>
+<p><strong>Tu consulta debe devolver</strong>: 1 fila. El libro es <em>Así habló Zaratustra</em>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Aquí necesitas <code>LEFT JOIN</code>, no <code>INNER JOIN</code>: queremos los libros aunque <strong>no</strong> tengan préstamos. Empieza desde <code>Libros</code> y haz <code>LEFT JOIN</code> hacia <code>Prestamos</code>. Después, filtra con <code>WHERE Prestamos.id_prestamo IS NULL</code> para quedarte solo con los libros sin préstamo. El patrón está en el callout de <a href="#left-join-incluir-lo-que-no-cruza">§ 2.3</a>.</p>
+</div>
+</section>
+<section class="level3" id="reto-17-añade-el-libro-el-amor-en-los-tiempos-del-cólera">
+<h3 class="">Reto 17 — Añade el libro <em>El amor en los tiempos del cólera</em></h3>
+<p>Inserta en <code>Libros</code> un nuevo libro: título <em>“El amor en los tiempos del cólera”</em>, autor <em>“Gabriel García Márquez”</em>, género <em>“Novela”</em>, año 1985, 3 ejemplares. <strong>No especifiques el <code>id_libro</code></strong>: deja que SQLite lo asigne solo.</p>
+<p><strong>Tu solución debe</strong>: ejecutar sin error (verás <em>“0 rows, took N ms”</em>) y, al hacer un <code>SELECT * FROM Libros WHERE titulo = 'El amor en los tiempos del cólera';</code> después, devolver <strong>1 fila</strong> con el libro recién insertado.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>INSERT INTO Libros (...) VALUES (...);</code>. Lista en el primer paréntesis las <strong>5 columnas</strong> que vas a rellenar (sin <code>id_libro</code>) y en el segundo los <strong>5 valores</strong> correspondientes en el mismo orden. Las cadenas con tildes van entre comillas simples; los números, sin comillas.</p>
+</div>
+</section>
+<section class="level3" id="reto-18-añade-un-préstamo-de-hoy">
+<h3 class="">Reto 18 — Añade un préstamo de hoy</h3>
+<p>Inserta en <code>Prestamos</code> un préstamo nuevo: el lector con <code>id_lector = 4</code> (Hugo Sánchez) toma prestado el libro con <code>id_libro = 5</code> (<em>El señor de los anillos</em>) hoy, <strong>2026-05-12</strong>. El libro <strong>aún no se ha devuelto</strong>, así que <code>fecha_devolucion</code> debe ser <strong>NULL</strong>.</p>
+<p><strong>Tu solución debe</strong>: ejecutar sin error y, al hacer <code>SELECT * FROM Prestamos WHERE id_lector = 4 AND id_libro = 5;</code> después, devolver <strong>1 fila</strong> con el préstamo recién creado.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p>Igual que el reto anterior pero sobre <code>Prestamos</code>. Para <code>fecha_devolucion = NULL</code>, en el <code>VALUES</code> simplemente escribe <code>NULL</code> (sin comillas: NULL no es texto, es la palabra reservada). La fecha de hoy va como TEXT con comillas simples y formato <code>'aaaa-mm-dd'</code>.</p>
+</div>
+</section>
+<section class="level3" id="reto-19-sube-a-5-los-ejemplares-de-el-quijote">
+<h3 class="">Reto 19 — Sube a 5 los ejemplares de <em>El Quijote</em></h3>
+<p>Modifica el libro con <code>id_libro = 1</code> (<em>El Quijote</em>) para que tenga 5 ejemplares en lugar de los 3 que tiene en la BD original.</p>
+<p><strong>Tu solución debe</strong>: ejecutar sin error y, al hacer <code>SELECT id_libro, titulo, ejemplares FROM Libros WHERE id_libro = 1;</code> después, mostrar <code>ejemplares = 5</code>.</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>UPDATE Libros SET ... WHERE ...</code>. <strong>No olvides el <code>WHERE</code></strong>: si lo dejas fuera, los 12 libros se quedarían con 5 ejemplares cada uno.</p>
+</div>
+</section>
+<section class="level3" id="reto-20-borra-el-préstamo-número-7">
+<h3 class="">Reto 20 — Borra el préstamo número 7</h3>
+<p>Elimina de <code>Prestamos</code> la fila cuyo <code>id_prestamo = 7</code>.</p>
+<p><strong>Tu solución debe</strong>: ejecutar sin error y, al hacer <code>SELECT * FROM Prestamos WHERE id_prestamo = 7;</code> después, devolver <strong>0 filas</strong> (la fila ya no existe).</p>
+<div class="marco marco-teoria"><p class="marco-titulo">NotaPista</p>
+<p><code>DELETE FROM Prestamos WHERE id_prestamo = 7;</code>. <strong>No olvides el <code>WHERE</code></strong>: sin él, te cargas los 15 préstamos.</p>
+</div>
+</section>
+</section>
+<section class="level2" id="producto-final-de-s5">
+<h2 class="">Producto final de S5</h2>
+<p>Cuando termines, debes tener:</p>
+<ul>
+<li>Tu archivo <strong><code>retos_sql.sql</code></strong> con <strong>20 consultas</strong> numeradas (los 10 de S4 + los 10 de hoy), cada una precedida de <code>-- Reto N</code>.</li>
+<li>Tu <strong><code>&lt;tu_tema&gt;.odb</code></strong> (el archivo sin sufijo) con al menos <strong>1 INSERT, 1 UPDATE y 1 DELETE</strong> aplicados desde <em>Herramientas → SQL…</em>. Guardado con <code>Ctrl+S</code> desde la ventana principal de Base.</li>
+<li>Tu <strong><code>&lt;tu_tema&gt;-s4.odb</code></strong> <strong>sin tocar</strong> en Moodle (sigue como referencia del estado pre-SQL).</li>
+</ul>
+<p>Plantilla del archivo (continuando desde el Reto 11):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql">&lt;span id=&quot;cb17-1&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-1&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- ... (Retos 1 a 10 que ya tenías de S4)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb17-2&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-2&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb17-3&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-3&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Reto 11&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb17-4&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-4&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;SELECT&lt;/span&gt; P.fecha_prestamo, L.titulo&lt;/span&gt;
+&lt;span id=&quot;cb17-5&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-5&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;FROM&lt;/span&gt;   Prestamos &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; P&lt;/span&gt;
+&lt;span id=&quot;cb17-6&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-6&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;kw&quot;&gt;JOIN&lt;/span&gt;   Libros    &lt;span class=&quot;kw&quot;&gt;AS&lt;/span&gt; L &lt;span class=&quot;kw&quot;&gt;ON&lt;/span&gt; P.id_libro &lt;span class=&quot;op&quot;&gt;=&lt;/span&gt; L.id_libro;&lt;/span&gt;
+&lt;span id=&quot;cb17-7&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-7&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&quot;cb17-8&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-8&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- Reto 12&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&quot;cb17-9&quot;&gt;&lt;a aria-hidden=&quot;true&quot; href=&quot;#cb17-9&quot; tabindex=&quot;-1&quot;&gt;&lt;/a&gt;&lt;span class=&quot;co&quot;&gt;-- ... (etcétera hasta el Reto 20)&lt;/span&gt;&lt;/span&gt;</code></pre></div><button class="code-copy-button" title="Copy to Clipboard"><i class="bi"></i></button></div>
+<div class="marco marco-formula"><p class="marco-titulo">ImportanteAntes de irte: actualiza Moodle (sin tocar el-s4)</p>
+<p>En la tarea <strong>“TAREA - Bases de datos”</strong>:</p>
+<ol type="1">
+<li><strong><code>retos_sql.sql</code></strong>: borra el archivo de S4 que tenías subido y sube esta versión ampliada a 20 consultas.</li>
+<li><strong><code>&lt;tu_tema&gt;.odb</code></strong> (sin sufijo, con tus 3 modificaciones SQL aplicadas hoy): borra el <code>&lt;tu_tema&gt;.odb</code> que estaba subido y sube el actualizado.</li>
+<li><strong><code>&lt;tu_tema&gt;-s4.odb</code></strong>: <strong>NO lo toques</strong>. Tiene que quedarse en Moodle como referencia del estado pre-SQL.</li>
+</ol>
+<p>Es decir, al terminar S5 deben quedar <strong>tres</strong> archivos en Moodle: <code>&lt;tu_tema&gt;.odb</code> (con SQL aplicado hoy), <code>&lt;tu_tema&gt;-s4.odb</code> (intacto) y <code>retos_sql.sql</code> (con 20 retos).</p>
+<p>Mantén la entrega en estado <strong>borrador</strong> (no pulses “Entregar tarea”). Detalles en <a href="../index.html#cómo-se-guarda-tu-trabajo-entre-sesiones">Cómo se guarda tu trabajo entre sesiones</a>.</p>
+</div>
+<p>En <strong>S6</strong> harás un <strong>mini-control SQL en papel</strong> (40 minutos, individual, con la chuleta de 1 cara) sobre una BD nueva que verás en clase. Después arrancarás los últimos retoques de tu proyecto. Y para repasar JOIN/INSERT/UPDATE/DELETE en cualquier momento, te queda la <a download="chuleta_sql.pdf" href="../content/resources/chuleta_sql.pdf" target="_blank">Chuleta SQL</a>.</p>
+</section>
+<section class="level2" id="si-te-atascas">
+<h2 class="">Si te atascas</h2>
+<table class="caption-top table tabla-datos">
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Cómo se arregla</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ambiguous column: id_libro</code></td>
+<td>Dos tablas tienen una columna con el mismo nombre y no la has prefijado</td>
+<td>Prefija con el alias: <code>P.id_libro</code> o <code>L.id_libro</code>.</td>
+</tr>
+<tr class="even">
+<td>Mi <code>JOIN</code> devuelve más filas de las esperadas</td>
+<td>Te has olvidado del <code>ON</code> o has unido por una columna equivocada</td>
+<td>Comprueba que el <code>ON</code> une la <strong>clave primaria de la padre</strong> con la <strong>clave foránea de la hija</strong>.</td>
+</tr>
+<tr class="odd">
+<td>Mi <code>LEFT JOIN</code> se comporta como <code>INNER</code> (no aparece nada huérfano)</td>
+<td>Has puesto un <code>WHERE</code> sobre una columna de la tabla derecha que filtra los <code>NULL</code> por accidente</td>
+<td>Si querías filtrar <strong>solo</strong> los huérfanos, el <code>WHERE</code> correcto es <code>... IS NULL</code>. Si los querías ver mezclados con el resto, quita el <code>WHERE</code>.</td>
+</tr>
+<tr class="even">
+<td><code>INSERT</code> da <em>“0 rows, took N ms”</em> en SQLime</td>
+<td>Comportamiento normal: los INSERT no devuelven filas</td>
+<td>No es error. Verifica con un <code>SELECT</code> que la fila aparece.</td>
+</tr>
+<tr class="odd">
+<td><code>Attempt to insert null into a non-nullable column: id_X</code> (en Base)</td>
+<td>En HSQLDB no se autoincrementa: hay que dar el id a mano</td>
+<td>Añade <code>id_X</code> a la lista de columnas y un valor nuevo a la lista de <code>VALUES</code>.</td>
+</tr>
+<tr class="even">
+<td><code>Column not found: TITULO</code> (en Base)</td>
+<td>Te has olvidado las comillas dobles en una columna</td>
+<td>Pon comillas dobles alrededor de <strong>todos</strong> los identificadores: <code>"titulo"</code>, <code>"Libros"</code>, etc.</td>
+</tr>
+<tr class="odd">
+<td>He hecho un <code>UPDATE</code> o <code>DELETE</code> sin <code>WHERE</code> y “ya no me cuadra nada”</td>
+<td>Has tocado todas las filas a la vez</td>
+<td>En SQLime: recarga la página y vuelve a cargar <code>biblioteca.db</code> (la BD vuelve al estado original). En Base: si guardaste, el cambio es permanente; restaura desde la copia que tienes en Moodle.</td>
+</tr>
+<tr class="even">
+<td>Mi <code>SELECT</code> tras <code>INSERT/UPDATE/DELETE</code> no muestra el cambio en SQLime</td>
+<td>Recargaste la página entre el INSERT y el SELECT</td>
+<td>Los cambios en SQLime <strong>no persisten al recargar</strong>. Vuelve a ejecutar el INSERT y luego, sin recargar, el SELECT.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+</article>
+</div></main><div class="nav-buttons">
+<a href="../html/s4-sql-select.html" title="Anterior" class="nav-button nav-button-left"><span>Anterior</span></a>
+<a href="../html/s6-mini-control-y-proyecto.html" title="Siguiente" class="nav-button nav-button-right"><span>Siguiente</span></a>
+</div>
+<footer id="siteFooter"><div id="siteFooterContent"></div></footer>
+</div>
+<p id="made-with-eXe"> <a href="https://exelearning.net/" target="_blank" rel="noopener"> <span>Creado con eXeLearning <span>(Ventana nueva)</span></span></a></p>
+</body>
+</html>
